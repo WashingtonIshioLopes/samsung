@@ -1,13 +1,55 @@
+//#############################################
+// SAMSUNG
+//#############################################
+
 Requisitos:
-	Java Version 17.0
+	Java Version v17.0
 	Intellij
+	NodeJS v20.14.0
+	Vite v5.3.0
 
-Backend
-	Java Spring Boot
+//********************************************
+// Backend - Java Spring Boot
+//********************************************
+	
 
-FrontEnd
-	React - Vita 
+//********************************************
+// FrontEnd - React (Vita)
+//********************************************
+npm create vite@latest
+npm install
+npm run dev 	// http: //localhost:5173/
+npm run build
 
-Banco de Dados
-	MySQL
+
+
+
+
+
+
+
+	 
+
+//********************************************
+// Banco de Dados - MySQL
+//********************************************
+user: admin
+password: W14i05l77!
+dataBase: db_samsung
+
+Tabelas:
+	Catalogos
+		Id
+		Código
+		Nome
+		Preco
+		Qtde
+		Status
+		DtCreated
+		DtUpdated
+		DtDeleted
+
+
+
+
 
