@@ -1,0 +1,13 @@
+Requisitos:
+	Java Version 17.0
+	Intellij
+
+Backend
+	Java Spring Boot
+
+FrontEnd
+	React - Vita 
+
+Banco de Dados
+	MySQL
+
