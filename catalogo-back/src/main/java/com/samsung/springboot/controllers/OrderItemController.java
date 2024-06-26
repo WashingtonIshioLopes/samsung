@@ -21,8 +21,8 @@ public class OrderItemController {
 	
 	@GetMapping("/orderitens")
 	public ResponseEntity<List<OrderItemModel>> getAllUsers(){
-		List<OrderItemModel> users = orderItemService.getAll();
-		return ResponseEntity.status(HttpStatus.OK).body(users);
+		List<OrderItemModel> orderitems = orderItemService.getAll();
+		return ResponseEntity.status(HttpStatus.OK).body(orderitems);
 	}
 
 	@GetMapping("/orderitens/{id}")

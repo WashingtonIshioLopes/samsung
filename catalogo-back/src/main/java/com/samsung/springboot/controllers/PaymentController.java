@@ -21,8 +21,8 @@ public class PaymentController {
 	
 	@GetMapping("/payments")
 	public ResponseEntity<List<PaymentModel>> getAllPayments(){
-		List<PaymentModel> users = paymentService.getAll();
-		return ResponseEntity.status(HttpStatus.OK).body(users);
+		List<PaymentModel> payments = paymentService.getAll();
+		return ResponseEntity.status(HttpStatus.OK).body(payments);
 	}
 
 	@GetMapping("/payments/{id}")
