@@ -22,56 +22,59 @@ public class ProductModel implements Serializable{
 	private Long  idProduct;
 	private String description;
 	private BigDecimal price;
-	private Long IdUnit;
-	private Long IdCategory;
+	@ManyToOne
+	@JoinColumn(name = "id_unit")
+	private UnitModel unit;
+	@ManyToOne
+	@JoinColumn(name = "id_category")
+	private CategoryModel category;
 	private BigDecimal weight;
 
-	public Long getIdCategory() {
-		return IdCategory;
-	}
+    public Long getIdProduct() {
+        return idProduct;
+    }
 
-	public void setIdCategory(Long idCategory) {
-		IdCategory = idCategory;
-	}
+    public void setIdProduct(Long idProduct) {
+        this.idProduct = idProduct;
+    }
 
-	public Long getIdProduct() {
-		return idProduct;
-	}
+    public String getDescription() {
+        return description;
+    }
 
-	public void setIdProduct(Long idProduct) {
-		this.idProduct = idProduct;
-	}
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
-	public String getDescription() {
-		return description;
-	}
+    public BigDecimal getPrice() {
+        return price;
+    }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
 
-	public BigDecimal getPrice() {
-		return price;
-	}
+    public UnitModel getUnit() {
+        return unit;
+    }
 
-	public void setPrice(BigDecimal price) {
-		this.price = price;
-	}
+    public void setUnit(UnitModel unit) {
+        this.unit = unit;
+    }
 
-	public Long getIdUnit() {
-		return IdUnit;
-	}
+    public CategoryModel getCategory() {
+        return category;
+    }
 
-	public void setIdUnit(Long idUnit) {
-		IdUnit = idUnit;
-	}
+    public void setCategory(CategoryModel category) {
+        this.category = category;
+    }
 
-	public BigDecimal getWeight() {
-		return weight;
-	}
+    public BigDecimal getWeight() {
+        return weight;
+    }
 
-	public void setWeight(BigDecimal weight) {
-		this.weight = weight;
-	}
-
+    public void setWeight(BigDecimal weight) {
+        this.weight = weight;
+    }
 }

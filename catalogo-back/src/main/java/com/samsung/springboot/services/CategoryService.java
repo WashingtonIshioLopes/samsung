@@ -1,9 +1,9 @@
 package com.samsung.springboot.services;
 
-import com.samsung.springboot.dtos.ProductCategoryRecordDto;
+import com.samsung.springboot.dtos.CategoryRecordDto;
 import com.samsung.springboot.exceptions.ResourceNotFoundException;
-import com.samsung.springboot.models.ProductCategoryModel;
-import com.samsung.springboot.repositories.ProductCategoryRepository;
+import com.samsung.springboot.models.CategoryModel;
+import com.samsung.springboot.repositories.CategoryRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,43 +14,43 @@ import java.util.Optional;
 
 @Service
 @Transactional
-public class ProductCategoryService {
+public class CategoryService {
 
     @Autowired
-    private ProductCategoryRepository productCategoryRepository;
+    private CategoryRepository productCategoryRepository;
 
-    public List<ProductCategoryModel> getAll() {
+    public List<CategoryModel> getAll() {
         return productCategoryRepository.findAll();
     }
 
-    public Optional<ProductCategoryModel> getOne(Long id) {
-        Optional<ProductCategoryModel> productCategoryOptional = productCategoryRepository.findById(id);
+    public Optional<CategoryModel> getOne(Long id) {
+        Optional<CategoryModel> productCategoryOptional = productCategoryRepository.findById(id);
         if (productCategoryOptional.isEmpty()) {
             throw new ResourceNotFoundException("Product Category not found with id: " + id);
         }
         return productCategoryOptional;
     }
 
-    public ProductCategoryModel save(ProductCategoryRecordDto productCategoryRecordDto) {
-        ProductCategoryModel productCategoryModel = new ProductCategoryModel();
+    public CategoryModel save(CategoryRecordDto productCategoryRecordDto) {
+        CategoryModel productCategoryModel = new CategoryModel();
         BeanUtils.copyProperties(productCategoryRecordDto, productCategoryModel);
         return productCategoryRepository.save(productCategoryModel);
     }
 
     public void delete(Long id) {
-        Optional<ProductCategoryModel> productCategoryOptional = productCategoryRepository.findById(id);
+        Optional<CategoryModel> productCategoryOptional = productCategoryRepository.findById(id);
         if (productCategoryOptional.isEmpty()) {
             throw new ResourceNotFoundException("Product Category not found with id: " + id);
         }
         productCategoryOptional.ifPresent(productcategory -> productCategoryRepository.delete(productcategory));
     }
 
-    public ProductCategoryModel update(Long id, ProductCategoryRecordDto productCategoryRecordDto) {
-        Optional<ProductCategoryModel> productCategoryOptional = productCategoryRepository.findById(id);
+    public CategoryModel update(Long id, CategoryRecordDto productCategoryRecordDto) {
+        Optional<CategoryModel> productCategoryOptional = productCategoryRepository.findById(id);
         if (productCategoryOptional.isEmpty()) {
             throw new ResourceNotFoundException("Product Category not found with id: " + id);
         }
-        ProductCategoryModel productCategoryModel = productCategoryOptional.get();
+        CategoryModel productCategoryModel = productCategoryOptional.get();
         BeanUtils.copyProperties(productCategoryRecordDto, productCategoryModel);
         return productCategoryRepository.save(productCategoryModel);
     }

@@ -1,9 +1,9 @@
 package com.samsung.springboot.controllers;
 
-import com.samsung.springboot.dtos.ProductCategoryRecordDto;
+import com.samsung.springboot.dtos.CategoryRecordDto;
 import com.samsung.springboot.exceptions.ResourceNotFoundException;
-import com.samsung.springboot.models.ProductCategoryModel;
-import com.samsung.springboot.services.ProductCategoryService;
+import com.samsung.springboot.models.CategoryModel;
+import com.samsung.springboot.services.CategoryService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,18 +14,18 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1_0")
-public class ProductCategoryController {
+public class CategoryController {
 	
 	@Autowired
-	ProductCategoryService productCategoryService;
+	CategoryService productCategoryService;
 	
-	@GetMapping("/units")
-	public ResponseEntity<List<ProductCategoryModel>> getAllUnits(){
-		List<ProductCategoryModel> productCategorys = productCategoryService.getAll();
+	@GetMapping("/categories")
+	public ResponseEntity<List<CategoryModel>> getAllUnits(){
+		List<CategoryModel> productCategorys = productCategoryService.getAll();
 		return ResponseEntity.status(HttpStatus.OK).body(productCategorys);
 	}
 
-	@GetMapping("/units/{id}")
+	@GetMapping("/categories/{id}")
 	public ResponseEntity<Object> getOneUnit(@PathVariable(value="id") Long id){
 		try {
 			return ResponseEntity.status(HttpStatus.OK).body(productCategoryService.getOne(id));
@@ -34,13 +34,13 @@ public class ProductCategoryController {
 		}
 	}
 
-	@PostMapping("/units")
-	public ResponseEntity<ProductCategoryModel> saveOrder(@RequestBody @Valid ProductCategoryRecordDto productCategoryRecordDto) {
-		ProductCategoryModel savedProductCategory = productCategoryService.save(productCategoryRecordDto);
+	@PostMapping("/categories")
+	public ResponseEntity<CategoryModel> saveOrder(@RequestBody @Valid CategoryRecordDto productCategoryRecordDto) {
+		CategoryModel savedProductCategory = productCategoryService.save(productCategoryRecordDto);
 		return ResponseEntity.status(HttpStatus.CREATED).body(savedProductCategory);
 	}
 
-	@DeleteMapping("/units/{id}")
+	@DeleteMapping("/categories/{id}")
 	public ResponseEntity<Object> deleteOrder(@PathVariable(value="id") Long id) {
 		try {
 			productCategoryService.delete(id);
@@ -50,11 +50,11 @@ public class ProductCategoryController {
 		}
 	}
 	
-	@PutMapping("/units/{id}")
+	@PutMapping("/categories/{id}")
 	public ResponseEntity<Object> updateOrder(@PathVariable(value="id") Long id,
-											 @RequestBody @Valid ProductCategoryRecordDto productCategoryRecordDto) {
+											 @RequestBody @Valid CategoryRecordDto productCategoryRecordDto) {
 		try {
-			ProductCategoryModel updatedProductCategory = productCategoryService.update(id, productCategoryRecordDto);
+			CategoryModel updatedProductCategory = productCategoryService.update(id, productCategoryRecordDto);
 			return ResponseEntity.status(HttpStatus.OK).body(updatedProductCategory);
 		} catch (ResourceNotFoundException e) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());

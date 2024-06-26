@@ -3,14 +3,13 @@ package com.samsung.springboot.models;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 
 // Hateoas
 //import org.springframework.hateoas.RepresentationModel;
 
 @Entity
 @Table(name = "tb_productcategorys")
-public class ProductCategoryModel implements Serializable{
+public class CategoryModel implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
