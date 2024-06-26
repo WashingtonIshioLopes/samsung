@@ -4,14 +4,27 @@
 
 Requisitos:
 	Java Version v17.0
-	Intellij
+	Intellij v2024.1.4 ou 
+	Visual Studio Code (extension - Extension Pack for Java e Spring Boot Extension Pack)
 	NodeJS v20.14.0
 	Vite v5.3.0
+	Spring Boot v3.3.1
+	Maven v3.9.8
 
 //********************************************
 // Backend - Java Spring Boot
 //********************************************
-	
+java -version
+
+https://start.spring.io/
+
+Dependências:
+	Spring Web
+	Spring Data JPA
+	Validation
+	MySQL Driver
+
+
 
 //********************************************
 // FrontEnd - React (Vita)
@@ -22,13 +35,6 @@ npm run dev 	// http: //localhost:5173/
 npm run build
 
 
-
-
-
-
-
-
-	 
 
 //********************************************
 // Banco de Dados - MySQL
