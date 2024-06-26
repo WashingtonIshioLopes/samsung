@@ -3,6 +3,9 @@
 //#############################################
 
 Requisitos:
+https://github.com/marcola1910/sds-challenge
+
+Requisitos:
 	Java Version v17.0
 	Intellij v2024.1.4 ou 
 	Visual Studio Code (extension - Extension Pack for Java e Spring Boot Extension Pack)

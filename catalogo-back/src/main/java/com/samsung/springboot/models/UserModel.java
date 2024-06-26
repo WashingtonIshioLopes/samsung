@@ -18,8 +18,9 @@ public class UserModel implements Serializable{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long  idUser;
 	private String name;
-	private String cpf;
+	private String document;
 	private String email;
+	private String telephone;
 
 	public Long getIdUser() {
 		return idUser;
@@ -37,12 +38,12 @@ public class UserModel implements Serializable{
 		this.name = name;
 	}
 
-	public String getCpf() {
-		return cpf;
+	public String getDocument() {
+		return document;
 	}
 
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
+	public void setDocument(String document) {
+		this.document = document;
 	}
 
 	public String getEmail() {
@@ -51,5 +52,13 @@ public class UserModel implements Serializable{
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getTelephone() {
+		return telephone;
+	}
+
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
 	}
 }

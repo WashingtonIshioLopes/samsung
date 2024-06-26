@@ -20,43 +20,18 @@ public class ProductModel implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long  idProduct;
-	private String name;
-	private BigDecimal value;
-	private String partNumber;
-	private Integer quantity;
-	private String image;
-	private String brand;
+	private String description;
+	private BigDecimal price;
+	private Long IdUnit;
+	private Long IdCategory;
+	private BigDecimal weight;
 
-	public String getBrand() {
-		return brand;
+	public Long getIdCategory() {
+		return IdCategory;
 	}
 
-	public void setBrand(String brand) {
-		this.brand = brand;
-	}
-
-	public String getPartNumber() {
-		return partNumber;
-	}
-
-	public void setPartNumber(String partNumber) {
-		this.partNumber = partNumber;
-	}
-
-	public Integer getQuantity() {
-		return quantity;
-	}
-
-	public void setQuantity(Integer quantity) {
-		this.quantity = quantity;
-	}
-
-	public String getImage() {
-		return image;
-	}
-
-	public void setImage(String image) {
-		this.image = image;
+	public void setIdCategory(Long idCategory) {
+		IdCategory = idCategory;
 	}
 
 	public Long getIdProduct() {
@@ -67,19 +42,36 @@ public class ProductModel implements Serializable{
 		this.idProduct = idProduct;
 	}
 
-	public String getName() {
-		return name;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
-	public BigDecimal getValue() {
-		return value;
+	public BigDecimal getPrice() {
+		return price;
 	}
 
-	public void setValue(BigDecimal value) {
-		this.value = value;
+	public void setPrice(BigDecimal price) {
+		this.price = price;
 	}
+
+	public Long getIdUnit() {
+		return IdUnit;
+	}
+
+	public void setIdUnit(Long idUnit) {
+		IdUnit = idUnit;
+	}
+
+	public BigDecimal getWeight() {
+		return weight;
+	}
+
+	public void setWeight(BigDecimal weight) {
+		this.weight = weight;
+	}
+
 }
