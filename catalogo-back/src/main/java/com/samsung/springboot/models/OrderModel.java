@@ -16,24 +16,26 @@ public class OrderModel implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long idOrder;
-	private Long idUser;
+	private Long id;
+	@ManyToOne
+	@JoinColumn(name = "id_user")
+	private UserModel user;
 	private BigDecimal total;
 
-	public Long getIdOrder() {
-		return idOrder;
+	public Long getId() {
+		return id;
 	}
 
-	public void setIdOrder(Long idOrder) {
-		this.idOrder = idOrder;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
-	public Long getIdUser() {
-		return idUser;
+	public UserModel getUser() {
+		return user;
 	}
 
-	public void setIdUser(Long idUser) {
-		this.idUser = idUser;
+	public void setUser(UserModel user) {
+		this.user = user;
 	}
 
 	public BigDecimal getTotal() {

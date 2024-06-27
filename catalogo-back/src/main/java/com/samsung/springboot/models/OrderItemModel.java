@@ -16,33 +16,36 @@ public class OrderItemModel implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long idOrderItem;
-	private Long idOrder;
-	private Long idProduct;
+	private Long id;	@ManyToOne
+	@JoinColumn(name = "id_order")
+	private OrderModel order;
+	@ManyToOne
+	@JoinColumn(name = "id_product")
+	private ProductModel product;
 	private BigDecimal quantity;
 
-	public Long getIdOrderItem() {
-		return idOrderItem;
+	public Long getId() {
+		return id;
 	}
 
-	public void setIdOrderItem(Long idOrderItem) {
-		this.idOrderItem = idOrderItem;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
-	public Long getIdOrder() {
-		return idOrder;
+	public OrderModel getOrder() {
+		return order;
 	}
 
-	public void setIdOrder(Long idOrder) {
-		this.idOrder = idOrder;
+	public void setOrder(OrderModel order) {
+		this.order = order;
 	}
 
-	public Long getIdProduct() {
-		return idProduct;
+	public ProductModel getProduct() {
+		return product;
 	}
 
-	public void setIdProduct(Long idProduct) {
-		this.idProduct = idProduct;
+	public void setProduct(ProductModel product) {
+		this.product = product;
 	}
 
 	public BigDecimal getQuantity() {

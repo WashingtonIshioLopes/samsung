@@ -19,7 +19,7 @@ public class ProductModel implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long  idProduct;
+	private Long  id;
 	private String description;
 	private BigDecimal price;
 	@ManyToOne
@@ -30,12 +30,12 @@ public class ProductModel implements Serializable{
 	private CategoryModel category;
 	private BigDecimal weight;
 
-    public Long getIdProduct() {
-        return idProduct;
+    public Long getId() {
+        return id;
     }
 
-    public void setIdProduct(Long idProduct) {
-        this.idProduct = idProduct;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getDescription() {

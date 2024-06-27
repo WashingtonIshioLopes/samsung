@@ -16,18 +16,18 @@ public class UserModel implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long  idUser;
+	private Long  id;
 	private String name;
 	private String document;
 	private String email;
 	private String telephone;
 
-	public Long getIdUser() {
-		return idUser;
+	public Long getId() {
+		return id;
 	}
 
-	public void setIdUser(Long idUser) {
-		this.idUser = idUser;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getName() {

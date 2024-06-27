@@ -16,33 +16,37 @@ public class CartItemModel implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long idCartItem;
-	private Long idCart;
-	private Long idProduct;
+	private Long id;
+	@ManyToOne
+	@JoinColumn(name = "id_user")
+	private CartModel cart;
+	@ManyToOne
+	@JoinColumn(name = "id_product")
+	private ProductModel product;
 	private BigDecimal quantity;
 
-	public Long getIdCartItem() {
-		return idCartItem;
+	public Long getId() {
+		return id;
 	}
 
-	public void setIdCartItem(Long idCartItem) {
-		this.idCartItem = idCartItem;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
-	public Long getIdCart() {
-		return idCart;
+	public CartModel getCart() {
+		return cart;
 	}
 
-	public void setIdCart(Long idCart) {
-		this.idCart = idCart;
+	public void setCart(CartModel cart) {
+		this.cart = cart;
 	}
 
-	public Long getIdProduct() {
-		return idProduct;
+	public ProductModel getProduct() {
+		return product;
 	}
 
-	public void setIdProduct(Long idProduct) {
-		this.idProduct = idProduct;
+	public void setProduct(ProductModel product) {
+		this.product = product;
 	}
 
 	public BigDecimal getQuantity() {

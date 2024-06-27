@@ -14,7 +14,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\":\"name\",\r\n    \"value\": 1,\r\n    \"image\":\"teste\",\r\n    \"partNumber\":\"1234567890\",\r\n    \"quantity\":10\r\n}",
+					"raw": "{\r\n    \"description\":\"name\",\r\n    \"price\": 10,\r\n    \"id_unit\": 1,\r\n    \"id_category\": 1,\r\n    \"weight\":5\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -113,7 +113,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\":\"new name again\",\r\n    \"value\": 1,\r\n    \"image\":\"teste\",\r\n    \"partNumber\":\"1234567890\",\r\n    \"quantity\":10\r\n}",
+					"raw": "{\r\n    \"description\":\"name\",\r\n    \"price\": 10,\r\n    \"id_unit\": 1,\r\n    \"id_category\": 1,\r\n    \"weight\":5\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"

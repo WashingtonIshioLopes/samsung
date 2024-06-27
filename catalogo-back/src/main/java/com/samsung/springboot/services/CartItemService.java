@@ -3,7 +3,11 @@ package com.samsung.springboot.services;
 import com.samsung.springboot.dtos.CartItemRecordDto;
 import com.samsung.springboot.exceptions.ResourceNotFoundException;
 import com.samsung.springboot.models.CartItemModel;
+import com.samsung.springboot.models.CartModel;
+import com.samsung.springboot.models.ProductModel;
 import com.samsung.springboot.repositories.CartItemRepository;
+import com.samsung.springboot.repositories.CartRepository;
+import com.samsung.springboot.repositories.ProductRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +22,10 @@ public class CartItemService {
 
     @Autowired
     private CartItemRepository cartItemRepository;
+    @Autowired
+    private CartRepository cartRepository;
+    @Autowired
+    private ProductRepository productRepository;
 
     public List<CartItemModel> getAll() {
         return cartItemRepository.findAll();
@@ -32,8 +40,22 @@ public class CartItemService {
     }
 
     public CartItemModel save(CartItemRecordDto cartItemRecordDto) {
+
+        Optional<ProductModel> productOptional = productRepository.findById(cartItemRecordDto.id_product());
+        if (productOptional.isEmpty()) {
+            throw new ResourceNotFoundException("Product not found with id: " + cartItemRecordDto.id_product());
+        }
+
+        Optional<CartModel> cartOptional = cartRepository.findById(cartItemRecordDto.id_cart());
+        if (cartOptional.isEmpty()) {
+            throw new ResourceNotFoundException("Order not found with id: " + cartItemRecordDto.id_cart());
+        }
+
         CartItemModel cartItemModel = new CartItemModel();
         BeanUtils.copyProperties(cartItemRecordDto, cartItemModel);
+        cartItemModel.setCart(cartOptional.get());
+        cartItemModel.setProduct(productOptional.get());
+
         return cartItemRepository.save(cartItemModel);
     }
 
@@ -50,8 +72,21 @@ public class CartItemService {
         if (cartItemOptional.isEmpty()) {
             throw new ResourceNotFoundException("Order Item not found with id: " + id);
         }
-        CartItemModel cartItemModel = cartItemOptional.get();
+        Optional<ProductModel> productOptional = productRepository.findById(cartItemRecordDto.id_product());
+        if (productOptional.isEmpty()) {
+            throw new ResourceNotFoundException("Product not found with id: " + cartItemRecordDto.id_product());
+        }
+
+        Optional<CartModel> cartOptional = cartRepository.findById(cartItemRecordDto.id_cart());
+        if (cartOptional.isEmpty()) {
+            throw new ResourceNotFoundException("Order not found with id: " + cartItemRecordDto.id_cart());
+        }
+
+        CartItemModel cartItemModel = new CartItemModel();
         BeanUtils.copyProperties(cartItemRecordDto, cartItemModel);
+        cartItemModel.setCart(cartOptional.get());
+        cartItemModel.setProduct(productOptional.get());
+
         return cartItemRepository.save(cartItemModel);
     }
 }

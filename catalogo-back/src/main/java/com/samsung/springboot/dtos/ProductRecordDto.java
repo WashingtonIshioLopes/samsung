@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 
 public record ProductRecordDto(@NotBlank String description,
                                @NotNull BigDecimal price,
-                               @NotNull UnitModel IdUnit,
-                               @NotNull CategoryModel IdCategory,
+                               @NotNull Long id_unit,
+                               @NotNull Long id_category,
                                @NotNull BigDecimal weight) {
 }

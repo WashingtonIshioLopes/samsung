@@ -5,5 +5,6 @@ import jakarta.validation.constraints.NotNull;
 
 import java.math.BigDecimal;
 
-public record UnitRecordDto(@NotBlank String description, @NotBlank String code) {
+public record UnitRecordDto(@NotBlank String description,
+                            @NotBlank String code) {
 }

@@ -16,24 +16,16 @@ public class PaymentModel implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long idPayment;
+	private Long id;
 	private String name;
 	private String type;
 
-	public String getType() {
-		return type;
+	public Long getId() {
+		return id;
 	}
 
-	public void setType(String type) {
-		this.type = type;
-	}
-
-	public Long getIdPayment() {
-		return idPayment;
-	}
-
-	public void setIdPayment(Long idPayment) {
-		this.idPayment = idPayment;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getName() {
@@ -42,5 +34,13 @@ public class PaymentModel implements Serializable{
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
 	}
 }

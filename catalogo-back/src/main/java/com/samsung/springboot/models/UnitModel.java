@@ -16,16 +16,16 @@ public class UnitModel implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long idUnit;
+	private Long id;
 	private String description;
 	private String code;
 
-	public Long getIdUnit() {
-		return idUnit;
+	public Long getId() {
+		return id;
 	}
 
-	public void setIdUnit(Long idUnit) {
-		this.idUnit = idUnit;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getDescription() {

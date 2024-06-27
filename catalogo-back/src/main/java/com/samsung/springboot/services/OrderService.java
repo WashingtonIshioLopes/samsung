@@ -3,7 +3,9 @@ package com.samsung.springboot.services;
 import com.samsung.springboot.dtos.OrderRecordDto;
 import com.samsung.springboot.exceptions.ResourceNotFoundException;
 import com.samsung.springboot.models.OrderModel;
+import com.samsung.springboot.models.UserModel;
 import com.samsung.springboot.repositories.OrderRepository;
+import com.samsung.springboot.repositories.UserRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,8 @@ public class OrderService {
 
     @Autowired
     private OrderRepository orderRepository;
+    @Autowired
+    private UserRepository userRepository;
 
     public List<OrderModel> getAll() {
         return orderRepository.findAll();
@@ -32,8 +36,16 @@ public class OrderService {
     }
 
     public OrderModel save(OrderRecordDto orderRecordDto) {
+
+        Optional<UserModel> userOptional = userRepository.findById(orderRecordDto.id_user());
+        if (userOptional.isEmpty()) {
+            throw new ResourceNotFoundException("User not found with id: " + orderRecordDto.id_user());
+        }
+
         OrderModel orderModel = new OrderModel();
         BeanUtils.copyProperties(orderRecordDto, orderModel);
+        orderModel.setUser(userOptional.get());
+
         return orderRepository.save(orderModel);
     }
 
@@ -50,8 +62,16 @@ public class OrderService {
         if (orderOptional.isEmpty()) {
             throw new ResourceNotFoundException("Order not found with id: " + id);
         }
+
+        Optional<UserModel> userOptional = userRepository.findById(orderRecordDto.id_user());
+        if (userOptional.isEmpty()) {
+            throw new ResourceNotFoundException("User not found with id: " + orderRecordDto.id_user());
+        }
+
         OrderModel orderModel = orderOptional.get();
         BeanUtils.copyProperties(orderRecordDto, orderModel);
+        orderModel.setUser(userOptional.get());
+
         return orderRepository.save(orderModel);
     }
 }

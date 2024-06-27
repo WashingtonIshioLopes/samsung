@@ -19,24 +19,26 @@ public class ProductImageModel implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long  idProductImage;
-	private Long IdProduct;
+	private Long  id;
+	@ManyToOne
+	@JoinColumn(name = "id_product")
+	private ProductModel product;
 	private String image;
 
-	public Long getIdProductImage() {
-		return idProductImage;
+	public Long getId() {
+		return id;
 	}
 
-	public void setIdProductImage(Long idProductImage) {
-		this.idProductImage = idProductImage;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
-	public Long getIdProduct() {
-		return IdProduct;
+	public ProductModel getProduct() {
+		return product;
 	}
 
-	public void setIdProduct(Long idProduct) {
-		IdProduct = idProduct;
+	public void setProduct(ProductModel product) {
+		this.product = product;
 	}
 
 	public String getImage() {

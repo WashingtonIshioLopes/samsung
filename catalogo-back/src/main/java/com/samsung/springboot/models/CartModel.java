@@ -16,24 +16,26 @@ public class CartModel implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long idCart;
-	private Long idUser;
+	private Long id;
+	@ManyToOne
+	@JoinColumn(name = "id_user")
+	private UserModel user;
 	private BigDecimal total;
 
-	public Long getIdCart() {
-		return idCart;
+	public Long getId() {
+		return id;
 	}
 
-	public void setIdCart(Long idCart) {
-		this.idCart = idCart;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
-	public Long getIdUser() {
-		return idUser;
+	public UserModel getUser() {
+		return user;
 	}
 
-	public void setIdUser(Long idUser) {
-		this.idUser = idUser;
+	public void setUser(UserModel user) {
+		this.user = user;
 	}
 
 	public BigDecimal getTotal() {
