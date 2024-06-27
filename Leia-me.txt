@@ -27,6 +27,8 @@ Dependências:
 	Validation
 	MySQL Driver
 
+compilar 
+mvn clean package
 
 
 //********************************************

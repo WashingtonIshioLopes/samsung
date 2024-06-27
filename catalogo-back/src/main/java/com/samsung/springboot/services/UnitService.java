@@ -9,6 +9,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -34,13 +35,14 @@ public class UnitService {
     public UnitModel save(UnitRecordDto unitRecordDto) {
         UnitModel unitModel = new UnitModel();
         BeanUtils.copyProperties(unitRecordDto, unitModel);
+        unitModel.setCreatedAt(LocalDateTime.now());
         return unitRepository.save(unitModel);
     }
 
     public void delete(Long id) {
         Optional<UnitModel> unitOptional = unitRepository.findById(id);
         if (unitOptional.isEmpty()) {
-            throw new ResourceNotFoundException("Order not found with id: " + id);
+            throw new ResourceNotFoundException("Unit not found with id: " + id);
         }
         unitOptional.ifPresent(unit -> unitRepository.delete(unit));
     }
@@ -52,6 +54,7 @@ public class UnitService {
         }
         UnitModel unitModel = unitOptional.get();
         BeanUtils.copyProperties(unitRecordDto, unitModel);
+        unitModel.setUpdatedAt(LocalDateTime.now());
         return unitRepository.save(unitModel);
     }
 }

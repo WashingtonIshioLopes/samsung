@@ -12,6 +12,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -46,6 +47,7 @@ public class ProductImageService {
         ProductImageModel productImageModel = new ProductImageModel();
         BeanUtils.copyProperties(productImageRecordDto, productImageModel);
         productImageModel.setProduct(productOptional.get());
+        productImageModel.setCreatedAt(LocalDateTime.now());
 
         return productImageRepository.save(productImageModel);
     }
@@ -61,7 +63,7 @@ public class ProductImageService {
     public ProductImageModel update(Long id, ProductImageRecordDto productImageRecordDto) {
         Optional<ProductImageModel> productImageOptional = productImageRepository.findById(id);
         if (productImageOptional.isEmpty()) {
-            throw new ResourceNotFoundException("Product not found with id: " + id);
+            throw new ResourceNotFoundException("Product Image not found with id: " + id);
         }
 
         Optional<ProductModel> productOptional = productRepository.findById(productImageRecordDto.id_product());
@@ -72,6 +74,7 @@ public class ProductImageService {
         ProductImageModel productImageModel = productImageOptional.get();
         BeanUtils.copyProperties(productImageRecordDto, productImageModel);
         productImageModel.setProduct(productOptional.get());
+        productImageModel.setUpdatedAt(LocalDateTime.now());
 
         return productImageRepository.save(productImageModel);
     }

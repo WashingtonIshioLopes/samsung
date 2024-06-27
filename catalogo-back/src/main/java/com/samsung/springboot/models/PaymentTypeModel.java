@@ -3,14 +3,14 @@ package com.samsung.springboot.models;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 // Hateoas
 //import org.springframework.hateoas.RepresentationModel;
 
 @Entity
 @Table(name = "tb_payments")
-public class PaymentModel implements Serializable{
+public class PaymentTypeModel implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
@@ -22,6 +22,40 @@ public class PaymentModel implements Serializable{
 
 	private String type;
 
+	private String status;
+
+	@Column(name = "created_at")
+	private LocalDateTime createdAt;
+
+	@Column(name = "updated_at")
+	private LocalDateTime updatedAt;
+
+	// Getters and Setters
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public LocalDateTime getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(LocalDateTime createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public LocalDateTime getUpdatedAt() {
+		return updatedAt;
+	}
+
+	public void setUpdatedAt(LocalDateTime updatedAt) {
+		this.updatedAt = updatedAt;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -29,8 +63,6 @@ public class PaymentModel implements Serializable{
 	public void setId(Long id) {
 		this.id = id;
 	}
-
-	// Getters and Setters
 
 	public String getName() {
 		return name;

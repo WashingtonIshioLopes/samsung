@@ -11,6 +11,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -45,6 +46,7 @@ public class CartService {
         CartModel cartModel = new CartModel();
         BeanUtils.copyProperties(cartRecordDto, cartModel);
         cartModel.setUser(userOptional.get());
+        cartModel.setCreatedAt(LocalDateTime.now());
 
         return cartRepository.save(cartModel);
     }
@@ -71,6 +73,7 @@ public class CartService {
         CartModel cartModel = cartOptional.get();
         BeanUtils.copyProperties(cartRecordDto, cartModel);
         cartModel.setUser(userOptional.get());
+        cartModel.setUpdatedAt(LocalDateTime.now());
 
         return cartRepository.save(cartModel);
     }

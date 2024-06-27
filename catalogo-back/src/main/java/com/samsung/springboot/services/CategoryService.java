@@ -9,6 +9,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -34,6 +35,7 @@ public class CategoryService {
     public CategoryModel save(CategoryRecordDto productCategoryRecordDto) {
         CategoryModel productCategoryModel = new CategoryModel();
         BeanUtils.copyProperties(productCategoryRecordDto, productCategoryModel);
+        productCategoryModel.setCreatedAt(LocalDateTime.now());
         return productCategoryRepository.save(productCategoryModel);
     }
 
@@ -52,6 +54,7 @@ public class CategoryService {
         }
         CategoryModel productCategoryModel = productCategoryOptional.get();
         BeanUtils.copyProperties(productCategoryRecordDto, productCategoryModel);
+        productCategoryModel.setUpdatedAt(LocalDateTime.now());
         return productCategoryRepository.save(productCategoryModel);
     }
 }

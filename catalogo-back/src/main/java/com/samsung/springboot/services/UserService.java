@@ -9,6 +9,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -34,13 +35,14 @@ public class UserService {
     public UserModel save(UserRecordDto userRecordDto) {
         UserModel userModel = new UserModel();
         BeanUtils.copyProperties(userRecordDto, userModel);
+        userModel.setCreatedAt(LocalDateTime.now());
         return userRepository.save(userModel);
     }
 
     public void delete(Long id) {
         Optional<UserModel> userOptional = userRepository.findById(id);
         if (userOptional.isEmpty()) {
-            throw new ResourceNotFoundException("Product not found with id: " + id);
+            throw new ResourceNotFoundException("User not found with id: " + id);
         }
         userOptional.ifPresent(user -> userRepository.delete(user));
     }
@@ -48,10 +50,11 @@ public class UserService {
     public UserModel update(Long id, UserRecordDto userRecordDto) {
         Optional<UserModel> userOptional = userRepository.findById(id);
         if (userOptional.isEmpty()) {
-            throw new ResourceNotFoundException("Product not found with id: " + id);
+            throw new ResourceNotFoundException("User not found with id: " + id);
         }
         UserModel userModel = userOptional.get();
         BeanUtils.copyProperties(userRecordDto, userModel);
+        userModel.setUpdatedAt(LocalDateTime.now());
         return userRepository.save(userModel);
     }
 }

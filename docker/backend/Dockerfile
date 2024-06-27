@@ -1,15 +1,14 @@
-# Usar uma imagem base do OpenJDK 17
+# Usar a imagem oficial do OpenJDK 17 como base
 FROM openjdk:17-jdk-slim
 
-# Definir o diretório de trabalho dentro do contêiner
+# Definir o nome do diretório de trabalho
 WORKDIR /app
 
-# Copiar o jar da aplicação para dentro do contêiner
-COPY target/*.jar app.jar
+# Copiar o arquivo JAR para o contêiner
+COPY target/seu-arquivo.jar app.jar
 
-# Expor a porta que a aplicação irá usar
+# Expor a porta na qual a aplicação será executada
 EXPOSE 8080
 
-# Comando para executar a aplicação
+# Comando para rodar a aplicação
 ENTRYPOINT ["java", "-jar", "app.jar"]
-

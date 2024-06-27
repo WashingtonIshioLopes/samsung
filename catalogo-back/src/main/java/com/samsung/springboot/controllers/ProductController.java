@@ -25,6 +25,13 @@ public class ProductController {
 		return ResponseEntity.status(HttpStatus.OK).body(products);
 	}
 
+	@GetMapping("/products/search")
+	public List<ProductModel> getProductsByCategoryIdAndDescription(
+			@RequestParam(required = false) Long id_category,
+			@RequestParam(required = false) String description) {
+		return productService.getByCategoryIdAndDescription(id_category, description);
+	}
+
 	@GetMapping("/products/{id}")
 	public ResponseEntity<Object> getOneProduct(@PathVariable(value="id") Long id){
 		try {

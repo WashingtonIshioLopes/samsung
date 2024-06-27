@@ -13,6 +13,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -55,6 +56,7 @@ public class OrderItemService {
         BeanUtils.copyProperties(orderItemRecordDto, orderItemModel);
         orderItemModel.setOrder(orderOptional.get());
         orderItemModel.setProduct(productOptional.get());
+        orderItemModel.setCreatedAt(LocalDateTime.now());
 
         return orderItemRepository.save(orderItemModel);
     }
@@ -86,6 +88,7 @@ public class OrderItemService {
         BeanUtils.copyProperties(orderItemRecordDto, orderItemModel);
         orderItemModel.setOrder(orderOptional.get());
         orderItemModel.setProduct(productOptional.get());
+        orderItemModel.setUpdatedAt(LocalDateTime.now());
 
         return orderItemRepository.save(orderItemModel);
     }
