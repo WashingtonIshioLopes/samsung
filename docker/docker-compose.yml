@@ -6,7 +6,7 @@ services:
     container_name: mysql_container
     environment:
       MYSQL_ROOT_PASSWORD: W14i05l77!
-      MYSQL_DATABASE: db_washington
+      MYSQL_DATABASE: db_samsung
       MYSQL_USER: admin
       MYSQL_PASSWORD: W14i05l77!      
     volumes:
@@ -17,7 +17,7 @@ services:
   backend:
     container_name: backend_container
     build:
-      context: .
+      context: ./backend
       dockerfile: Dockerfile
     ports:
       - "8080:8080"

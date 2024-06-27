@@ -27,6 +27,8 @@ Dependências:
 	Validation
 	MySQL Driver
 
+Obs.: Antes de Compilar, mudar o endereço e porta do MySQL
+
 compilar 
 mvn clean package
 
@@ -48,18 +50,18 @@ user: admin
 password: W14i05l77!
 dataBase: db_samsung
 
-Tabelas:
-	Catalogos
-		Id
-		Código
-		Nome
-		Preco
-		Qtde
-		Status
-		DtCreated
-		DtUpdated
-		DtDeleted
 
+//********************************************
+// Docker
+//********************************************
+
+Iniciar Docker Desktop
+
+IMPORTANTE: Parar serviço do MySQL
+
+docker-compose build
+
+docker-compose up
 
 
 
