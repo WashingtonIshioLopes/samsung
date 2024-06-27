@@ -12,18 +12,20 @@ import java.math.BigDecimal;
 @Table(name = "tb_productimages")
 public class ProductImageModel implements Serializable{
 
-	// Hateoas
-	//public class ProductModel extends RepresentationModel<com.example.springboot.models.ProductModel> implements Serializable{
-
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long  id;
+
 	@ManyToOne
 	@JoinColumn(name = "id_product")
 	private ProductModel product;
+
 	private String image;
+
+
+	// Getters and Setters
 
 	public Long getId() {
 		return id;

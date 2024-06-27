@@ -16,8 +16,13 @@ public class CategoryModel implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
+
 	private String description;
+
 	private String code;
+
+
+	// Getters and Setters
 
 	public Long getId() {
 		return id;

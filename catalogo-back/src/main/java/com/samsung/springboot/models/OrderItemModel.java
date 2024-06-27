@@ -16,13 +16,20 @@ public class OrderItemModel implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long id;	@ManyToOne
+	private Long id;
+
+	@ManyToOne
 	@JoinColumn(name = "id_order")
 	private OrderModel order;
+
 	@ManyToOne
 	@JoinColumn(name = "id_product")
 	private ProductModel product;
+
 	private BigDecimal quantity;
+
+
+	// Getters and Setters
 
 	public Long getId() {
 		return id;

@@ -11,7 +11,7 @@ Requisitos:
 	Visual Studio Code (extension - Extension Pack for Java e Spring Boot Extension Pack)
 	NodeJS v20.14.0
 	Vite v5.3.0
-	Spring Boot v3.3.1
+	Spring Boot v3.1.0
 	Maven v3.9.8
 
 //********************************************

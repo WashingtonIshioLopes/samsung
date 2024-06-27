@@ -17,10 +17,17 @@ public class UserModel implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long  id;
+
 	private String name;
+
 	private String document;
+
 	private String email;
+
 	private String telephone;
+
+
+	// Getters and Setters
 
 	public Long getId() {
 		return id;

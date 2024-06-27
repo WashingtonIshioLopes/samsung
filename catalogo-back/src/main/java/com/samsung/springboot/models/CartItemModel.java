@@ -17,13 +17,19 @@ public class CartItemModel implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
+
 	@ManyToOne
 	@JoinColumn(name = "id_user")
 	private CartModel cart;
+
 	@ManyToOne
 	@JoinColumn(name = "id_product")
 	private ProductModel product;
+
 	private BigDecimal quantity;
+
+
+	// Getters and Setters
 
 	public Long getId() {
 		return id;

@@ -17,10 +17,15 @@ public class OrderModel implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
+
 	@ManyToOne
 	@JoinColumn(name = "id_user")
 	private UserModel user;
+
 	private BigDecimal total;
+
+
+	// Getters and Setters
 
 	public Long getId() {
 		return id;
