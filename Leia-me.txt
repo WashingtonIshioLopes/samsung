@@ -38,10 +38,34 @@ mvn clean package
 //********************************************
 npm create vite@latest
 npm install
-npm run dev 	// http: //localhost:5173/
-npm run build
+npm run dev 	// para rodar .... http: //localhost:5173/
+npm run build	// para compilar
 
+// install icons
+npm i @react-icons/all-files react-icons
 
+//*********************
+// https://mdbootstrap.com/docs/react/getting-started/installation/
+//*********************
+npx create-react-app my-app
+
+cd my-app
+
+npm i mdb-react-ui-kit
+npm i @fortawesome/fontawesome-free
+
+import 'mdb-react-ui-kit/dist/css/mdb.min.css';
+import "@fortawesome/fontawesome-free/css/all.min.css";
+
+//index.html
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+
+//index.css
+body {
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+}
+
+npm start
 
 //********************************************
 // Banco de Dados - MySQL

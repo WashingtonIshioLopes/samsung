@@ -1,0 +1,21 @@
+.container {
+    width: 450px;
+}
+
+.container h1 {
+    text-align: center;
+    font-size: 30px;
+}
+
+.container .input-field {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    margin: 30px auto;
+}
+
+.input-field {
+    width: 100%;
+    height: 100%;
+
+}
