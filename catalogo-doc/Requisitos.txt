@@ -1,0 +1,90 @@
+#########################################################
+Desafio de software de catálogo de soluções de varejo
+#########################################################
+
+**************************************
+Visão Geral da Empresa
+**************************************
+
+Somos uma empresa líder em eletrônicos dedicada a revolucionar a experiência de varejo, integrando perfeitamente nossos dispositivos eletrônicos com soluções de software inovadoras. Nosso objetivo é fornecer aos nossos clientes as ferramentas necessárias para oferecer aos seus clientes uma experiência de compra excepcional.
+
+**************************************
+Visão Geral do Projeto
+**************************************
+
+Como membro da nossa equipe de software, você colaborará de perto com nossos engenheiros eletrônicos para preencher a lacuna entre nossos dispositivos e soluções de varejo do mundo real. Seu principal desafio será desenvolver um aplicativo de software de catálogo robusto para um totem de compras. Este aplicativo será um componente crítico da nossa solução de varejo, aprimorando a experiência de compra para os usuários.
+
+**************************************
+Requisitos do desafio
+**************************************
+
+Sua tarefa é projetar e implementar um software de catálogo que atenda às seguintes especificações:
+
+01 - Catálogo de produtos :
+
+Exiba um catálogo abrangente de produtos com fotos pequenas e grandes.
+Cada produto deve incluir uma descrição, preço, unidade de medida e peso.
+O catálogo é para uso genérico; você pode inventar qualquer produto ou imaginar trabalhar em qualquer mercado como varejo, e-commerce, B2B, serviços, etc.
+Os produtos devem ser organizados em categorias para facilitar a navegação.
+Você só precisa construir uma tela com carrossel e uma área para mostrar os detalhes do produto selecionado.
+
+
+02 - Identificação do usuário :
+
+Na primeira interação, o usuário deverá se identificar através do número do seu documento.
+O sistema exibirá então uma lista de produtos disponíveis sob medida para o usuário.
+Você só precisa de uma tela com rótulo, campo de texto e botão. Esta janela deve ser anterior ao catálogo no fluxo do usuário.
+
+03 - Navegação e Pesquisa :
+
+Os usuários devem poder navegar pelos produtos por categorias.
+Uma funcionalidade de pesquisa deve permitir que os usuários encontrem produtos pelo nome.
+Apenas o campo nome é necessário.
+
+04 - Carrinho de compras :
+
+Os usuários devem poder adicionar vários produtos ao carrinho.
+O carrinho deve suportar a adição de qualquer número de produtos.
+Este requisito é opcional; seus companheiros de equipe podem avançar em paralelo.
+
+05 - Finalização da compra e pagamento :
+
+Implemente um processo de checkout simplificado.
+Emule a integração com um processo de pagamento seguro.
+Este requisito é opcional; seus companheiros de equipe podem avançar em paralelo.
+
+06 - Capacidades de integração :
+
+O software de catálogo deve ser facilmente integrável às APIs do cliente para buscar dados do produto.
+O software deverá fazer interface com o sistema ERP do cliente para registrar pagamentos.
+Este requisito é opcional; seus companheiros de equipe podem avançar em paralelo.
+
+**************************************
+Colaboração com a equipe de eletrônica
+**************************************
+A equipe de eletrônica auxiliará na integração do software de catálogo com máquinas POS e sistemas de pagamento.
+Para este desafio, você não precisa se concentrar na integração com o PINPAD SDK.
+
+**************************************
+Requerimentos técnicos
+**************************************
+
+Certifique-se de que o software seja fácil de usar e forneça uma experiência perfeita no totem.
+Mantenha altos padrões de qualidade de código e documentação para facilitar manutenção e escalabilidade futuras.
+Forneça um design simples explicando a interação de back-end e front-end.
+Forneça um design de software da solução.
+
+**************************************
+Critério de avaliação
+**************************************
+Seu envio será avaliado com base na qualidade do código frontend e no seu conhecimento de desenvolvimento backend.
+Forneça um back-end funcional que suporte a demonstração do front-end.
+Lembre-se de que precisamos apenas avaliar sua capacidade em backend e manutenção básica do frontend.
+
+**************************************
+Diretrizes de submissão
+**************************************
+Envie o código, mesmo que não esteja concluído. Se possível, inclua documentação explicando a arquitetura, instruções de configuração e quaisquer dependências.
+Os casos de teste são bem-vindos para validar a funcionalidade dos principais componentes, mas não são essenciais para esta avaliação.
+Se você tiver tempo, compartilhe algum projeto explicando os detalhes arquitetônicos. Pode ser útil na próxima etapa.
+Estamos ansiosos para ver suas soluções inovadoras e como você pode contribuir para melhorar a experiência de varejo de nossos clientes. Boa sorte!
