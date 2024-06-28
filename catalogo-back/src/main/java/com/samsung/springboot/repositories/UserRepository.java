@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface UserRepository extends JpaRepository<UserModel, Long>{
-    UserModel findByDocument(String document);
-    UserModel findByAuthorization(String findByAuthorization);
+    //UserModel findByDocument(String document);
+    //UserModel findByAuthorization(String findByAuthorization);
 }
