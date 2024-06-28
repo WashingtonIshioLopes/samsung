@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="66f1ebeb-b4ad-4e5e-8ba0-ece448a17a39" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Spring-Boot-Security-JWT-MySQL-main/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Spring-Boot-Security-JWT-MySQL-main/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Spring-Boot-Security-JWT-MySQL-main/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Spring-Boot-Security-JWT-MySQL-main/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Spring-Boot-Security-JWT-MySQL-main/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Spring-Boot-Security-JWT-MySQL-main/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Spring-Boot-Security-JWT-MySQL-main/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Spring-Boot-Security-JWT-MySQL-main/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Spring-Boot-Security-JWT-MySQL-main/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Spring-Boot-Security-JWT-MySQL-main/src/main/java/com/example/jwt/SpringBootJwtApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Spring-Boot-Security-JWT-MySQL-main/src/main/java/com/example/jwt/config/JwtAuthenticationEntryPoint.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Spring-Boot-Security-JWT-MySQL-main/src/main/java/com/example/jwt/config/JwtRequestFilter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Spring-Boot-Security-JWT-MySQL-main/src/main/java/com/example/jwt/config/WebSecurityConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Spring-Boot-Security-JWT-MySQL-main/src/main/java/com/example/jwt/controller/HelloWorldController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Spring-Boot-Security-JWT-MySQL-main/src/main/java/com/example/jwt/controller/JwtAuthenticationController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Spring-Boot-Security-JWT-MySQL-main/src/main/java/com/example/jwt/dto/UserDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Spring-Boot-Security-JWT-MySQL-main/src/main/java/com/example/jwt/entity/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Spring-Boot-Security-JWT-MySQL-main/src/main/java/com/example/jwt/repository/UserRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Spring-Boot-Security-JWT-MySQL-main/src/main/java/com/example/jwt/response/JwtResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Spring-Boot-Security-JWT-MySQL-main/src/main/java/com/example/jwt/response/Response.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Spring-Boot-Security-JWT-MySQL-main/src/main/java/com/example/jwt/service/JwtUserDetailsService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Spring-Boot-Security-JWT-MySQL-main/src/main/java/com/example/jwt/util/JwtTokenUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Spring-Boot-Security-JWT-MySQL-main/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Spring-Boot-Security-JWT-MySQL-main/src/test/java/com/example/jwt/SpringBootJwtApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Spring-Boot-Security-JWT-MySQL-main/target/classes/application.properties" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 1
+}]]></component>
+  <component name="ProjectId" id="2iVkQpC3rdIhjrsRzJ8TtJd4wig" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Projects/FullStack/Samsung"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="66f1ebeb-b4ad-4e5e-8ba0-ece448a17a39" name="Changes" comment="" />
+      <created>1719583118951</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1719583118951</updated>
+    </task>
+    <servers />
+  </component>
+</project>
