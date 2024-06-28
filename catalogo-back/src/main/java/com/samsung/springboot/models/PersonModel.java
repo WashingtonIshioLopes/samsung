@@ -7,25 +7,17 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.samsung.springboot.dtos.PersonDTO;
+import com.samsung.springboot.dtos.PersonRecordDTO;
 import com.samsung.springboot.enums.Role;
 
-import jakarta.persistence.CollectionTable;
-import jakarta.persistence.Column;
-import jakarta.persistence.ElementCollection;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.SequenceGenerator;
-
 @Entity
-public class Person implements Serializable, UserDetails {
+@Table(name = "person")
+public class PersonModel implements Serializable, UserDetails {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -35,6 +27,9 @@ public class Person implements Serializable, UserDetails {
 	
 	@Column(nullable = false, length = 50)
 	private String name;
+
+	@Column(nullable = false, length = 50)
+	private String document;
 	
 	@Column(nullable = false, unique = true, length = 100)
 	private String email;
@@ -47,32 +42,42 @@ public class Person implements Serializable, UserDetails {
 	@CollectionTable(name = "person_role")
 	private Set<Integer> roles = new HashSet<>(Arrays.asList(Role.USER.getId()));
 	
-	public Person() {
+	public PersonModel() {
 		super();
 	}
 
-	public Person(Long id, String name, String email, String password, Set<Role> roles) {
+	public PersonModel(Long id, String name, String document, String email, String password, Set<Role> roles) {
 		super();
 		this.id = id;
 		this.name = name;
+		this.document = document;
 		this.email = email;
 		this.password = password;
 		this.setRoles(roles);
 	}
 
-	public Person(String name, String email, String password) {
+	public PersonModel(String name, String document, String email, String password) {
 		super();
 		this.name = name;
+		this.document = document;
 		this.email = email;
 		this.password = password;
 	}
 	
-	public Person(PersonDTO dto) {
-		this(dto.getName(), dto.getEmail(), dto.getPassword());
+	public PersonModel(PersonRecordDTO dto) {
+		this(dto.getName(), dto.getDocument(), dto.getEmail(), dto.getPassword());
 		this.setId(dto.getId());
 		this.setStringRoles(dto.getRoles());
 	}
-	
+
+	public String getDocument() {
+		return document;
+	}
+
+	public void setDocument(String document) {
+		this.document = document;
+	}
+
 	public Long getId() {
 		return id;
 	}

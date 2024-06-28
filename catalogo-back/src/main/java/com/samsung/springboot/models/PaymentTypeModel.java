@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 //import org.springframework.hateoas.RepresentationModel;
 
 @Entity
-@Table(name = "tb_payments")
+@Table(name = "payments_types")
 public class PaymentTypeModel implements Serializable{
 
 	private static final long serialVersionUID = 1L;

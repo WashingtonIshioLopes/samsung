@@ -1,6 +1,6 @@
 package com.samsung.springboot.dtos;
 
-public class AuthRequestDTO {
+public class LoginRequestDTO {
 	
 	private String email;
 	private String password;

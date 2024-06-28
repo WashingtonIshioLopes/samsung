@@ -14,7 +14,7 @@ import jakarta.validation.constraints.NotEmpty;
 //import org.springframework.hateoas.RepresentationModel;
 
 @Entity
-@Table(name = "tb_products")
+@Table(name = "products")
 public class ProductModel implements Serializable{
 
 	private static final long serialVersionUID = 1L;

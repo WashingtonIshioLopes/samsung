@@ -4,35 +4,46 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import com.samsung.springboot.models.Person;
+import com.samsung.springboot.models.PersonModel;
 import com.samsung.springboot.enums.Role;
 
-public class PersonDTO {
+public class PersonRecordDTO {
 	
 	private Long id;
 	private String name;
+	private String document;
 	private String email;
 	private String password;
 	private Set<String> roles = new HashSet<>();
 	
-	public PersonDTO() {
+	public PersonRecordDTO() {
 		super();
 	}
 
-	public PersonDTO(Long id, String name, String email, Set<String> roles) {
+	public PersonRecordDTO(Long id, String name, String document, String email, Set<String> roles) {
 		super();
 		this.id = id;
 		this.name = name;
+		this.document = document;
 		this.email = email;
 		this.roles = roles;
 	}
 	
-	public PersonDTO(Person person) {
+	public PersonRecordDTO(PersonModel person) {
 		super();
 		this.id = person.getId();
 		this.name = person.getName();
+		this.document = person.getDocument();
 		this.email = person.getEmail();
 		this.setRoles(person.getRoles());
+	}
+
+	public String getDocument() {
+		return document;
+	}
+
+	public void setDocument(String document) {
+		this.document = document;
 	}
 
 	public Long getId() {

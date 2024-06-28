@@ -3,8 +3,17 @@ package com.samsung.springboot.dtos;
 public class RegisterRequestDTO {
 	
 	private String name;
+	private String document;
 	private String email;
 	private String password;
+
+	public String getDocument() {
+		return document;
+	}
+
+	public void setDocument(String document) {
+		this.document = document;
+	}
 
 	public String getName() {
 		return name;

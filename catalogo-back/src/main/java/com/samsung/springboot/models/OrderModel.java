@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 //import org.springframework.hateoas.RepresentationModel;
 
 @Entity
-@Table(name = "tb_orders")
+@Table(name = "orders")
 public class OrderModel implements Serializable{
 
 	private static final long serialVersionUID = 1L;
@@ -21,7 +21,7 @@ public class OrderModel implements Serializable{
 
 	@ManyToOne
 	@JoinColumn(name = "id_user")
-	private UserModel user;
+	private PersonModel user;
 
 	private BigDecimal total;
 
@@ -67,11 +67,11 @@ public class OrderModel implements Serializable{
 		this.id = id;
 	}
 
-	public UserModel getUser() {
+	public PersonModel getUser() {
 		return user;
 	}
 
-	public void setUser(UserModel user) {
+	public void setUser(PersonModel user) {
 		this.user = user;
 	}
 

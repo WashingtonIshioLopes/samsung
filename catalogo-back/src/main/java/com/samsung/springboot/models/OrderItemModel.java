@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 //import org.springframework.hateoas.RepresentationModel;
 
 @Entity
-@Table(name = "tb_orderitens")
+@Table(name = "order_itens")
 public class OrderItemModel implements Serializable{
 
 	private static final long serialVersionUID = 1L;

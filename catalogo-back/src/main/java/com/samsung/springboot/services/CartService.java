@@ -3,9 +3,9 @@ package com.samsung.springboot.services;
 import com.samsung.springboot.dtos.CartRecordDto;
 import com.samsung.springboot.exceptions.ResourceNotFoundException;
 import com.samsung.springboot.models.CartModel;
-import com.samsung.springboot.models.UserModel;
+import com.samsung.springboot.models.PersonModel;
 import com.samsung.springboot.repositories.CartRepository;
-import com.samsung.springboot.repositories.UserRepository;
+import com.samsung.springboot.repositories.PersonRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +22,7 @@ public class CartService {
     @Autowired
     private CartRepository cartRepository;
     @Autowired
-    private UserRepository userRepository;
+    private PersonRepository userRepository;
 
     public List<CartModel> getAll() {
         return cartRepository.findAll();
@@ -38,7 +38,7 @@ public class CartService {
 
     public CartModel save(CartRecordDto cartRecordDto) {
 
-        Optional<UserModel> userOptional = userRepository.findById(cartRecordDto.id_user());
+        Optional<PersonModel> userOptional = userRepository.findById(cartRecordDto.id_user());
         if (userOptional.isEmpty()) {
             throw new ResourceNotFoundException("User not found with id: " + cartRecordDto.id_user());
         }
@@ -65,7 +65,7 @@ public class CartService {
             throw new ResourceNotFoundException("Cart not found with id: " + id);
         }
 
-        Optional<UserModel> userOptional = userRepository.findById(cartRecordDto.id_user());
+        Optional<PersonModel> userOptional = userRepository.findById(cartRecordDto.id_user());
         if (userOptional.isEmpty()) {
             throw new ResourceNotFoundException("User not found with id: " + cartRecordDto.id_user());
         }

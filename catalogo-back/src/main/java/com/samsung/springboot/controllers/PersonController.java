@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.samsung.springboot.dtos.PersonDTO;
-import com.samsung.springboot.models.Person;
+import com.samsung.springboot.dtos.PersonRecordDTO;
+import com.samsung.springboot.models.PersonModel;
 import com.samsung.springboot.services.PersonService;
 
 @RestController
@@ -27,18 +27,18 @@ public class PersonController {
 	private PasswordEncoder passwordEncoder;
 	
 	@GetMapping
-	public ResponseEntity<List<PersonDTO>> findAll() {
-		final List<Person> persons = service.findAll();
-		final List<PersonDTO> dtos = persons.stream().map(p -> new PersonDTO(p)).toList();
+	public ResponseEntity<List<PersonRecordDTO>> findAll() {
+		final List<PersonModel> persons = service.findAll();
+		final List<PersonRecordDTO> dtos = persons.stream().map(p -> new PersonRecordDTO(p)).toList();
 		return ResponseEntity.ok(dtos);
 	}
 	
-	public ResponseEntity<PersonDTO> create(@RequestBody PersonDTO dto) {
+	public ResponseEntity<PersonRecordDTO> create(@RequestBody PersonRecordDTO dto) {
 		dto.setPassword(passwordEncoder.encode(dto.getPassword()));
 		return ResponseEntity.ok(service.create(dto));
 	}
 	
-	public ResponseEntity<PersonDTO> update(@RequestBody PersonDTO dto) {
+	public ResponseEntity<PersonRecordDTO> update(@RequestBody PersonRecordDTO dto) {
 		dto.setPassword(passwordEncoder.encode(dto.getPassword()));
 		return ResponseEntity.ok(service.create(dto));
 	}

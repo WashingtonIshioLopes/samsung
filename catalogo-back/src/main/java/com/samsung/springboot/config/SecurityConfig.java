@@ -25,8 +25,8 @@ public class SecurityConfig {
 
 	private static final String[] PUBLIC = new String[] {
 			"/test/**",
-			"/auth/**"
-		};
+			"/api/v1_0/auth/**"
+	};
 	
 	@Autowired
 	private UserDetailsService userDetailsService;
@@ -40,7 +40,7 @@ public class SecurityConfig {
 				.csrf().disable()
 				.authorizeHttpRequests()
 				.requestMatchers(PUBLIC).permitAll()
-				.requestMatchers(HttpMethod.DELETE).hasAuthority("ADMIN") 	// If UserDetails.getAuthorities return [ADMIN, ...]
+				//.requestMatchers(HttpMethod.DELETE).hasAuthority("ADMIN") 	// If UserDetails.getAuthorities return [ADMIN, ...]
 				//.requestMatchers(HttpMethod.DELETE).hasRole("ADMIN")		// If UserDetails.getAuthorities return [ROLE_ADMIN, ...] 
 				.anyRequest().authenticated()
 				.and()

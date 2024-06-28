@@ -6,8 +6,8 @@ import java.util.Objects;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.samsung.springboot.dtos.PersonDTO;
-import com.samsung.springboot.models.Person;
+import com.samsung.springboot.dtos.PersonRecordDTO;
+import com.samsung.springboot.models.PersonModel;
 import com.samsung.springboot.enums.Role;
 import com.samsung.springboot.exceptions.DuplicationException;
 import com.samsung.springboot.exceptions.NotFoundException;
@@ -19,34 +19,39 @@ public class PersonService {
 	@Autowired
 	private PersonRepository repository;
 	
-	public Person findById(Long id) {
+	public PersonModel findById(Long id) {
 		return repository.findById(id).orElseThrow(
 				() -> new NotFoundException("Person not found: " + id));
 	}
 	
-	public Person findByEmail(String email) {
+	public PersonModel findByEmail(String email) {
 		return repository.findByEmail(email).orElseThrow(
 				() -> new NotFoundException("Person not found: " + email));
 	}
+
+	public PersonModel findByDocument(String document) {
+		return repository.findByDocument(document).orElseThrow(
+				() -> new NotFoundException("Person not found: " + document));
+	}
 	
-	public List<Person> findAll() {
+	public List<PersonModel> findAll() {
 		return repository.findAll();
 	}
 	
-	public Person create(Person person) {
+	public PersonModel create(PersonModel person) {
 		person.setId(null);
 		person.addRole(Role.USER);
 		checkEmailDuplication(person);
 		return repository.save(person);
 	}
 	
-	public PersonDTO create(PersonDTO dto) {
-		return new PersonDTO(create(new Person(dto)));
+	public PersonRecordDTO create(PersonRecordDTO dto) {
+		return new PersonRecordDTO(create(new PersonModel(dto)));
 	}
 	
-	public Person update(Person person) {
+	public PersonModel update(PersonModel person) {
 		checkEmailDuplication(person);
-		Person p = findById(person.getId());
+		PersonModel p = findById(person.getId());
 		p.setName(person.getName());
 		p.setEmail(person.getEmail());
 		p.setRoles(person.getRoles());
@@ -54,15 +59,15 @@ public class PersonService {
 	}
 	
 	public void delete(Long id) {
-		final Person p = findById(id);
+		final PersonModel p = findById(id);
 		repository.delete(p);
 	}
 	
-	private void checkEmailDuplication(Person person) {
+	private void checkEmailDuplication(PersonModel person) {
 		final String email = person.getEmail();
 		if (email != null && email.length() > 0) {
 			final Long id = person.getId(); 
-			final Person p = repository.findByEmail(email).orElse(null);
+			final PersonModel p = repository.findByEmail(email).orElse(null);
 			if (p != null && Objects.equals(p.getEmail(), email) && !Objects.equals(p.getId(), id)) {
 				throw new DuplicationException("Email duplication: " + email);
 			}
