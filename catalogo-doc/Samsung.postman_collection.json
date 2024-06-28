@@ -7,6 +7,651 @@
 	},
 	"item": [
 		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "registerPerson",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"washington\",\r\n    \"document\":\"17832088800\",\r\n    \"email\":\"washington@cis.com.br\",\r\n    \"password\": \"w14i05l77\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/samsung/api/v1_0/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"samsung",
+								"api",
+								"v1_0",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "loginPerson",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"washington@cis.com.br\",\r\n    \"password\": \"w14i05l77\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/samsung/api/v1_0/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"samsung",
+								"api",
+								"v1_0",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "loginPersonDocument",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"document\":\"17832088800\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/samsung/api/v1_0/auth/login_document",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"samsung",
+								"api",
+								"v1_0",
+								"auth",
+								"login_document"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Category",
+			"item": [
+				{
+					"name": "save",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"description\" : \"\",\r\n    \"code\" : \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/samsung/api/v1_0/categories",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"samsung",
+								"api",
+								"v1_0",
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/samsung/api/v1_0/categories",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"samsung",
+								"api",
+								"v1_0",
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getOne",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/samsung/api/v1_0/categories/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"samsung",
+								"api",
+								"v1_0",
+								"categories",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/samsung/api/v1_0/categories/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"samsung",
+								"api",
+								"v1_0",
+								"categories",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"description\" : \"\",\r\n    \"code\" : \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/samsung/api/v1_0/categories/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"samsung",
+								"api",
+								"v1_0",
+								"categories",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Checkout",
+			"item": [
+				{
+					"name": "save",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_user\": 1,\r\n    \"total\" : 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/samsung/api/v1_0/checkout",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"samsung",
+								"api",
+								"v1_0",
+								"checkout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/samsung/api/v1_0/checkout",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"samsung",
+								"api",
+								"v1_0",
+								"checkout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getOne",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/samsung/api/v1_0/checkout/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"samsung",
+								"api",
+								"v1_0",
+								"checkout",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/samsung/api/v1_0/checkout/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"samsung",
+								"api",
+								"v1_0",
+								"checkout",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_user\": 1,\r\n    \"total\" : 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/samsung/api/v1_0/checkout/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"samsung",
+								"api",
+								"v1_0",
+								"checkout",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Unit",
+			"item": [
+				{
+					"name": "save",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"description\" : \"\",\r\n    \"code\" : \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/samsung/api/v1_0/units",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"samsung",
+								"api",
+								"v1_0",
+								"units"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/samsung/api/v1_0/units",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"samsung",
+								"api",
+								"v1_0",
+								"units"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getOne",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/samsung/api/v1_0/units/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"samsung",
+								"api",
+								"v1_0",
+								"units",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/samsung/api/v1_0/units/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"samsung",
+								"api",
+								"v1_0",
+								"units",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"description\" : \"\",\r\n    \"code\" : \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/samsung/api/v1_0/units/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"samsung",
+								"api",
+								"v1_0",
+								"units",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Payment Type",
+			"item": [
+				{
+					"name": "save",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"\",\r\n    \"type\" : \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/samsung/api/v1_0/payments",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"samsung",
+								"api",
+								"v1_0",
+								"payments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/samsung/api/v1_0/payments",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"samsung",
+								"api",
+								"v1_0",
+								"payments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getOne",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/samsung/api/v1_0/payments/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"samsung",
+								"api",
+								"v1_0",
+								"payments",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/samsung/api/v1_0/payments/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"samsung",
+								"api",
+								"v1_0",
+								"payments",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"\",\r\n    \"type\" : \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/samsung/api/v1_0/payments/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"samsung",
+								"api",
+								"v1_0",
+								"payments",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "Product",
 			"item": [
 				{
@@ -26,7 +671,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"description\":\"televisao\",\r\n    \"price\": 1,\r\n    \"id_unit\": 1,\r\n    \"id_category\": 1,\r\n    \"weight\":1\r\n}",
+							"raw": "{\r\n    \"name\":\"televisao\",\r\n    \"description\":\"televisao\",\r\n    \"price\": 1,\r\n    \"id_unit\": 1,\r\n    \"id_category\": 1,\r\n    \"weight\":1\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -165,7 +810,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"description\":\"keli\",\r\n    \"price\": 1,\r\n    \"id_unit\": 1,\r\n    \"id_category\": 1,\r\n    \"weight\":1\r\n}",
+							"raw": "{\r\n    \"name\":\"geladeira\",\r\n    \"description\":\"geladeira\",\r\n    \"price\": 2,\r\n    \"id_unit\": 2,\r\n    \"id_category\": 2,\r\n    \"weight\": 2\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -236,7 +881,7 @@
 			]
 		},
 		{
-			"name": "Unit",
+			"name": "Product Images",
 			"item": [
 				{
 					"name": "save",
@@ -244,7 +889,7 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/samsung/api/v1_0/units",
+							"raw": "http://localhost:8080/samsung/api/v1_0/productimages",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -254,7 +899,7 @@
 								"samsung",
 								"api",
 								"v1_0",
-								"units"
+								"productimages"
 							]
 						}
 					},
@@ -266,7 +911,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/samsung/api/v1_0/units",
+							"raw": "http://localhost:8080/samsung/api/v1_0/productimages",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -276,7 +921,7 @@
 								"samsung",
 								"api",
 								"v1_0",
-								"units"
+								"productimages"
 							]
 						}
 					},
@@ -288,7 +933,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/samsung/api/v1_0/units",
+							"raw": "http://localhost:8080/samsung/api/v1_0/productimages/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -298,7 +943,8 @@
 								"samsung",
 								"api",
 								"v1_0",
-								"units"
+								"productimages",
+								"1"
 							]
 						}
 					},
@@ -310,7 +956,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/samsung/api/v1_0/units",
+							"raw": "http://localhost:8080/samsung/api/v1_0/productimages/2",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -320,7 +966,8 @@
 								"samsung",
 								"api",
 								"v1_0",
-								"units"
+								"productimages",
+								"2"
 							]
 						}
 					},
@@ -330,152 +977,10 @@
 					"name": "update",
 					"request": {
 						"method": "PUT",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8080/samsung/api/v1_0/units",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"samsung",
-								"api",
-								"v1_0",
-								"units"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Category",
-			"item": [
-				{
-					"name": "save",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8080/samsung/api/v1_0/categories",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"samsung",
-								"api",
-								"v1_0",
-								"categories"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "getAll",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8080/samsung/api/v1_0/categories",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"samsung",
-								"api",
-								"v1_0",
-								"categories"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "getOne",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8080/samsung/api/v1_0/categories",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"samsung",
-								"api",
-								"v1_0",
-								"categories"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "delete",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8080/samsung/api/v1_0/categories",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"samsung",
-								"api",
-								"v1_0",
-								"categories"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "update",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8080/samsung/api/v1_0/categories",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"samsung",
-								"api",
-								"v1_0",
-								"categories"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Auth",
-			"item": [
-				{
-					"name": "registerPerson",
-					"request": {
-						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\":\"washington\",\r\n    \"document\":\"17832088800\",\r\n    \"email\":\"washington@cis.com.br\",\r\n    \"password\": \"w14i05l77\"\r\n}",
+							"raw": "{\r\n    \"id_product\" : \"\",\r\n    \"image\" : \"\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -483,7 +988,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/samsung/api/v1_0/auth/register",
+							"raw": "http://localhost:8080/samsung/api/v1_0/productimages/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -493,302 +998,8 @@
 								"samsung",
 								"api",
 								"v1_0",
-								"auth",
-								"register"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "loginPerson",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"email\":\"washington@cis.com.br\",\r\n    \"password\": \"w14i05l77\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8080/samsung/api/v1_0/auth/login",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"samsung",
-								"api",
-								"v1_0",
-								"auth",
-								"login"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "loginPersonDocument",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"document\":\"17832088800\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8080/samsung/api/v1_0/auth/login_document",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"samsung",
-								"api",
-								"v1_0",
-								"auth",
-								"login_document"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Payment Type",
-			"item": [
-				{
-					"name": "save",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8080/samsung/api/v1_0/payments",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"samsung",
-								"api",
-								"v1_0",
-								"payments"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "getAll",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8080/samsung/api/v1_0/payments",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"samsung",
-								"api",
-								"v1_0",
-								"payments"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "getOne",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8080/samsung/api/v1_0/payments",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"samsung",
-								"api",
-								"v1_0",
-								"payments"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "delete",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8080/samsung/api/v1_0/payments",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"samsung",
-								"api",
-								"v1_0",
-								"payments"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "update",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8080/samsung/api/v1_0/payments",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"samsung",
-								"api",
-								"v1_0",
-								"payments"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Order",
-			"item": [
-				{
-					"name": "save",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8080/samsung/api/v1_0/orders",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"samsung",
-								"api",
-								"v1_0",
-								"orders"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "getAll",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8080/samsung/api/v1_0/orders",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"samsung",
-								"api",
-								"v1_0",
-								"orders"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "getOne",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8080/samsung/api/v1_0/orders",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"samsung",
-								"api",
-								"v1_0",
-								"orders"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "delete",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8080/samsung/api/v1_0/orders",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"samsung",
-								"api",
-								"v1_0",
-								"orders"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "update",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8080/samsung/api/v1_0/orders",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"samsung",
-								"api",
-								"v1_0",
-								"orders"
+								"productimages",
+								"1"
 							]
 						}
 					},
@@ -849,7 +1060,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/samsung/api/v1_0/carts",
+							"raw": "http://localhost:8080/samsung/api/v1_0/carts/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -859,7 +1070,8 @@
 								"samsung",
 								"api",
 								"v1_0",
-								"carts"
+								"carts",
+								"1"
 							]
 						}
 					},
@@ -871,7 +1083,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/samsung/api/v1_0/carts",
+							"raw": "http://localhost:8080/samsung/api/v1_0/carts/2",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -881,7 +1093,8 @@
 								"samsung",
 								"api",
 								"v1_0",
-								"carts"
+								"carts",
+								"2"
 							]
 						}
 					},
@@ -892,8 +1105,17 @@
 					"request": {
 						"method": "PUT",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_user\": 1,\r\n    \"total\" : 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "http://localhost:8080/samsung/api/v1_0/carts",
+							"raw": "http://localhost:8080/samsung/api/v1_0/carts/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -903,122 +1125,8 @@
 								"samsung",
 								"api",
 								"v1_0",
-								"carts"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Order Itens",
-			"item": [
-				{
-					"name": "save",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8080/samsung/api/v1_0/orderitens",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"samsung",
-								"api",
-								"v1_0",
-								"orderitens"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "getAll",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8080/samsung/api/v1_0/orderitens",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"samsung",
-								"api",
-								"v1_0",
-								"orderitens"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "getOne",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8080/samsung/api/v1_0/orderitens",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"samsung",
-								"api",
-								"v1_0",
-								"orderitens"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "delete",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8080/samsung/api/v1_0/orderitens",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"samsung",
-								"api",
-								"v1_0",
-								"orderitens"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "update",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8080/samsung/api/v1_0/orderitens",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"samsung",
-								"api",
-								"v1_0",
-								"orderitens"
+								"carts",
+								"1"
 							]
 						}
 					},
@@ -1034,6 +1142,15 @@
 					"request": {
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_cart\" : \"\",\r\n    \"id_product\" : \"\",\r\n    \"quantity\" : \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "http://localhost:8080/samsung/api/v1_0/cartitens",
 							"protocol": "http",
@@ -1079,7 +1196,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/samsung/api/v1_0/cartitens",
+							"raw": "http://localhost:8080/samsung/api/v1_0/cartitens/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1089,7 +1206,8 @@
 								"samsung",
 								"api",
 								"v1_0",
-								"cartitens"
+								"cartitens",
+								"1"
 							]
 						}
 					},
@@ -1101,7 +1219,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/samsung/api/v1_0/cartitens",
+							"raw": "http://localhost:8080/samsung/api/v1_0/cartitens/2",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1111,7 +1229,8 @@
 								"samsung",
 								"api",
 								"v1_0",
-								"cartitens"
+								"cartitens",
+								"2"
 							]
 						}
 					},
@@ -1122,8 +1241,17 @@
 					"request": {
 						"method": "PUT",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_cart\" : \"\",\r\n    \"id_product\" : \"\",\r\n    \"quantity\" : \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "http://localhost:8080/samsung/api/v1_0/cartitens",
+							"raw": "http://localhost:8080/samsung/api/v1_0/cartitens/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1133,7 +1261,280 @@
 								"samsung",
 								"api",
 								"v1_0",
-								"cartitens"
+								"cartitens",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "save",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_user\": 1,\r\n    \"total\" : 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/samsung/api/v1_0/orders",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"samsung",
+								"api",
+								"v1_0",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/samsung/api/v1_0/orders",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"samsung",
+								"api",
+								"v1_0",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getOne",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/samsung/api/v1_0/orders/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"samsung",
+								"api",
+								"v1_0",
+								"orders",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/samsung/api/v1_0/orders/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"samsung",
+								"api",
+								"v1_0",
+								"orders",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_user\": 1,\r\n    \"total\" : 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/samsung/api/v1_0/orders/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"samsung",
+								"api",
+								"v1_0",
+								"orders",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order Itens",
+			"item": [
+				{
+					"name": "save",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_order\" : \"\",\r\n    \"id_product\" : \"\",\r\n    \"quantity\" : \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/samsung/api/v1_0/orderitens",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"samsung",
+								"api",
+								"v1_0",
+								"orderitens"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/samsung/api/v1_0/orderitens",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"samsung",
+								"api",
+								"v1_0",
+								"orderitens"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getOne",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/samsung/api/v1_0/orderitens/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"samsung",
+								"api",
+								"v1_0",
+								"orderitens",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/samsung/api/v1_0/orderitens/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"samsung",
+								"api",
+								"v1_0",
+								"orderitens",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_order\" : \"\",\r\n    \"id_product\" : \"\",\r\n    \"quantity\" : \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/samsung/api/v1_0/orderitens/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"samsung",
+								"api",
+								"v1_0",
+								"orderitens",
+								"1"
 							]
 						}
 					},

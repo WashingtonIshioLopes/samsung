@@ -16,204 +16,218 @@
 
 
 -- Copiando estrutura do banco de dados para db_samsung
-DROP DATABASE IF EXISTS `db_samsung`;
 CREATE DATABASE IF NOT EXISTS `db_samsung` /*!40100 DEFAULT CHARACTER SET latin1 */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `db_samsung`;
 
--- Copiando estrutura para tabela db_samsung.tb_cartitens
-DROP TABLE IF EXISTS `tb_cartitens`;
-CREATE TABLE IF NOT EXISTS `tb_cartitens` (
+-- Copiando estrutura para tabela db_samsung.carts
+CREATE TABLE IF NOT EXISTS `carts` (
   `id` bigint NOT NULL AUTO_INCREMENT,
+  `created_at` datetime(6) DEFAULT NULL,
+  `status` varchar(255) DEFAULT NULL,
+  `total` decimal(38,2) DEFAULT NULL,
+  `updated_at` datetime(6) DEFAULT NULL,
+  `id_user` bigint DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKsikdv2229wjn14kyo3dfnnc3u` (`id_user`),
+  CONSTRAINT `FKsikdv2229wjn14kyo3dfnnc3u` FOREIGN KEY (`id_user`) REFERENCES `person` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- Copiando dados para a tabela db_samsung.carts: ~0 rows (aproximadamente)
+DELETE FROM `carts`;
+
+-- Copiando estrutura para tabela db_samsung.cart_itens
+CREATE TABLE IF NOT EXISTS `cart_itens` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `created_at` datetime(6) DEFAULT NULL,
   `quantity` decimal(38,2) DEFAULT NULL,
+  `status` varchar(255) DEFAULT NULL,
+  `updated_at` datetime(6) DEFAULT NULL,
   `id_user` bigint DEFAULT NULL,
   `id_product` bigint DEFAULT NULL,
-  `created_at` datetime(6) DEFAULT NULL,
-  `status` varchar(255) DEFAULT NULL,
-  `updated_at` datetime(6) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `FKnssfd8kxd6o3wp6aregmnlu7y` (`id_user`),
-  KEY `FKjg2kjowcje5bqotlkx5npstrx` (`id_product`),
-  CONSTRAINT `FKjg2kjowcje5bqotlkx5npstrx` FOREIGN KEY (`id_product`) REFERENCES `tb_products` (`id`),
-  CONSTRAINT `FKnssfd8kxd6o3wp6aregmnlu7y` FOREIGN KEY (`id_user`) REFERENCES `tb_carts` (`id`)
+  KEY `FK7l7en5erqjt069mk9u06hopo7` (`id_user`),
+  KEY `FKpyox15fuwr8g7fjlt14xnq36b` (`id_product`),
+  CONSTRAINT `FK7l7en5erqjt069mk9u06hopo7` FOREIGN KEY (`id_user`) REFERENCES `carts` (`id`),
+  CONSTRAINT `FKpyox15fuwr8g7fjlt14xnq36b` FOREIGN KEY (`id_product`) REFERENCES `products` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Copiando dados para a tabela db_samsung.tb_cartitens: ~0 rows (aproximadamente)
-DELETE FROM `tb_cartitens`;
+-- Copiando dados para a tabela db_samsung.cart_itens: ~0 rows (aproximadamente)
+DELETE FROM `cart_itens`;
 
--- Copiando estrutura para tabela db_samsung.tb_carts
-DROP TABLE IF EXISTS `tb_carts`;
-CREATE TABLE IF NOT EXISTS `tb_carts` (
-  `id` bigint NOT NULL AUTO_INCREMENT,
-  `total` decimal(38,2) DEFAULT NULL,
-  `id_user` bigint DEFAULT NULL,
-  `created_at` datetime(6) DEFAULT NULL,
-  `status` varchar(255) DEFAULT NULL,
-  `updated_at` datetime(6) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `FK7lb6lm179b7tcuhvvxdh9kn66` (`id_user`),
-  CONSTRAINT `FK7lb6lm179b7tcuhvvxdh9kn66` FOREIGN KEY (`id_user`) REFERENCES `tb_users` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- Copiando dados para a tabela db_samsung.tb_carts: ~0 rows (aproximadamente)
-DELETE FROM `tb_carts`;
-
--- Copiando estrutura para tabela db_samsung.tb_categories
-DROP TABLE IF EXISTS `tb_categories`;
-CREATE TABLE IF NOT EXISTS `tb_categories` (
+-- Copiando estrutura para tabela db_samsung.categories
+CREATE TABLE IF NOT EXISTS `categories` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `code` varchar(255) DEFAULT NULL,
+  `created_at` datetime(6) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
   `status` varchar(255) DEFAULT NULL,
   `updated_at` datetime(6) DEFAULT NULL,
-  `created_at` datetime(6) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
--- Copiando dados para a tabela db_samsung.tb_categories: ~0 rows (aproximadamente)
-DELETE FROM `tb_categories`;
-INSERT INTO `tb_categories` (`id`, `code`, `description`, `status`, `updated_at`, `created_at`) VALUES
-	(1, 'TV', 'TV', NULL, NULL, NULL);
+-- Copiando dados para a tabela db_samsung.categories: ~8 rows (aproximadamente)
+DELETE FROM `categories`;
+INSERT INTO `categories` (`id`, `code`, `created_at`, `description`, `status`, `updated_at`) VALUES
+	(1, '1000', NULL, 'Smartphones', NULL, NULL),
+	(2, '2000', NULL, 'Tablets', NULL, NULL),
+	(3, '3000', NULL, 'Notebooks', NULL, NULL),
+	(4, '4000', NULL, 'TV & AV', NULL, NULL),
+	(5, '5000', NULL, 'Ar-condicionado', NULL, NULL),
+	(6, '6000', NULL, 'Geladeiras', NULL, NULL),
+	(7, '7000', NULL, 'Lavanderia', NULL, NULL),
+	(8, '8000', NULL, 'Cozinha', NULL, NULL);
 
--- Copiando estrutura para tabela db_samsung.tb_orderitens
-DROP TABLE IF EXISTS `tb_orderitens`;
-CREATE TABLE IF NOT EXISTS `tb_orderitens` (
+-- Copiando estrutura para tabela db_samsung.orders
+CREATE TABLE IF NOT EXISTS `orders` (
   `id` bigint NOT NULL AUTO_INCREMENT,
+  `created_at` datetime(6) DEFAULT NULL,
+  `status` varchar(255) DEFAULT NULL,
+  `total` decimal(38,2) DEFAULT NULL,
+  `updated_at` datetime(6) DEFAULT NULL,
+  `id_user` bigint DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKl7bmpcqta2pscf7o5713ba3g1` (`id_user`),
+  CONSTRAINT `FKl7bmpcqta2pscf7o5713ba3g1` FOREIGN KEY (`id_user`) REFERENCES `person` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- Copiando dados para a tabela db_samsung.orders: ~0 rows (aproximadamente)
+DELETE FROM `orders`;
+
+-- Copiando estrutura para tabela db_samsung.order_itens
+CREATE TABLE IF NOT EXISTS `order_itens` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `created_at` datetime(6) DEFAULT NULL,
   `quantity` decimal(38,2) DEFAULT NULL,
+  `status` varchar(255) DEFAULT NULL,
+  `updated_at` datetime(6) DEFAULT NULL,
   `id_order` bigint DEFAULT NULL,
   `id_product` bigint DEFAULT NULL,
-  `created_at` datetime(6) DEFAULT NULL,
-  `status` varchar(255) DEFAULT NULL,
-  `updated_at` datetime(6) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `FK8c3w0awhq3trwf9yw0mrgwdo8` (`id_order`),
-  KEY `FK59d06abmvk5g2dgkpgtxtms55` (`id_product`),
-  CONSTRAINT `FK59d06abmvk5g2dgkpgtxtms55` FOREIGN KEY (`id_product`) REFERENCES `tb_products` (`id`),
-  CONSTRAINT `FK8c3w0awhq3trwf9yw0mrgwdo8` FOREIGN KEY (`id_order`) REFERENCES `tb_orders` (`id`)
+  KEY `FKmli72jwjnvrm6dbbeymng6687` (`id_order`),
+  KEY `FK5keo4om82fll19yf43rgql9tf` (`id_product`),
+  CONSTRAINT `FK5keo4om82fll19yf43rgql9tf` FOREIGN KEY (`id_product`) REFERENCES `products` (`id`),
+  CONSTRAINT `FKmli72jwjnvrm6dbbeymng6687` FOREIGN KEY (`id_order`) REFERENCES `orders` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Copiando dados para a tabela db_samsung.tb_orderitens: ~0 rows (aproximadamente)
-DELETE FROM `tb_orderitens`;
+-- Copiando dados para a tabela db_samsung.order_itens: ~0 rows (aproximadamente)
+DELETE FROM `order_itens`;
 
--- Copiando estrutura para tabela db_samsung.tb_orders
-DROP TABLE IF EXISTS `tb_orders`;
-CREATE TABLE IF NOT EXISTS `tb_orders` (
+-- Copiando estrutura para tabela db_samsung.payments_types
+CREATE TABLE IF NOT EXISTS `payments_types` (
   `id` bigint NOT NULL AUTO_INCREMENT,
-  `total` decimal(38,2) DEFAULT NULL,
-  `id_user` bigint DEFAULT NULL,
   `created_at` datetime(6) DEFAULT NULL,
-  `status` varchar(255) DEFAULT NULL,
-  `updated_at` datetime(6) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `FKosfwkasuoed3piriay127a0w8` (`id_user`),
-  CONSTRAINT `FKosfwkasuoed3piriay127a0w8` FOREIGN KEY (`id_user`) REFERENCES `tb_users` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- Copiando dados para a tabela db_samsung.tb_orders: ~0 rows (aproximadamente)
-DELETE FROM `tb_orders`;
-
--- Copiando estrutura para tabela db_samsung.tb_payments
-DROP TABLE IF EXISTS `tb_payments`;
-CREATE TABLE IF NOT EXISTS `tb_payments` (
-  `id` bigint NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
-  `type` varchar(255) DEFAULT NULL,
-  `created_at` datetime(6) DEFAULT NULL,
   `status` varchar(255) DEFAULT NULL,
+  `type` varchar(255) DEFAULT NULL,
   `updated_at` datetime(6) DEFAULT NULL,
   PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+-- Copiando dados para a tabela db_samsung.payments_types: ~5 rows (aproximadamente)
+DELETE FROM `payments_types`;
+INSERT INTO `payments_types` (`id`, `created_at`, `name`, `status`, `type`, `updated_at`) VALUES
+	(1, NULL, 'Mastercard', NULL, 'Cartão', NULL),
+	(2, NULL, 'Visa', NULL, 'Cartão', NULL),
+	(3, NULL, 'Boleto', NULL, 'Boleto', NULL),
+	(4, NULL, 'PIX', NULL, 'PIX', NULL),
+	(5, NULL, 'Dinners', NULL, 'Cartão', NULL);
+
+-- Copiando estrutura para tabela db_samsung.person
+CREATE TABLE IF NOT EXISTS `person` (
+  `id` bigint NOT NULL,
+  `document` varchar(50) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `password` varchar(60) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UK_fwmwi44u55bo4rvwsv0cln012` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Copiando dados para a tabela db_samsung.tb_payments: ~0 rows (aproximadamente)
-DELETE FROM `tb_payments`;
+-- Copiando dados para a tabela db_samsung.person: ~1 rows (aproximadamente)
+DELETE FROM `person`;
+INSERT INTO `person` (`id`, `document`, `email`, `name`, `password`) VALUES
+	(3, '17832088800', 'washington@cis.com.br', 'washington', '$2a$10$azMswskbL8ytB1La2xzN9ucPOD6b5eZznk79hKWP2aHN7GfXU7ocq');
 
--- Copiando estrutura para tabela db_samsung.tb_productimages
-DROP TABLE IF EXISTS `tb_productimages`;
-CREATE TABLE IF NOT EXISTS `tb_productimages` (
+-- Copiando estrutura para tabela db_samsung.person_role
+CREATE TABLE IF NOT EXISTS `person_role` (
+  `person_model_id` bigint NOT NULL,
+  `role` int DEFAULT NULL,
+  KEY `FKtic0rfyaok00gsdrvr5j4x2pb` (`person_model_id`),
+  CONSTRAINT `FKtic0rfyaok00gsdrvr5j4x2pb` FOREIGN KEY (`person_model_id`) REFERENCES `person` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- Copiando dados para a tabela db_samsung.person_role: ~1 rows (aproximadamente)
+DELETE FROM `person_role`;
+INSERT INTO `person_role` (`person_model_id`, `role`) VALUES
+	(3, 1);
+
+-- Copiando estrutura para tabela db_samsung.products
+CREATE TABLE IF NOT EXISTS `products` (
   `id` bigint NOT NULL AUTO_INCREMENT,
-  `image` varchar(255) DEFAULT NULL,
-  `id_product` bigint DEFAULT NULL,
-  `product_id` bigint NOT NULL,
-  `status` varchar(255) DEFAULT NULL,
-  `updated_at` datetime(6) DEFAULT NULL,
   `created_at` datetime(6) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `FK99eieq52byvrf2qfwif6vsng0` (`id_product`),
-  CONSTRAINT `FK99eieq52byvrf2qfwif6vsng0` FOREIGN KEY (`id_product`) REFERENCES `tb_products` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
-
--- Copiando dados para a tabela db_samsung.tb_productimages: ~0 rows (aproximadamente)
-DELETE FROM `tb_productimages`;
-INSERT INTO `tb_productimages` (`id`, `image`, `id_product`, `product_id`, `status`, `updated_at`, `created_at`) VALUES
-	(1, 'http://example.com/keli1.jpg', 1, 0, NULL, NULL, NULL),
-	(2, 'http://example.com/keli2.jpg', 1, 0, NULL, NULL, NULL);
-
--- Copiando estrutura para tabela db_samsung.tb_products
-DROP TABLE IF EXISTS `tb_products`;
-CREATE TABLE IF NOT EXISTS `tb_products` (
-  `id` bigint NOT NULL AUTO_INCREMENT,
   `description` varchar(255) DEFAULT NULL,
   `price` decimal(38,2) DEFAULT NULL,
+  `status` varchar(255) DEFAULT NULL,
+  `updated_at` datetime(6) DEFAULT NULL,
   `weight` decimal(38,2) DEFAULT NULL,
   `id_category` bigint DEFAULT NULL,
   `id_unit` bigint DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKip7b0y8ja7fsm5wl7mhmseh5n` (`id_category`),
+  KEY `FKsums02yb5gvsif2quesalfk4t` (`id_unit`),
+  CONSTRAINT `FKip7b0y8ja7fsm5wl7mhmseh5n` FOREIGN KEY (`id_category`) REFERENCES `categories` (`id`),
+  CONSTRAINT `FKsums02yb5gvsif2quesalfk4t` FOREIGN KEY (`id_unit`) REFERENCES `units` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+-- Copiando dados para a tabela db_samsung.products: ~2 rows (aproximadamente)
+DELETE FROM `products`;
+INSERT INTO `products` (`id`, `created_at`, `description`, `price`, `status`, `updated_at`, `weight`, `id_category`, `id_unit`) VALUES
+	(1, '2024-06-28 13:03:00.131994', 'keli', 1.00, NULL, '2024-06-28 13:10:48.179783', 1.00, 1, 1),
+	(3, '2024-06-28 13:05:13.659801', 'televisao', 1.00, NULL, NULL, 1.00, 1, 1);
+
+-- Copiando estrutura para tabela db_samsung.product_images
+CREATE TABLE IF NOT EXISTS `product_images` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `created_at` datetime(6) DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
   `status` varchar(255) DEFAULT NULL,
   `updated_at` datetime(6) DEFAULT NULL,
-  `created_at` datetime(6) DEFAULT NULL,
+  `id_product` bigint DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `FK30e84crs97xxvrxy5ua1ydaul` (`id_category`),
-  KEY `FKhy69117ww815ey922cbyef52o` (`id_unit`),
-  CONSTRAINT `FK30e84crs97xxvrxy5ua1ydaul` FOREIGN KEY (`id_category`) REFERENCES `tb_categories` (`id`),
-  CONSTRAINT `FKhy69117ww815ey922cbyef52o` FOREIGN KEY (`id_unit`) REFERENCES `tb_units` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
+  KEY `FKpbcjehp1361qtyyilvx87d26d` (`id_product`),
+  CONSTRAINT `FKpbcjehp1361qtyyilvx87d26d` FOREIGN KEY (`id_product`) REFERENCES `products` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Copiando dados para a tabela db_samsung.tb_products: ~0 rows (aproximadamente)
-DELETE FROM `tb_products`;
-INSERT INTO `tb_products` (`id`, `description`, `price`, `weight`, `id_category`, `id_unit`, `status`, `updated_at`, `created_at`) VALUES
-	(1, 'keli', 1.00, 1.00, 1, 1, NULL, NULL, NULL),
-	(3, 'name', 1.00, 1.00, 1, 1, NULL, NULL, NULL),
-	(4, 'name', 1.00, 1.00, 1, 1, NULL, NULL, NULL),
-	(5, 'name', 1.00, 1.00, 1, 1, NULL, NULL, NULL),
-	(6, 'teste', 1.00, 1.00, 1, 1, NULL, NULL, NULL),
-	(7, 'teste', 1.00, 1.00, 1, 1, NULL, NULL, NULL),
-	(8, 'temp', 1.00, 1.00, 1, 1, NULL, NULL, NULL),
-	(9, 'temp', 1.00, 1.00, 1, 1, NULL, NULL, NULL),
-	(13, 'renata', 1.00, 1.00, 1, 1, NULL, NULL, NULL),
-	(14, 'renata', 1.00, 1.00, 1, 1, NULL, NULL, NULL),
-	(15, 'renata', 1.00, 1.00, 1, 1, NULL, NULL, NULL);
+-- Copiando dados para a tabela db_samsung.product_images: ~0 rows (aproximadamente)
+DELETE FROM `product_images`;
 
--- Copiando estrutura para tabela db_samsung.tb_units
-DROP TABLE IF EXISTS `tb_units`;
-CREATE TABLE IF NOT EXISTS `tb_units` (
+-- Copiando estrutura para tabela db_samsung.seq_person_id
+CREATE TABLE IF NOT EXISTS `seq_person_id` (
+  `next_val` bigint DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- Copiando dados para a tabela db_samsung.seq_person_id: ~1 rows (aproximadamente)
+DELETE FROM `seq_person_id`;
+INSERT INTO `seq_person_id` (`next_val`) VALUES
+	(4);
+
+-- Copiando estrutura para tabela db_samsung.units
+CREATE TABLE IF NOT EXISTS `units` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `code` varchar(255) DEFAULT NULL,
+  `created_at` datetime(6) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
   `status` varchar(255) DEFAULT NULL,
   `updated_at` datetime(6) DEFAULT NULL,
-  `created_at` datetime(6) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
--- Copiando dados para a tabela db_samsung.tb_units: ~0 rows (aproximadamente)
-DELETE FROM `tb_units`;
-INSERT INTO `tb_units` (`id`, `code`, `description`, `status`, `updated_at`, `created_at`) VALUES
-	(1, 'U', 'Unidade', NULL, NULL, NULL);
-
--- Copiando estrutura para tabela db_samsung.tb_users
-DROP TABLE IF EXISTS `tb_users`;
-CREATE TABLE IF NOT EXISTS `tb_users` (
-  `id` bigint NOT NULL AUTO_INCREMENT,
-  `document` varchar(255) DEFAULT NULL,
-  `email` varchar(255) DEFAULT NULL,
-  `name` varchar(255) DEFAULT NULL,
-  `telephone` varchar(255) DEFAULT NULL,
-  `created_at` datetime(6) DEFAULT NULL,
-  `status` varchar(255) DEFAULT NULL,
-  `updated_at` datetime(6) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- Copiando dados para a tabela db_samsung.tb_users: ~0 rows (aproximadamente)
-DELETE FROM `tb_users`;
+-- Copiando dados para a tabela db_samsung.units: ~3 rows (aproximadamente)
+DELETE FROM `units`;
+INSERT INTO `units` (`id`, `code`, `created_at`, `description`, `status`, `updated_at`) VALUES
+	(1, 'U', NULL, 'Unidade', NULL, NULL),
+	(2, 'C', NULL, 'Centena', NULL, NULL),
+	(3, 'M', NULL, 'Milhar', NULL, NULL);
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

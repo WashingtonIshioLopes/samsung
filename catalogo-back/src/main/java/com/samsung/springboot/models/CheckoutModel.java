@@ -10,8 +10,8 @@ import java.time.LocalDateTime;
 //import org.springframework.hateoas.RepresentationModel;
 
 @Entity
-@Table(name = "orders")
-public class OrderModel implements Serializable{
+@Table(name = "checkout")
+public class CheckoutModel implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
@@ -23,11 +23,15 @@ public class OrderModel implements Serializable{
 	@JoinColumn(name = "id_user")
 	private PersonModel user;
 
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "id_checkout")
-	private CheckoutModel checkout;
+	private String code;
 
-	private BigDecimal total;
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "id_cart")
+	private CartModel cart;
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "id_payment")
+	private PaymentTypeModel payment;
 
 	private String status;
 
@@ -37,8 +41,8 @@ public class OrderModel implements Serializable{
 	@Column(name = "updated_at")
 	private LocalDateTime updatedAt;
 
-	// Getters and Setters
 
+	// Getters and Setters
 
 	public Long getId() {
 		return id;
@@ -56,20 +60,20 @@ public class OrderModel implements Serializable{
 		this.user = user;
 	}
 
-	public CheckoutModel getCheckout() {
-		return checkout;
+	public String getCode() {
+		return code;
 	}
 
-	public void setCheckout(CheckoutModel checkout) {
-		this.checkout = checkout;
+	public void setCode(String code) {
+		this.code = code;
 	}
 
-	public BigDecimal getTotal() {
-		return total;
+	public CartModel getCart() {
+		return cart;
 	}
 
-	public void setTotal(BigDecimal total) {
-		this.total = total;
+	public void setCart(CartModel cart) {
+		this.cart = cart;
 	}
 
 	public String getStatus() {
