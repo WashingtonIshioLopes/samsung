@@ -1,9 +1,9 @@
 package com.samsung.springboot.services;
 
-import com.samsung.springboot.dtos.PaymentRecordDto;
+import com.samsung.springboot.dtos.PaymentTypeRecordDto;
 import com.samsung.springboot.exceptions.ResourceNotFoundException;
 import com.samsung.springboot.models.PaymentTypeModel;
-import com.samsung.springboot.repositories.PaymentRepository;
+import com.samsung.springboot.repositories.PaymentTypeRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,10 +15,10 @@ import java.util.Optional;
 
 @Service
 @Transactional
-public class PaymentService {
+public class PaymentTypeService {
 
     @Autowired
-    private PaymentRepository paymentRepository;
+    private PaymentTypeRepository paymentRepository;
 
     public List<PaymentTypeModel> getAll() {
         return paymentRepository.findAll();
@@ -32,7 +32,7 @@ public class PaymentService {
         return paymentModel;
     }
 
-    public PaymentTypeModel save(PaymentRecordDto paymentRecordDto) {
+    public PaymentTypeModel save(PaymentTypeRecordDto paymentRecordDto) {
         PaymentTypeModel paymentModel = new PaymentTypeModel();
         BeanUtils.copyProperties(paymentRecordDto, paymentModel);
         paymentModel.setCreatedAt(LocalDateTime.now());
@@ -47,7 +47,7 @@ public class PaymentService {
         paymentModel.ifPresent(payment -> paymentRepository.delete(payment));
     }
 
-    public PaymentTypeModel update(Long id, PaymentRecordDto paymentRecordDto) {
+    public PaymentTypeModel update(Long id, PaymentTypeRecordDto paymentRecordDto) {
         Optional<PaymentTypeModel> paymentOptional = paymentRepository.findById(id);
         if (paymentOptional.isEmpty()) {
             throw new ResourceNotFoundException("Payment not found with id: " + id);

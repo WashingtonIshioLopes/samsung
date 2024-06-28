@@ -1,9 +1,9 @@
 package com.samsung.springboot.controllers;
 
-import com.samsung.springboot.dtos.PaymentRecordDto;
+import com.samsung.springboot.dtos.PaymentTypeRecordDto;
 import com.samsung.springboot.exceptions.ResourceNotFoundException;
 import com.samsung.springboot.models.PaymentTypeModel;
-import com.samsung.springboot.services.PaymentService;
+import com.samsung.springboot.services.PaymentTypeService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,10 +14,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1_0")
-public class PaymentController {
+public class PaymentTypeController {
 	
 	@Autowired
-	PaymentService paymentService;
+	PaymentTypeService paymentService;
 	
 	@GetMapping("/payments")
 	public ResponseEntity<List<PaymentTypeModel>> getAllPayments(){
@@ -35,7 +35,7 @@ public class PaymentController {
 	}
 
 	@PostMapping("/payments")
-	public ResponseEntity<PaymentTypeModel> savePayment(@RequestBody @Valid PaymentRecordDto paymentRecordDto) {
+	public ResponseEntity<PaymentTypeModel> savePayment(@RequestBody @Valid PaymentTypeRecordDto paymentRecordDto) {
 		PaymentTypeModel savedPayment = paymentService.save(paymentRecordDto);
 		return ResponseEntity.status(HttpStatus.CREATED).body(savedPayment);
 	}
@@ -52,7 +52,7 @@ public class PaymentController {
 	
 	@PutMapping("/payments/{id}")
 	public ResponseEntity<Object> updatePayment(@PathVariable(value="id") Long id,
-											 @RequestBody @Valid PaymentRecordDto paymentRecordDto) {
+											 @RequestBody @Valid PaymentTypeRecordDto paymentRecordDto) {
 		try {
 			PaymentTypeModel updatedPayment = paymentService.update(id, paymentRecordDto);
 			return ResponseEntity.status(HttpStatus.OK).body(updatedPayment);
