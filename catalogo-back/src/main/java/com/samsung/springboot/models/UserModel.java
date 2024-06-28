@@ -21,11 +21,17 @@ public class UserModel implements Serializable{
 
 	private String name;
 
+	private String password;
+
+	@Column(unique = true)
 	private String document;
 
 	private String email;
 
 	private String telephone;
+
+	@Column(unique = true)
+	private String token;
 
 	private String status;
 
@@ -37,6 +43,22 @@ public class UserModel implements Serializable{
 
 
 	// Getters and Setters
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getToken() {
+		return token;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
+	}
 
 	public String getStatus() {
 		return status;

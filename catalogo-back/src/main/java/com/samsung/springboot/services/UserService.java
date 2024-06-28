@@ -57,4 +57,8 @@ public class UserService {
         userModel.setUpdatedAt(LocalDateTime.now());
         return userRepository.save(userModel);
     }
+
+    public Optional<UserModel> getByDocument(String document) {
+        return Optional.ofNullable(userRepository.findByDocument(document));
+    }
 }
