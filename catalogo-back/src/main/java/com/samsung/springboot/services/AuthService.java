@@ -41,7 +41,7 @@ public class AuthService {
 		
 		person = personService.create(person);
 		
-		return new AuthResponseDTO(jwtService.generateToken(person.getEmail()));
+		return new AuthResponseDTO(jwtService.generateToken(person.getEmail()), person.getId());
 	}
 	
 	public AuthResponseDTO authenticate(LoginRequestDTO dto) {
@@ -52,13 +52,13 @@ public class AuthService {
 						dto.getPassword()));
 		
 		final PersonModel person = personService.findByEmail(dto.getEmail());
-		return new AuthResponseDTO(jwtService.generateToken(person.getEmail()));
+		return new AuthResponseDTO(jwtService.generateToken(person.getEmail()), person.getId());
 	}
 
 	public AuthResponseDTO authenticateDocument(LoginDocumentRequestDTO dto) {
 
 		PersonModel person = personService.findByDocument(dto.getDocument());
-		return new AuthResponseDTO(jwtService.generateToken(person.getEmail()));
+		return new AuthResponseDTO(jwtService.generateToken(person.getEmail()), person.getId());
 
 	}
 

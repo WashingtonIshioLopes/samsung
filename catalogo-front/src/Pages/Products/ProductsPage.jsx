@@ -9,14 +9,17 @@ import Footer from '../../Components/Footer/Footer';
 
 const ProductsPage = () => {
   
-    const { state } = useLocation();
+    //const { state } = useLocation();
 
     const navigate = useNavigate();
 
+    const user = localStorage.getItem('user');
+    const token = localStorage.getItem('token');
+
     const handleClick = () => {
         console.log("Token");
-        console.log(state.token);
-        navigate('/catalog', { state: { token: state.token } });
+        console.log(token);
+        navigate('/catalog');
     }
 
     return (
@@ -27,11 +30,11 @@ const ProductsPage = () => {
                 <div className="row">
                     <div className="col-md-12 d-flex justify-content-end">
                         <div className="text-center">
-                            <button className="btn btn-primary px-5 mb-5" onClick={handleClick}>Catalogo</button>
+                            <button className="btn btn-primary px-5 mb-5" onClick={handleClick} style={{ marginTop: '10px' }}>Catalogo</button>
                         </div>
                     </div>
                 </div>
-                <CarouselProducts token={state.token}/>
+                <CarouselProducts token={token}/>
             </div>
 
             <Footer />

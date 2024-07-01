@@ -1,0 +1,12 @@
+/* Estilização personalizada para o carousel ocupar toda a largura */
+.full-width-carousel .carousel {
+    width: 100%; /* Define a largura do carousel como 100% */
+}
+
+.full-width-carousel .carousel-item {
+    height: 100%; /* Define a altura dos itens do carousel como 100% */
+}
+
+.full-width-carousel .carousel-inner {
+    width: 100%; /* Garante que a parte interna do carousel também tenha 100% de largura */
+}

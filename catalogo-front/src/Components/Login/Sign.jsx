@@ -3,6 +3,7 @@ import { useState } from "react"
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
+import './Sign.css'
 import BASE_URL from '../../config';
 import samsungLogo from '../../assets/Images/Logo/Logo02.png';
 
@@ -22,8 +23,13 @@ function Sign() {
             const response = await axios.post(BASE_URL  + '/auth/login_document', { document });
             
             if (response.status === 200) {
-                console.error('Credencias válidas.');
-                console.log('Token: ', response.data);
+
+                console.log('Credencias válidas.');
+                console.log('Credentials: ', response.data);
+
+                localStorage.setItem('user', response.data.user);
+                localStorage.setItem('token', response.data.token);
+
                 navigate('/products', { state: { token: response.data.token } });
             } else {
                 alert('Credenciais inválidas. Por favor, tente novamente.');

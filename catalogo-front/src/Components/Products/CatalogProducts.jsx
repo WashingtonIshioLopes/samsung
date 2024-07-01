@@ -2,8 +2,10 @@ import React from 'react';
 import { useState, useEffect, useRef } from "react"
 import { useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
+import { FaShoppingCart } from 'react-icons/fa';
 
-
+import Cart from '../Shopping/Cart';
+import './CatalogProducts.css'
 import BASE_URL from '../../config';
 
 const CatalogProducts = (props) => {
@@ -13,11 +15,18 @@ const CatalogProducts = (props) => {
     const [categories, setCategories] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState();
 
+    const [quantity, setQuantity] = useState();
+
     const [filter, setFilter] = useState();
 
-    const { token } = props;
+    //const { token } = props;
+
+    const user = localStorage.getItem('user');
+    const token = localStorage.getItem('token');
 
     const initialFetch = useRef(true);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
 
@@ -144,16 +153,13 @@ const CatalogProducts = (props) => {
 
     }
 
-    const handleClickDetails = (produc_id) => {
+    const handleClickDetails = (product_id) => {
         console.log('Click Details!');
 
         console.log("Product Id");
-        console.log(produc_id);
+        console.log(product_id);
 
-        console.log("Token");
-        //console.log(state.token);
-
-        //navigate('/product', { state: { token: state.token, product: product_id } });
+        navigate('/product', { state: { product_id: product_id } });
     }
 
     const handleChange = (event) => {
@@ -170,7 +176,7 @@ const CatalogProducts = (props) => {
                         <h3 className="mb-3">Pesquisa</h3>
                     </div>
                     <div className="col-md-4">
-                        <button type="button" className="btn btn-sm btn-outline-secondary px-5 mb-5 w-100" onClick={handleClickFavorites} >My Favorites</button>
+                        <button type="button" className="btn btn-primary px-5 mb-5 w-100" onClick={handleClickFavorites} >My Favorites</button>
                     </div>
                 </div>
                 
@@ -190,19 +196,26 @@ const CatalogProducts = (props) => {
 
                     <div className="col-md-12">
                         <div className="form-group mb-0">
-                            <label>Filter:</label>
+                            <label>Search:</label>
                             <input type="text" className="form-control" id="pesquisa" aria-describedby="filterHelp" placeholder="Filter" onChange={(e) => setFilter(e.target.value)}/>
                         </div>
                     </div>
 
                     <div className="col-md-2 d-flex align-items-end">
-                        <button className="btn btn-primary ml-20" onClick={handleClickFilter} >Filtrar</button>
+                        <button className="btn btn-primary ml-20" onClick={handleClickFilter} style={{ marginTop: '10px', marginBottom: '5px' }} >Search</button>
                     </div>
 
                 </div>
-                
-                <h3 className="mt-4">Produtos</h3>  
-                
+
+                <div className="row align-items-center">
+                    <div className="col-md-8">
+                        <h3 className="mt-4">Produtos</h3>  
+                    </div>
+                    <div className="col-md-4 d-flex justify-content-end">
+                        <Cart />
+                    </div>
+                </div>
+
                 <div className="row">
 
                     {products.map(product => (
@@ -214,12 +227,17 @@ const CatalogProducts = (props) => {
                                     <h5 className="card-title">{product.name}</h5>
                                     <p className="card-text">{ product.description }</p>
                                     <div className="d-flex justify-content-between align-items-center">
-                                        <div className="btn-group">
-                                            <button type="button" className="btn btn-sm btn-outline-secondary" onClick={ () => handleClickDetails(product.id) } >Detalhes</button>
-                                        </div>
-                                        <small className="text-muted">{ product.weight }</small>
+                                        <small className="text-muted">{ "Price (US$): " + product.price }</small>
+                                        <small className="text-muted">{ "Category: " + product.category.description }</small>
+                                    </div>
+                                    <div className="d-flex justify-content-between align-items-center">
                                         <div className="icons-container">
                                             {/* <i className="fa fa-star" title="Favorito"></i> */}
+                                        </div>
+                                    </div>
+                                    <div className="d-flex justify-content-between align-items-right">
+                                        <div className="btn-group">
+                                            <button type="button" className="btn btn-primary" onClick={ () => handleClickDetails(product.id) } style={{ marginTop: '10px', marginBottom: '5px' }} >Details</button>
                                         </div>
                                     </div>
                                 </div>

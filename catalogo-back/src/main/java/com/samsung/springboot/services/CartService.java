@@ -77,4 +77,9 @@ public class CartService {
 
         return cartRepository.save(cartModel);
     }
+
+    public List<CartModel> findByUserIdAndStatus(Long userId, String status) {
+        return cartRepository.findByUserIdAndStatus(userId, status);
+    }
+
 }

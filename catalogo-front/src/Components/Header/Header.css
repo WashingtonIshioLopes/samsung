@@ -1,0 +1,10 @@
+/* Estilização personalizada para o cabeçalho */
+header {
+    padding: 15px 0;
+    margin: 15px
+}
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}

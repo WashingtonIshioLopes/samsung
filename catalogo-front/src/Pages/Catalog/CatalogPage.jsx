@@ -9,12 +9,15 @@ import Footer from '../../Components/Footer/Footer';
 
 const CatalogPage = () => {
 
-    const { state } = useLocation();
+    //const { state } = useLocation();
+
+    const user = localStorage.getItem('user');
+    const token = localStorage.getItem('token');
 
     return (
       <div>
         <Header />
-        <CatalogProducts token={state.token}/>
+        <CatalogProducts token={token}/>
         <Footer />
       </div>
     );

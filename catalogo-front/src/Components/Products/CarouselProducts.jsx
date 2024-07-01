@@ -4,14 +4,17 @@ import { useNavigate } from 'react-router-dom';
 import { Carousel } from 'react-bootstrap';
 import axios from 'axios';
 
-
+import './CarouselProducts.css'
 import BASE_URL from '../../config';
 
 const CarouselProducts = (props) => {
 
     const [products, setProducts] = useState([]);
 
-    const { token } = props;
+    //const { token } = props;
+
+    const user = localStorage.getItem('user');
+    const token = localStorage.getItem('token');
 
     const initialFetch = useRef(true);
 
@@ -52,21 +55,23 @@ const CarouselProducts = (props) => {
 
     return (
         <>
-            <Carousel>
-                {products.map(product => (
-                    <Carousel.Item key={product.id}>
-                        <img
-                            className="d-block w-100"
-                            src={product.images[0].image}
-                            alt={product.name}
-                        />
-                        <Carousel.Caption>
-                            <h3>{product.name}</h3>
-                            <p>{product.description}</p>
-                        </Carousel.Caption>
-                    </Carousel.Item>
-                ))}
-            </Carousel>
+            <div className="full-width-carousel">
+                <Carousel>
+                    {products.slice(0, 10).map(product => (
+                        <Carousel.Item key={product.id}>
+                            <img
+                                className="d-block w-100"
+                                src={product.images[0].image}
+                                alt={product.name}
+                            />
+                            <Carousel.Caption>
+                                <h3>{product.name}</h3>
+                                <p>{product.description}</p>
+                            </Carousel.Caption>
+                        </Carousel.Item>
+                    ))}
+                </Carousel>
+            </div>
         </>
     );
 };

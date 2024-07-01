@@ -1,10 +1,12 @@
 package com.samsung.springboot.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 // Hateoas
 //import org.springframework.hateoas.RepresentationModel;
@@ -25,6 +27,11 @@ public class CartModel implements Serializable{
 
 	private BigDecimal total;
 
+	@JsonIgnoreProperties({"cart"})
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "id_cart")
+	private List<CartItemModel> itens;
+
 	private String status;
 
 	@Column(name = "created_at")
@@ -38,6 +45,14 @@ public class CartModel implements Serializable{
 
 	public String getStatus() {
 		return status;
+	}
+
+	public List<CartItemModel> getItens() {
+		return itens;
+	}
+
+	public void setItens(List<CartItemModel> itens) {
+		this.itens = itens;
 	}
 
 	public void setStatus(String status) {

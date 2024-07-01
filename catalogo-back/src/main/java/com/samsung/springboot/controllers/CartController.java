@@ -3,6 +3,7 @@ package com.samsung.springboot.controllers;
 import com.samsung.springboot.dtos.CartRecordDto;
 import com.samsung.springboot.exceptions.ResourceNotFoundException;
 import com.samsung.springboot.models.CartModel;
+import com.samsung.springboot.models.ProductModel;
 import com.samsung.springboot.services.CartService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,13 @@ public class CartController {
 	public ResponseEntity<List<CartModel>> getAllCarts(){
 		List<CartModel> carts = cartService.getAll();
 		return ResponseEntity.status(HttpStatus.OK).body(carts);
+	}
+
+	@GetMapping("/carts/search")
+	public List<CartModel> getCartsByUserIdAndStatus(
+			@RequestParam(required = false) Long id_user,
+			@RequestParam(required = false) String status) {
+		return cartService.findByUserIdAndStatus(id_user, status);
 	}
 
 	@GetMapping("/carts/{id}")
