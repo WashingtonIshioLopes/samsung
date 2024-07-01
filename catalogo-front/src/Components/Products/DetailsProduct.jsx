@@ -3,13 +3,13 @@ import { useState, useEffect, useRef } from "react"
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-const Product = ({ id, descricao, imagem, slideLabel, slideText }) => {
+const DetailsProduct = () => {
 
     return (
           <>
-              <p>Product</p>
+              <p>Product Details</p>
           </>
     );
 };
 
-export default Product;
+export default DetailsProduct;

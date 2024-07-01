@@ -7,7 +7,7 @@ import Header from '../../Components/Header/Header';
 import CarouselProducts from '../../Components/Products/CarouselProducts';
 import Footer from '../../Components/Footer/Footer';
 
-const Products = () => {
+const ProductsPage = () => {
   
     const { state } = useLocation();
 
@@ -16,7 +16,7 @@ const Products = () => {
     const handleClick = () => {
         console.log("Token");
         console.log(state.token);
-        navigate('/Catalog', { state: { token: state.token } });
+        navigate('/catalog', { state: { token: state.token } });
     }
 
     return (
@@ -39,4 +39,4 @@ const Products = () => {
     );
 };
 
-export default Products;
+export default ProductsPage;

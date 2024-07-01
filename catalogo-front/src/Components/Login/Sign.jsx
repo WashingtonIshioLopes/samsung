@@ -24,7 +24,7 @@ function Sign() {
             if (response.status === 200) {
                 console.error('Credencias válidas.');
                 console.log('Token: ', response.data);
-                navigate('/Products', { state: { token: response.data.token } });
+                navigate('/products', { state: { token: response.data.token } });
             } else {
                 alert('Credenciais inválidas. Por favor, tente novamente.');
             }

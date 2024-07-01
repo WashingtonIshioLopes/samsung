@@ -3,11 +3,11 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import './App.css'
 
 
-import Login from './Pages/Login/Login';
-import Products from './Pages/Products/Products';
-import Product from './Pages/Product/Product';
-import Catalog from './Pages/Catalog/Catalog';
-import Checkout from './Pages/Checkout/Checkout';
+import LoginPage from './Pages/Login/LoginPage';
+import ProductsPage from './Pages/Products/ProductsPage';
+import ProductPage from './Pages/Product/ProductPage';
+import CatalogPage from './Pages/Catalog/CatalogPage';
+import CheckoutPage from './Pages/Checkout/CheckoutPage';
 
 function App() {
 
@@ -15,11 +15,11 @@ function App() {
       <>
         <Router>
               <Routes>
-                  <Route path="/" element={<Login />} />
-                  <Route path="/products" element={<Products />} />
-                  <Route path="/product" element={<Product />} />
-                  <Route path="/catalog" element={<Catalog />} />
-                  <Route path="/checkout" element={<Checkout />} />
+                  <Route path="/" element={<LoginPage />} />
+                  <Route path="/products" element={<ProductsPage />} />
+                  <Route path="/product" element={<ProductPage />} />
+                  <Route path="/catalog" element={<CatalogPage />} />
+                  <Route path="/checkout" element={<CheckoutPage />} />
               </Routes>
         </Router>
       </>

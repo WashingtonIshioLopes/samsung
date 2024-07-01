@@ -26,7 +26,7 @@ const CarouselProducts = (props) => {
                 }
             };
     
-            const fetchData = async () => {
+            const fetchProducts = async () => {
                 try {
                     
                     console.log(BASE_URL  + '/products');
@@ -44,7 +44,7 @@ const CarouselProducts = (props) => {
                 }
             };
     
-            fetchData();
+            fetchProducts();
 
         }
 

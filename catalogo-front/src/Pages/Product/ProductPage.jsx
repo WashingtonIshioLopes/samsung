@@ -4,17 +4,18 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 import Header from '../../Components/Header/Header';
+import DetailsProduct from '../../Components/Products/DetailsProduct';
 import Footer from '../../Components/Footer/Footer';
 
-const Product = () => {
+const ProductPage = () => {
   
     return (
       <div>
         <Header />
-        <h2>Product</h2>
+        <DetailsProduct />
         <Footer />
       </div>
     );
 };
 
-export default Product;
+export default ProductPage;

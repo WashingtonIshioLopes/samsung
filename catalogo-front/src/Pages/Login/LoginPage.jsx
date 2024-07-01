@@ -3,7 +3,7 @@ import { useState} from "react"
 
 import Sign from '../../Components/Login/Sign';
 
-function Login() {
+function LoginPage() {
 
     return (
         <div>
@@ -12,4 +12,4 @@ function Login() {
     );
 }
 
-export default Login;
+export default LoginPage;

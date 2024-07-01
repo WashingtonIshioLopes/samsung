@@ -9,6 +9,10 @@ import BASE_URL from '../../config';
 const CatalogProducts = (props) => {
 
     const [products, setProducts] = useState([]);
+
+    const [categories, setCategories] = useState([]);
+    const [selectedCategory, setSelectedCategory] = useState();
+
     const [filter, setFilter] = useState();
 
     const { token } = props;
@@ -26,7 +30,7 @@ const CatalogProducts = (props) => {
                 }
             };
     
-            const fetchData = async () => {
+            const fetchProducts = async () => {
                 try {
                     
                     console.log(BASE_URL  + '/products');
@@ -43,8 +47,28 @@ const CatalogProducts = (props) => {
                     console.error('Erro ao buscar dados:', error);
                 }
             };
+
+            const fetchCategories = async () => {
+                try {
+                    
+                    console.log(BASE_URL  + '/products');
+                    const response = await axios.get(BASE_URL  + '/categories', config);
     
-            fetchData();
+                    if (response.status === 200) {
+                        console.log('Lista de Categorias.');
+                        console.log(response.data);
+                        setCategories(response.data);
+                    } else {
+                        alert('Erro em busca Categortias. Por favor, tente novamente.');
+                    }
+                } catch (error) {
+                    console.error('Erro ao buscar dados:', error);
+                }
+            };
+    
+            fetchCategories();
+
+            fetchProducts();
 
         }
 
@@ -52,12 +76,14 @@ const CatalogProducts = (props) => {
 
     const handleClickFavorites = () => {
         console.log('Click Favorites!');
-    }
 
-    const handleClickFilter = () => {
-        console.log('Click Filter!');
+        const config = {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        };
 
-        const fetchData = async () => {
+        const fetchFavorites = async () => {
             try {
                 
                 console.log(BASE_URL  + '/products');
@@ -75,18 +101,68 @@ const CatalogProducts = (props) => {
             }
         };
 
-        fetchData();
+        fetchFavorites();
 
     }
 
-    const handleClickDetails = () => {
+    const handleClickFilter = () => {
+        console.log('Click Filter!');
+        console.log('Category: ', selectedCategory);
+        console.log('Description: ', filter);
+
+        const config = {
+            headers: {
+                Authorization: `Bearer ${token}`
+            },
+            params: {
+                // Aqui você define os parâmetros de consulta
+                // Exemplo: search por nome, id, etc.
+                id_category: selectedCategory,
+                description: filter
+            }
+        };
+
+        const fetchFiltered = async () => {
+            try {
+                
+                console.log(BASE_URL  + '/products');
+                const response = await axios.get(BASE_URL  + '/products/search', config);
+
+                if (response.status === 200) {
+                    console.log('Lista de Produtos.');
+                    console.log(response.data);
+                    setProducts(response.data);
+                } else {
+                    alert('Erro em busca Produtos com Filtro. Por favor, tente novamente.');
+                }
+            } catch (error) {
+                console.error('Erro ao buscar dados:', error);
+            }
+        };
+
+        fetchFiltered();
+
+    }
+
+    const handleClickDetails = (produc_id) => {
         console.log('Click Details!');
+
+        console.log("Product Id");
+        console.log(produc_id);
+
+        console.log("Token");
+        //console.log(state.token);
+
+        //navigate('/product', { state: { token: state.token, product: product_id } });
     }
+
+    const handleChange = (event) => {
+        setSelectedCategory(event.target.value); // Atualiza o estado do option selecionado
+    };
 
     return (
 
         <>
-            <p>Catalog</p>
 
             <div className="container">
                 <div className="row">
@@ -99,17 +175,30 @@ const CatalogProducts = (props) => {
                 </div>
                 
                 <div className="row">
-                    <form className="d-flex align-items-end w-100">
-                        <div className="col-md-11">
-                            <div className="form-group mb-0">
-                                <label>Filter:</label>
-                                <input type="text" className="form-control" id="pesquisa" aria-describedby="filterHelp" placeholder="Filter" onChange={(e) => setFilter(e.target.value)}/>
-                            </div>
+
+                    <div className="col-md-12">
+                        <div className="form-group mb-0">
+                            <label>Categories:</label>
+                            <select className="form-select" value={selectedCategory} onChange={handleChange}>
+                                <option value="">Selecione uma opção</option>
+                                {categories.map(category => (
+                                    <option key={category.id} value={category.id}>{category.description}</option>
+                                ))}
+                            </select>
                         </div>
-                        <div className="col-md-1 d-flex align-items-end">
-                            <button className="btn btn-primary ml-20" onClick={handleClickFilter} >Filtrar</button>
+                    </div>
+
+                    <div className="col-md-12">
+                        <div className="form-group mb-0">
+                            <label>Filter:</label>
+                            <input type="text" className="form-control" id="pesquisa" aria-describedby="filterHelp" placeholder="Filter" onChange={(e) => setFilter(e.target.value)}/>
                         </div>
-                    </form>
+                    </div>
+
+                    <div className="col-md-2 d-flex align-items-end">
+                        <button className="btn btn-primary ml-20" onClick={handleClickFilter} >Filtrar</button>
+                    </div>
+
                 </div>
                 
                 <h3 className="mt-4">Produtos</h3>  
@@ -126,7 +215,7 @@ const CatalogProducts = (props) => {
                                     <p className="card-text">{ product.description }</p>
                                     <div className="d-flex justify-content-between align-items-center">
                                         <div className="btn-group">
-                                            <button type="button" className="btn btn-sm btn-outline-secondary" onClick={handleClickDetails} >Detalhes</button>
+                                            <button type="button" className="btn btn-sm btn-outline-secondary" onClick={ () => handleClickDetails(product.id) } >Detalhes</button>
                                         </div>
                                         <small className="text-muted">{ product.weight }</small>
                                         <div className="icons-container">
