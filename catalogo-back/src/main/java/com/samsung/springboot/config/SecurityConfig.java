@@ -37,7 +37,10 @@ public class SecurityConfig {
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
 		return httpSecurity
-				.csrf().disable()
+				.csrf()
+				.disable()
+				.cors() // Habilita a configuração CORS
+				.and()
 				.authorizeHttpRequests()
 				.requestMatchers(PUBLIC).permitAll()
 				//.requestMatchers(HttpMethod.DELETE).hasAuthority("ADMIN") 	// If UserDetails.getAuthorities return [ADMIN, ...]
