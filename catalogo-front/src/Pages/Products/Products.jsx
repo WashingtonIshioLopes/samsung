@@ -4,20 +4,38 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
 
 import Header from '../../Components/Header/Header';
-import ListProducts from '../../Components/Products/ListProducts';
+import CarouselProducts from '../../Components/Products/CarouselProducts';
 import Footer from '../../Components/Footer/Footer';
 
 const Products = () => {
   
     const { state } = useLocation();
 
+    const navigate = useNavigate();
+
+    const handleClick = () => {
+        console.log("Token");
+        console.log(state.token);
+        navigate('/Catalog', { state: { token: state.token } });
+    }
+
     return (
-        <div>
+        <>
             <Header />
-            <h2>Products</h2>
-            <ListProducts token={state.token}/>
+            
+            <div className="container">
+                <div className="row">
+                    <div className="col-md-12 d-flex justify-content-end">
+                        <div className="text-center">
+                            <button className="btn btn-primary px-5 mb-5" onClick={handleClick}>Catalogo</button>
+                        </div>
+                    </div>
+                </div>
+                <CarouselProducts token={state.token}/>
+            </div>
+
             <Footer />
-        </div>
+        </>
     );
 };
 

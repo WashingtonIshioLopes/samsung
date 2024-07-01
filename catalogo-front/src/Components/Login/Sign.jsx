@@ -33,15 +33,15 @@ function Sign() {
             console.error('Erro ao fazer login:', error); 
             alert('Erro ao fazer login. Tente novamente mais tarde.');
         }
-      };
+    };
 
     return (
         <>
             <div className="container">
                 <div className="row">
                     <div className="col-md-6 offset-md-3">
-                        <h2 className="text-center text-dark mt-5">Login Form</h2>
-                        <div className="text-center mb-5 text-dark">Made with bootstrap</div>
+                        <h2 className="text-center text-dark mt-5">Login</h2>
+                        <div className="text-center mb-5 text-dark">Samsung Products</div>
                         <div className="card my-5">
                             <form className="card-body cardbody-color p-lg-5" onSubmit={handleSubmit}>
             
@@ -53,7 +53,9 @@ function Sign() {
                                     <input type="text" className="form-control" id="document" aria-describedby="emailHelp" placeholder="Document" onChange={(e) => setDocument(e.target.value)}/>
                                 </div>
             
-                                <div className="text-center"><button type="submit" className="btn btn-color px-5 mb-5 w-100">Login</button></div>
+                                <div className="text-center">
+                                    <button type="submit" className="btn btn-primary px-5 mb-5 w-100">Login</button>
+                                </div>
                             </form>
                         </div>
                     </div>

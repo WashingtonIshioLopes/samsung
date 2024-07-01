@@ -1,13 +1,13 @@
 import React from 'react';
 import { useState, useEffect, useRef } from "react"
 import { useNavigate } from 'react-router-dom';
+import { Carousel } from 'react-bootstrap';
 import axios from 'axios';
 
 
 import BASE_URL from '../../config';
-import Product from './Product';
 
-const ListProducts = (props) => {
+const CarouselProducts = (props) => {
 
     const [products, setProducts] = useState([]);
 
@@ -51,8 +51,24 @@ const ListProducts = (props) => {
     }, []);
 
     return (
-        <p>Products List</p>
+        <>
+            <Carousel>
+                {products.map(product => (
+                    <Carousel.Item key={product.id}>
+                        <img
+                            className="d-block w-100"
+                            src={product.images[0].image}
+                            alt={product.name}
+                        />
+                        <Carousel.Caption>
+                            <h3>{product.name}</h3>
+                            <p>{product.description}</p>
+                        </Carousel.Caption>
+                    </Carousel.Item>
+                ))}
+            </Carousel>
+        </>
     );
 };
 
-export default ListProducts;
+export default CarouselProducts;

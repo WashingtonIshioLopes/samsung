@@ -1,20 +1,23 @@
 import React from 'react';
 import { useState } from "react"
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
 
 import Header from '../../Components/Header/Header';
+import CatalogProducts from '../../Components/Products/CatalogProducts';
 import Footer from '../../Components/Footer/Footer';
 
-const Product = () => {
-  
+const Catalog = () => {
+
+    const { state } = useLocation();
+
     return (
       <div>
         <Header />
-        <h2>Product</h2>
+        <CatalogProducts token={state.token}/>
         <Footer />
       </div>
     );
 };
 
-export default Product;
+export default Catalog;
