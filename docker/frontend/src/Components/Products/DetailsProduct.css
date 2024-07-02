@@ -1,0 +1,31 @@
+.thumbnails {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+    margin-top: 10px;
+    overflow-x: auto; /* Rolagem horizontal para miniaturas */
+    padding-bottom: 10px;
+}
+
+.thumbnails img {
+    cursor: pointer;
+    width: 150px;
+    height: auto;
+}
+
+.main-image {
+    margin-top: 20px;
+}
+
+.main-image img {
+    max-width: 100%;
+    height: auto;
+}
+
+.img-detail-personal {
+
+        width: 100%; /* Ocupa toda a largura disponível do carrossel */
+        height: 680px !important;/* Define uma altura fixa para a imagem */
+        object-fit: contain; /* Mantém a proporção da imagem sem cortar */
+
+}

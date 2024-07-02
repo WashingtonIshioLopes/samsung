@@ -29,14 +29,15 @@ services:
       - db       
 
   frontend:
-    image: nginx:alpine
-    container_name: nginx_container
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
     ports:
-      - "8000:80"
-    volumes:
-      - ./frontend/dist/filmes-app:/usr/share/nginx/html
+      - "5173:5173"
+    environment:
+      - NODE_ENV=production   
     depends_on:
-      - backend   
+      - backend          
  
 networks:
   app-network:
