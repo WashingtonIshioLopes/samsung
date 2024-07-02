@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "product_featured")
-public class ProductFeaturedModel implements Serializable{
+public class ProductFavoriteModel implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
@@ -18,7 +18,11 @@ public class ProductFeaturedModel implements Serializable{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 
-	@OneToOne
+	@ManyToOne
+	@JoinColumn(name = "id_user")
+	private PersonModel user;
+
+	@ManyToOne
 	@JoinColumn(name = "id_product")
 	private ProductModel product;
 

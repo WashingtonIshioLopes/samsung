@@ -1,10 +1,11 @@
 package com.samsung.springboot.services;
 
-import com.samsung.springboot.dtos.ProductFeaturedRecordDto;
+import com.samsung.springboot.dtos.ProductFavoriteRecordDto;
 import com.samsung.springboot.exceptions.ResourceNotFoundException;
-import com.samsung.springboot.models.ProductFeaturedModel;
+import com.samsung.springboot.models.ProductFavoriteModel;
+import com.samsung.springboot.models.ProductFavoriteModel;
 import com.samsung.springboot.models.ProductModel;
-import com.samsung.springboot.repositories.ProductFeaturedRepository;
+import com.samsung.springboot.repositories.ProductFavoriteRepository;
 import com.samsung.springboot.repositories.ProductRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.BeanUtils;
@@ -17,64 +18,64 @@ import java.util.Optional;
 
 @Service
 @Transactional
-public class ProductFeaturedService {
+public class ProductFavoriteService {
 
     @Autowired
-    private ProductFeaturedRepository productFeaturedRepository;
+    private ProductFavoriteRepository productFavoriteRepository;
     @Autowired
     private ProductRepository productRepository;
 
-    public List<ProductFeaturedModel> getAll() {
-        return productFeaturedRepository.findAll();
+    public List<ProductFavoriteModel> getAll() {
+        return productFavoriteRepository.findAll();
     }
 
-    public Optional<ProductFeaturedModel> getOne(Long id) {
-        Optional<ProductFeaturedModel> productFeaturedOptional = productFeaturedRepository.findById(id);
-        if (productFeaturedOptional.isEmpty()) {
-            throw new ResourceNotFoundException("Product Featured not found with id: " + id);
+    public Optional<ProductFavoriteModel> getOne(Long id) {
+        Optional<ProductFavoriteModel> productFavoriteOptional = productFavoriteRepository.findById(id);
+        if (productFavoriteOptional.isEmpty()) {
+            throw new ResourceNotFoundException("Product Favorite not found with id: " + id);
         }
-        return productFeaturedOptional;
+        return productFavoriteOptional;
     }
 
-    public ProductFeaturedModel save(ProductFeaturedRecordDto productFeaturedRecordDto) {
+    public ProductFavoriteModel save(ProductFavoriteRecordDto productFavoriteRecordDto) {
 
-        Optional<ProductModel> productOptional = productRepository.findById(productFeaturedRecordDto.id_product());
+        Optional<ProductModel> productOptional = productRepository.findById(productFavoriteRecordDto.id_product());
         if (productOptional.isEmpty()) {
-            throw new ResourceNotFoundException("Product not found with id: " + productFeaturedRecordDto.id_product());
+            throw new ResourceNotFoundException("Product not found with id: " + productFavoriteRecordDto.id_product());
         }
 
-        ProductFeaturedModel productFeaturedModel = new ProductFeaturedModel();
-        BeanUtils.copyProperties(productFeaturedRecordDto, productFeaturedModel);
-        productFeaturedModel.setProduct(productOptional.get());
-        productFeaturedModel.setCreatedAt(LocalDateTime.now());
+        ProductFavoriteModel productFavoriteModel = new ProductFavoriteModel();
+        BeanUtils.copyProperties(productFavoriteRecordDto, productFavoriteModel);
+        productFavoriteModel.setProduct(productOptional.get());
+        productFavoriteModel.setCreatedAt(LocalDateTime.now());
 
-        return productFeaturedRepository.save(productFeaturedModel);
+        return productFavoriteRepository.save(productFavoriteModel);
     }
 
     public void delete(Long id) {
-        Optional<ProductFeaturedModel> productFeaturedOptional = productFeaturedRepository.findById(id);
-        if (productFeaturedOptional.isEmpty()) {
+        Optional<ProductFavoriteModel> productFavoriteOptional = productFavoriteRepository.findById(id);
+        if (productFavoriteOptional.isEmpty()) {
             throw new ResourceNotFoundException("Product Featured not found with id: " + id);
         }
-        productFeaturedOptional.ifPresent(productimage -> productFeaturedRepository.delete(productimage));
+        productFavoriteOptional.ifPresent(productFavorite -> productFavoriteRepository.delete(productFavorite));
     }
 
-    public ProductFeaturedModel update(Long id, ProductFeaturedRecordDto productFeaturedRecordDto) {
-        Optional<ProductFeaturedModel> productFeaturedOptional = productFeaturedRepository.findById(id);
-        if (productFeaturedOptional.isEmpty()) {
-            throw new ResourceNotFoundException("Product Featured not found with id: " + id);
+    public ProductFavoriteModel update(Long id, ProductFavoriteRecordDto productFavoriteRecordDto) {
+        Optional<ProductFavoriteModel> productFavoriteOptional = productFavoriteRepository.findById(id);
+        if (productFavoriteOptional.isEmpty()) {
+            throw new ResourceNotFoundException("Product Favorite not found with id: " + id);
         }
 
-        Optional<ProductModel> productOptional = productRepository.findById(productFeaturedRecordDto.id_product());
+        Optional<ProductModel> productOptional = productRepository.findById(productFavoriteRecordDto.id_product());
         if (productOptional.isEmpty()) {
-            throw new ResourceNotFoundException("Product not found with id: " + productFeaturedRecordDto.id_product());
+            throw new ResourceNotFoundException("Product not found with id: " + productFavoriteRecordDto.id_product());
         }
 
-        ProductFeaturedModel productFeaturedModel = productFeaturedOptional.get();
-        BeanUtils.copyProperties(productFeaturedRecordDto, productFeaturedModel);
-        productFeaturedModel.setProduct(productOptional.get());
-        productFeaturedModel.setUpdatedAt(LocalDateTime.now());
+        ProductFavoriteModel productFavoriteModel = productFavoriteOptional.get();
+        BeanUtils.copyProperties(productFavoriteRecordDto, productFavoriteModel);
+        productFavoriteModel.setProduct(productOptional.get());
+        productFavoriteModel.setUpdatedAt(LocalDateTime.now());
 
-        return productFeaturedRepository.save(productFeaturedModel);
+        return productFavoriteRepository.save(productFavoriteModel);
     }
 }

@@ -1,11 +1,10 @@
 package com.samsung.springboot.services;
 
-import com.samsung.springboot.dtos.ProductImageRecordDto;
+import com.samsung.springboot.dtos.ProductFeaturedRecordDto;
 import com.samsung.springboot.exceptions.ResourceNotFoundException;
-import com.samsung.springboot.models.ProductImageModel;
+import com.samsung.springboot.models.ProductFeaturedModel;
 import com.samsung.springboot.models.ProductModel;
-import com.samsung.springboot.repositories.CategoryRepository;
-import com.samsung.springboot.repositories.ProductImageRepository;
+import com.samsung.springboot.repositories.ProductFeaturedRepository;
 import com.samsung.springboot.repositories.ProductRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.BeanUtils;
@@ -18,64 +17,64 @@ import java.util.Optional;
 
 @Service
 @Transactional
-public class ProductImageService {
+public class ProductFeaturedService {
 
     @Autowired
-    private ProductImageRepository productImageRepository;
+    private ProductFeaturedRepository productFeaturedRepository;
     @Autowired
     private ProductRepository productRepository;
 
-    public List<ProductImageModel> getAll() {
-        return productImageRepository.findAll();
+    public List<ProductFeaturedModel> getAll() {
+        return productFeaturedRepository.findAll();
     }
 
-    public Optional<ProductImageModel> getOne(Long id) {
-        Optional<ProductImageModel> productImageOptional = productImageRepository.findById(id);
-        if (productImageOptional.isEmpty()) {
-            throw new ResourceNotFoundException("Product Image not found with id: " + id);
+    public Optional<ProductFeaturedModel> getOne(Long id) {
+        Optional<ProductFeaturedModel> productFeaturedOptional = productFeaturedRepository.findById(id);
+        if (productFeaturedOptional.isEmpty()) {
+            throw new ResourceNotFoundException("Product Featured not found with id: " + id);
         }
-        return productImageOptional;
+        return productFeaturedOptional;
     }
 
-    public ProductImageModel save(ProductImageRecordDto productImageRecordDto) {
+    public ProductFeaturedModel save(ProductFeaturedRecordDto productFeaturedRecordDto) {
 
-        Optional<ProductModel> productOptional = productRepository.findById(productImageRecordDto.id_product());
+        Optional<ProductModel> productOptional = productRepository.findById(productFeaturedRecordDto.id_product());
         if (productOptional.isEmpty()) {
-            throw new ResourceNotFoundException("Product not found with id: " + productImageRecordDto.id_product());
+            throw new ResourceNotFoundException("Product not found with id: " + productFeaturedRecordDto.id_product());
         }
 
-        ProductImageModel productImageModel = new ProductImageModel();
-        BeanUtils.copyProperties(productImageRecordDto, productImageModel);
-        productImageModel.setProduct(productOptional.get());
-        productImageModel.setCreatedAt(LocalDateTime.now());
+        ProductFeaturedModel productFeaturedModel = new ProductFeaturedModel();
+        BeanUtils.copyProperties(productFeaturedRecordDto, productFeaturedModel);
+        productFeaturedModel.setProduct(productOptional.get());
+        productFeaturedModel.setCreatedAt(LocalDateTime.now());
 
-        return productImageRepository.save(productImageModel);
+        return productFeaturedRepository.save(productFeaturedModel);
     }
 
     public void delete(Long id) {
-        Optional<ProductImageModel> productImageOptional = productImageRepository.findById(id);
-        if (productImageOptional.isEmpty()) {
-            throw new ResourceNotFoundException("Product Image not found with id: " + id);
+        Optional<ProductFeaturedModel> productFeaturedOptional = productFeaturedRepository.findById(id);
+        if (productFeaturedOptional.isEmpty()) {
+            throw new ResourceNotFoundException("Product Featured not found with id: " + id);
         }
-        productImageOptional.ifPresent(productimage -> productImageRepository.delete(productimage));
+        productFeaturedOptional.ifPresent(productFeatured -> productFeaturedRepository.delete(productFeatured));
     }
 
-    public ProductImageModel update(Long id, ProductImageRecordDto productImageRecordDto) {
-        Optional<ProductImageModel> productImageOptional = productImageRepository.findById(id);
-        if (productImageOptional.isEmpty()) {
-            throw new ResourceNotFoundException("Product Image not found with id: " + id);
+    public ProductFeaturedModel update(Long id, ProductFeaturedRecordDto productFeaturedRecordDto) {
+        Optional<ProductFeaturedModel> productFeaturedOptional = productFeaturedRepository.findById(id);
+        if (productFeaturedOptional.isEmpty()) {
+            throw new ResourceNotFoundException("Product Featured not found with id: " + id);
         }
 
-        Optional<ProductModel> productOptional = productRepository.findById(productImageRecordDto.id_product());
+        Optional<ProductModel> productOptional = productRepository.findById(productFeaturedRecordDto.id_product());
         if (productOptional.isEmpty()) {
-            throw new ResourceNotFoundException("Product not found with id: " + productImageRecordDto.id_product());
+            throw new ResourceNotFoundException("Product not found with id: " + productFeaturedRecordDto.id_product());
         }
 
-        ProductImageModel productImageModel = productImageOptional.get();
-        BeanUtils.copyProperties(productImageRecordDto, productImageModel);
-        productImageModel.setProduct(productOptional.get());
-        productImageModel.setUpdatedAt(LocalDateTime.now());
+        ProductFeaturedModel productFeaturedModel = productFeaturedOptional.get();
+        BeanUtils.copyProperties(productFeaturedRecordDto, productFeaturedModel);
+        productFeaturedModel.setProduct(productOptional.get());
+        productFeaturedModel.setUpdatedAt(LocalDateTime.now());
 
-        return productImageRepository.save(productImageModel);
+        return productFeaturedRepository.save(productFeaturedModel);
     }
 }
