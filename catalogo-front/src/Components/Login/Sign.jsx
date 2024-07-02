@@ -60,7 +60,7 @@ function Sign() {
                                 </div>
             
                                 <div className="text-center">
-                                    <button type="submit" className="btn btn-primary px-5 mb-5 w-100">Login</button>
+                                    <button type="submit" className="btn btn-primary px-5 mb-5 w-100">Entrar</button>
                                 </div>
                             </form>
                         </div>

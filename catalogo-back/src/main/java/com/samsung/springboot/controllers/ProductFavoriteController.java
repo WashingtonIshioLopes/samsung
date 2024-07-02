@@ -2,6 +2,7 @@ package com.samsung.springboot.controllers;
 
 import com.samsung.springboot.dtos.ProductFavoriteRecordDto;
 import com.samsung.springboot.exceptions.ResourceNotFoundException;
+import com.samsung.springboot.models.CartModel;
 import com.samsung.springboot.models.ProductFavoriteModel;
 import com.samsung.springboot.services.ProductFavoriteService;
 import jakarta.validation.Valid;
@@ -23,6 +24,12 @@ public class ProductFavoriteController {
 	public ResponseEntity<List<ProductFavoriteModel>> getAllProducts(){
 		List<ProductFavoriteModel> productFavorites = productFavoriteService.getAll();
 		return ResponseEntity.status(HttpStatus.OK).body(productFavorites);
+	}
+
+	@GetMapping("/productfavorite/search")
+	public List<ProductFavoriteModel> getProductsByUserId(
+			@RequestParam(required = false) Long id_user) {
+		return productFavoriteService.findByUserId(id_user);
 	}
 
 	@GetMapping("/productfavorite/{id}")

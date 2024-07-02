@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 //import org.springframework.hateoas.RepresentationModel;
 
 @Entity
-@Table(name = "product_featured")
+@Table(name = "product_favorite")
 public class ProductFavoriteModel implements Serializable{
 
 	private static final long serialVersionUID = 1L;

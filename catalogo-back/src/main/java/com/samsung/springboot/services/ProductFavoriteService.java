@@ -2,6 +2,7 @@ package com.samsung.springboot.services;
 
 import com.samsung.springboot.dtos.ProductFavoriteRecordDto;
 import com.samsung.springboot.exceptions.ResourceNotFoundException;
+import com.samsung.springboot.models.CartModel;
 import com.samsung.springboot.models.ProductFavoriteModel;
 import com.samsung.springboot.models.ProductFavoriteModel;
 import com.samsung.springboot.models.ProductModel;
@@ -77,5 +78,9 @@ public class ProductFavoriteService {
         productFavoriteModel.setUpdatedAt(LocalDateTime.now());
 
         return productFavoriteRepository.save(productFavoriteModel);
+    }
+
+    public List<ProductFavoriteModel> findByUserId(Long userId) {
+        return productFavoriteRepository.findByUserId(userId);
     }
 }

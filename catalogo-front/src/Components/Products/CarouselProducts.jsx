@@ -32,8 +32,8 @@ const CarouselProducts = (props) => {
             const fetchProducts = async () => {
                 try {
                     
-                    console.log(BASE_URL  + '/products');
-                    const response = await axios.get(BASE_URL  + '/products', config);
+                    console.log(BASE_URL  + '/productfeatured');
+                    const response = await axios.get(BASE_URL  + '/productfeatured', config);
     
                     if (response.status === 200) {
                         console.log('Lista de Produtos.');
@@ -58,15 +58,15 @@ const CarouselProducts = (props) => {
             <div className="full-width-carousel">
                 <Carousel>
                     {products.slice(0, 10).map(product => (
-                        <Carousel.Item key={product.id}>
+                        <Carousel.Item key={product.product.id}>
                             <img
                                 className="d-block w-100"
-                                src={product.images[0].image}
-                                alt={product.name}
+                                src={product.product.images[0].image}
+                                alt={product.product.name}
                             />
                             <Carousel.Caption>
-                                <h3>{product.name}</h3>
-                                <p>{product.description}</p>
+                                <h3>{product.product.name}</h3>
+                                <p>{product.product.description}</p>
                             </Carousel.Caption>
                         </Carousel.Item>
                     ))}
