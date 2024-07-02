@@ -1,9 +1,10 @@
 {
 	"info": {
-		"_postman_id": "3f50fbb6-f4cb-416e-9d5c-96772f61f8dc",
+		"_postman_id": "5a6529e5-b6b0-4ac0-a3d0-a4ec5f46f199",
 		"name": "Samsung",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "32448764"
+		"_exporter_id": "7230884",
+		"_collection_link": "https://cis-team.postman.co/workspace/CIS~556cfdfc-2269-45c1-ad9e-bc615bb86e9c/collection/7230884-5a6529e5-b6b0-4ac0-a3d0-a4ec5f46f199?action=share&source=collection_link&creator=7230884"
 	},
 	"item": [
 		{
@@ -16,7 +17,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\":\"washington\",\r\n    \"document\":\"17832088800\",\r\n    \"email\":\"washington@cis.com.br\",\r\n    \"password\": \"w14i05l77\"\r\n}",
+							"raw": "{\r\n    \"name\":\"washington ishio lopes\",\r\n    \"document\":\"17832088800\",\r\n    \"email\":\"washington@cis.com.br\",\r\n    \"password\": \"w14i05l77\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1013,8 +1014,27 @@
 				{
 					"name": "save",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ3YXNoaW5ndG9uQGNpcy5jb20uYnIiLCJleHAiOjE3MTk5NTk1MDV9.v2OyhOnqgsYViijvtGk3vQ1ufDAMWEMYrE864T0osW2ixHnaGc3bs2nzSmJahoVStwLpKCLwsMJuh6dew8vnhQ",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_user\" : 1,\r\n    \"total\": 0,\r\n    \"status\": \"open\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "http://localhost:8080/samsung/api/v1_0/carts",
 							"protocol": "http",
@@ -1056,9 +1076,31 @@
 				},
 				{
 					"name": "getOne",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ3YXNoaW5ndG9uQGNpcy5jb20uYnIiLCJleHAiOjE3MTk5NTk1MDV9.v2OyhOnqgsYViijvtGk3vQ1ufDAMWEMYrE864T0osW2ixHnaGc3bs2nzSmJahoVStwLpKCLwsMJuh6dew8vnhQ",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "http://localhost:8080/samsung/api/v1_0/carts/1",
 							"protocol": "http",
@@ -1131,6 +1173,61 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "search",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ3YXNoaW5ndG9uQGNpcy5jb20uYnIiLCJleHAiOjE3MTk5NTgxNDF9.2n7-RyBXRc5n3piRmjCOZBT3TNdCtlgHc7v_oK13ns6L1jV3dNsm0ls90XOWSarkcMGAIqr_q4ne_8VW4mV8qw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/samsung/api/v1_0/carts/search?id_user=1&status=open",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"samsung",
+								"api",
+								"v1_0",
+								"carts",
+								"search"
+							],
+							"query": [
+								{
+									"key": "id_user",
+									"value": "1"
+								},
+								{
+									"key": "status",
+									"value": "open"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -1171,10 +1268,20 @@
 				{
 					"name": "getAll",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ3YXNoaW5ndG9uQGNpcy5jb20uYnIiLCJleHAiOjE3MTk5NTk1MDV9.v2OyhOnqgsYViijvtGk3vQ1ufDAMWEMYrE864T0osW2ixHnaGc3bs2nzSmJahoVStwLpKCLwsMJuh6dew8vnhQ",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/samsung/api/v1_0/cartitens",
+							"raw": "http://localhost:8080/samsung/api/v1_0/cartitens/search",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1184,7 +1291,8 @@
 								"samsung",
 								"api",
 								"v1_0",
-								"cartitens"
+								"cartitens",
+								"search"
 							]
 						}
 					},
@@ -1263,6 +1371,45 @@
 								"v1_0",
 								"cartitens",
 								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "search",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ3YXNoaW5ndG9uQGNpcy5jb20uYnIiLCJleHAiOjE3MTk5NzIyMDN9.NP1t1IxK-VtiZkTwjxnnd41_b5d7fXHRdqR9b057cChw8KGh5gZ_yQir5gXNl1tesgw8KeuDIU6R2rlBeJNDlQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/samsung/api/v1_0/cartitens/search?id_cart=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"samsung",
+								"api",
+								"v1_0",
+								"cartitens",
+								"search"
+							],
+							"query": [
+								{
+									"key": "id_cart",
+									"value": "1"
+								}
 							]
 						}
 					},
