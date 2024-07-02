@@ -2,9 +2,13 @@ package com.samsung.springboot.services;
 
 import com.samsung.springboot.dtos.CheckoutRecordDto;
 import com.samsung.springboot.exceptions.ResourceNotFoundException;
+import com.samsung.springboot.models.CartModel;
 import com.samsung.springboot.models.CheckoutModel;
+import com.samsung.springboot.models.PaymentTypeModel;
 import com.samsung.springboot.models.PersonModel;
+import com.samsung.springboot.repositories.CartRepository;
 import com.samsung.springboot.repositories.CheckoutRepository;
+import com.samsung.springboot.repositories.PaymentTypeRepository;
 import com.samsung.springboot.repositories.PersonRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.BeanUtils;
@@ -23,6 +27,10 @@ public class CheckoutService {
     private CheckoutRepository checkoutRepository;
     @Autowired
     private PersonRepository userRepository;
+    @Autowired
+    private CartRepository cartRepository;
+    @Autowired
+    private PaymentTypeRepository paymentTypeRepository;
 
     public List<CheckoutModel> getAll() {
         return checkoutRepository.findAll();
@@ -38,14 +46,20 @@ public class CheckoutService {
 
     public CheckoutModel save(CheckoutRecordDto checkoutRecordDto) {
 
-        Optional<PersonModel> userOptional = userRepository.findById(checkoutRecordDto.id_user());
-        if (userOptional.isEmpty()) {
-            throw new ResourceNotFoundException("User not found with id: " + checkoutRecordDto.id_user());
+        Optional<CartModel> cartOptional = cartRepository.findById(checkoutRecordDto.id_cart());
+        if (cartOptional.isEmpty()) {
+            throw new ResourceNotFoundException("Cart not found with id: " + checkoutRecordDto.id_cart());
+        }
+
+        Optional<PaymentTypeModel> paymentOptional = paymentTypeRepository.findById(checkoutRecordDto.id_payment());
+        if (paymentOptional.isEmpty()) {
+            throw new ResourceNotFoundException("Payment not found with id: " + checkoutRecordDto.id_payment());
         }
 
         CheckoutModel checkoutModel = new CheckoutModel();
         BeanUtils.copyProperties(checkoutRecordDto, checkoutModel);
-        checkoutModel.setUser(userOptional.get());
+        checkoutModel.setId_cart(checkoutRecordDto.id_cart());
+        checkoutModel.setId_payment(checkoutRecordDto.id_payment());
         checkoutModel.setCreatedAt(LocalDateTime.now());
 
         return checkoutRepository.save(checkoutModel);
@@ -65,14 +79,20 @@ public class CheckoutService {
             throw new ResourceNotFoundException("Order not found with id: " + id);
         }
 
-        Optional<PersonModel> userOptional = userRepository.findById(checkoutRecordDto.id_user());
-        if (userOptional.isEmpty()) {
-            throw new ResourceNotFoundException("User not found with id: " + checkoutRecordDto.id_user());
+        Optional<CartModel> cartOptional = cartRepository.findById(checkoutRecordDto.id_cart());
+        if (cartOptional.isEmpty()) {
+            throw new ResourceNotFoundException("Cart not found with id: " + checkoutRecordDto.id_cart());
+        }
+
+        Optional<PaymentTypeModel> paymentOptional = paymentTypeRepository.findById(checkoutRecordDto.id_payment());
+        if (paymentOptional.isEmpty()) {
+            throw new ResourceNotFoundException("Payment not found with id: " + checkoutRecordDto.id_payment());
         }
 
         CheckoutModel checkoutModel = checkoutOptional.get();
         BeanUtils.copyProperties(checkoutRecordDto, checkoutModel);
-        checkoutModel.setUser(userOptional.get());
+        checkoutModel.setId_cart(checkoutRecordDto.id_cart());
+        checkoutModel.setId_payment(checkoutRecordDto.id_payment());
         checkoutModel.setUpdatedAt(LocalDateTime.now());
 
         return checkoutRepository.save(checkoutModel);

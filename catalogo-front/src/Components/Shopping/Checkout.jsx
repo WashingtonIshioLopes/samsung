@@ -124,6 +124,9 @@ const Checkout = () => {
                         status: "close"
                     };
 
+                    console.log('Data Body para Checkout');
+                    console.log(dataBody);
+
                     const addCheckout = async () => {
                         try {
                             console.log(BASE_URL  + '/checkout');
@@ -133,7 +136,7 @@ const Checkout = () => {
                                 console.log('Criando order');
                                 console.log(response.data);
                                 alert('Compra Realizada com Sucesso !');
-                                navigate('/order', { state: { id_checkout: response.data.id, total: totalPrice, code: codeNumber } });
+                                navigate('/order', { state: { id_checkout: response.data.id, total: totalPrice, code: codeNumber, cart: state.cart } });
                             } else {
                                 alert('Erro em criando Carrinho. Por favor, tente novamente.');
                             }
@@ -170,6 +173,8 @@ const Checkout = () => {
     };
 
     const handleChange = (event) => {
+        console.log("Pagamento Selecionado")
+        console.log(event.target.value);
         setSelectedPayment(event.target.value); // Atualiza o estado do option selecionado
     };
 

@@ -19,19 +19,11 @@ public class CheckoutModel implements Serializable{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 
-	@ManyToOne
-	@JoinColumn(name = "id_user")
-	private PersonModel user;
-
 	private String code;
 
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "id_cart")
-	private CartModel cart;
+	private Long id_cart;
 
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "id_payment")
-	private PaymentTypeModel payment;
+	private Long id_payment;
 
 	private String status;
 
@@ -52,14 +44,6 @@ public class CheckoutModel implements Serializable{
 		this.id = id;
 	}
 
-	public PersonModel getUser() {
-		return user;
-	}
-
-	public void setUser(PersonModel user) {
-		this.user = user;
-	}
-
 	public String getCode() {
 		return code;
 	}
@@ -68,12 +52,20 @@ public class CheckoutModel implements Serializable{
 		this.code = code;
 	}
 
-	public CartModel getCart() {
-		return cart;
+	public Long getId_cart() {
+		return id_cart;
 	}
 
-	public void setCart(CartModel cart) {
-		this.cart = cart;
+	public void setId_cart(Long id_cart) {
+		this.id_cart = id_cart;
+	}
+
+	public Long getId_payment() {
+		return id_payment;
+	}
+
+	public void setId_payment(Long id_payment) {
+		this.id_payment = id_payment;
 	}
 
 	public String getStatus() {

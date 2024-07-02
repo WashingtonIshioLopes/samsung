@@ -30,19 +30,21 @@ const Order = () => {
                 }
             };
 
-            const impostos = (state.total * 0.2);
-
             const dataBody = {
-                id_user: user,
-                total: state.total + impostos,
-                id_checkout: state.id_checkout
+                id_ckeckout: state.id_checkout,
+                total: state.total,
+                status: "close"
+                
             };
+
+            console.log("DataBody para order");
+            console.log(dataBody);
     
             const addOrder = async () => {
                 try {
                     
                     console.log(BASE_URL  + '/orders');
-                    const response = await axios.post(BASE_URL  + '/order', dataBody, config);
+                    const response = await axios.post(BASE_URL  + '/orders', dataBody, config);
     
                     if (response.status === 201) {
                         console.log('Pedido.');

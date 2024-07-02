@@ -19,13 +19,11 @@ public class OrderModel implements Serializable{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 
-	@ManyToOne
-	@JoinColumn(name = "id_user")
-	private PersonModel user;
+	//@ManyToOne
+	//@JoinColumn(name = "id_user")
+	//private PersonModel user;
 
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "id_checkout")
-	private CheckoutModel checkout;
+	private Long id_checkout;
 
 	private BigDecimal total;
 
@@ -48,20 +46,12 @@ public class OrderModel implements Serializable{
 		this.id = id;
 	}
 
-	public PersonModel getUser() {
-		return user;
+	public Long getId_checkout() {
+		return id_checkout;
 	}
 
-	public void setUser(PersonModel user) {
-		this.user = user;
-	}
-
-	public CheckoutModel getCheckout() {
-		return checkout;
-	}
-
-	public void setCheckout(CheckoutModel checkout) {
-		this.checkout = checkout;
+	public void setId_checkout(Long id_checkout) {
+		this.id_checkout = id_checkout;
 	}
 
 	public BigDecimal getTotal() {

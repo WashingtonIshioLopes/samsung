@@ -118,6 +118,8 @@ const Cart = ({ onDataUpdate, onRefresh }) => {
 
   const handleCheckout = () => {
     if(quantity > 0){
+      console.log('Fazendo Checkout...');
+      console.log(cart);
       navigate('/checkout', { state: { cart: cart } });
     }
     else{

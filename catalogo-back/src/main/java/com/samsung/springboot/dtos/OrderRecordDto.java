@@ -5,8 +5,7 @@ import jakarta.validation.constraints.NotNull;
 
 import java.math.BigDecimal;
 
-public record OrderRecordDto(@NotNull Long id_user,
-                             @NotNull Long id_ckeckout,
+public record OrderRecordDto(@NotNull Long id_ckeckout,
                              @NotNull BigDecimal total,
                              @NotBlank String status) {
 }
