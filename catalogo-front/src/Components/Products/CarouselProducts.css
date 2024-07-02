@@ -1,12 +1,48 @@
-/* Estilização personalizada para o carousel ocupar toda a largura */
-.full-width-carousel .carousel {
-    width: 100%; /* Define a largura do carousel como 100% */
+.full-width-carousel {
+    max-width: 100%;
+    margin: 0 auto; /* Centraliza o carrossel */
 }
 
-.full-width-carousel .carousel-item {
-    height: 100%; /* Define a altura dos itens do carousel como 100% */
+.carousel-img {
+    width: 100%; /* Ocupa toda a largura disponível do carrossel */
+    height: 800px; /* Define uma altura fixa para a imagem */
+    object-fit: contain; /* Mantém a proporção da imagem sem cortar */
 }
 
-.full-width-carousel .carousel-inner {
-    width: 100%; /* Garante que a parte interna do carousel também tenha 100% de largura */
+.carousel-caption {
+    margin-top: 20px; /* Adiciona um espaço entre a imagem e a legenda */
+}
+
+.carousel-caption h3,
+.carousel-caption p {
+    color: black; /* Define a cor do texto da legenda */
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    filter: invert(0%) sepia(0%) saturate(100%) hue-rotate(0deg) brightness(100%) contrast(100%);
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: black; /* Define a cor das setas como preto */
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    color: black; /* Altera a cor do ícone quando o mouse está sobre as setas */
+}
+
+/* Estiliza os indicadores do carousel */
+.carousel-indicators li {
+    background-color: rgba(0, 0, 0, 0.5) !important; /* Cor dos pontos inativos */
+    width: 12px !important; /* Largura dos indicadores */
+    height: 12px !important; /* Altura dos indicadores */
+    border-radius: 50% !important; /* Torna os indicadores circulares */
+    border: 1px solid #000; /* Adiciona uma borda preta fina aos indicadores */
+}
+
+/* Estilo para o ponto ativo */
+.carousel-indicators .active {
+    background-color: black !important; /* Cor do ponto ativo */
 }

@@ -39,6 +39,7 @@ const CarouselProducts = (props) => {
                         console.log('Lista de Produtos.');
                         console.log(response.data);
                         setProducts(response.data);
+
                     } else {
                         alert('Erro em busca Produtos. Por favor, tente novamente.');
                     }
@@ -59,15 +60,17 @@ const CarouselProducts = (props) => {
                 <Carousel>
                     {products.slice(0, 10).map(product => (
                         <Carousel.Item key={product.product.id}>
-                            <img
-                                className="d-block w-100"
-                                src={product.product.images[0].image}
-                                alt={product.product.name}
-                            />
-                            <Carousel.Caption>
-                                <h3>{product.product.name}</h3>
-                                <p>{product.product.description}</p>
-                            </Carousel.Caption>
+                                <img
+                                    className="d-block carousel-img"
+                                    src={product.product.images[0].image}
+                                    alt={product.product.name}
+                                />       
+                                                    
+                                <Carousel.Caption>
+                                    <h3 style={{ color: 'black' }}>{product.product.name}</h3>
+                                    <p style={{ color: 'black' }}>{product.product.description}</p>
+                                </Carousel.Caption>  
+                                
                         </Carousel.Item>
                     ))}
                 </Carousel>

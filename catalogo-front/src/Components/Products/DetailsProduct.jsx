@@ -133,7 +133,7 @@ const DetailsProduct = () => {
                     </div>
 
                     <div className="main-image card-img-top">
-                        <img src={mainImage} alt="Imagem Principal" className="img-fluid" />
+                        <img src={mainImage} alt="Imagem Principal" className="img-fluid img-detail-personal" />
                     </div>
                     <div className="row">
                         <div className="col-md-8">

@@ -1,10 +1,9 @@
 {
 	"info": {
-		"_postman_id": "5a6529e5-b6b0-4ac0-a3d0-a4ec5f46f199",
+		"_postman_id": "1f8a1ca7-aca6-4779-ae7b-f3a556c2e60a",
 		"name": "Samsung",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "7230884",
-		"_collection_link": "https://cis-team.postman.co/workspace/CIS~556cfdfc-2269-45c1-ad9e-bc615bb86e9c/collection/7230884-5a6529e5-b6b0-4ac0-a3d0-a4ec5f46f199?action=share&source=collection_link&creator=7230884"
+		"_exporter_id": "32448764"
 	},
 	"item": [
 		{
@@ -250,11 +249,21 @@
 				{
 					"name": "save",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ3YXNoaW5ndG9uQGNpcy5jb20uYnIiLCJleHAiOjE3MjAwMTA0MTB9.1m7ZLT_AjRyLHtWVPcJ8HwQWST4gqWeQmvx3246KpsBzadt_YmTp4nLg4c4qGQhIIPeHmREuDem2wnwDD8ARZQ",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id_user\": 1,\r\n    \"total\" : 0\r\n}",
+							"raw": "{\r\n    \"code\" : \"#o63m8ywc4\",\r\n    \"id_user\": 1,\r\n    \"id_cart\": 15,\r\n    \"id_payment\": 2,\r\n    \"status\" : \"close\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -882,6 +891,369 @@
 			]
 		},
 		{
+			"name": "Product Favorites",
+			"item": [
+				{
+					"name": "save",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ3YXNoaW5ndG9uQGNpcy5jb20uYnIiLCJleHAiOjE3MjAwMTAwNDJ9.T9MbysR7VZdBJb5yjR2epf4VmygA1iJujwdmYWCU1oGtu2-i9INvWKDj06uYOXpvIZlfnBKqfG3rYLSobOOhXA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/samsung/api/v1_0/productfavorite",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"samsung",
+								"api",
+								"v1_0",
+								"productfavorite"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAll",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ3YXNoaW5ndG9uQGNpcy5jb20uYnIiLCJleHAiOjE3MjAwMTAwNDJ9.T9MbysR7VZdBJb5yjR2epf4VmygA1iJujwdmYWCU1oGtu2-i9INvWKDj06uYOXpvIZlfnBKqfG3rYLSobOOhXA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/samsung/api/v1_0/productfavorite",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"samsung",
+								"api",
+								"v1_0",
+								"productfavorite"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getOne",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ3YXNoaW5ndG9uQGNpcy5jb20uYnIiLCJleHAiOjE3MjAwMTAwNDJ9.T9MbysR7VZdBJb5yjR2epf4VmygA1iJujwdmYWCU1oGtu2-i9INvWKDj06uYOXpvIZlfnBKqfG3rYLSobOOhXA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/samsung/api/v1_0/productfavorite/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"samsung",
+								"api",
+								"v1_0",
+								"productfavorite",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ3YXNoaW5ndG9uQGNpcy5jb20uYnIiLCJleHAiOjE3MjAwMTAwNDJ9.T9MbysR7VZdBJb5yjR2epf4VmygA1iJujwdmYWCU1oGtu2-i9INvWKDj06uYOXpvIZlfnBKqfG3rYLSobOOhXA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/samsung/api/v1_0/productfavorite/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"samsung",
+								"api",
+								"v1_0",
+								"productfavorite",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ3YXNoaW5ndG9uQGNpcy5jb20uYnIiLCJleHAiOjE3MjAwMTAwNDJ9.T9MbysR7VZdBJb5yjR2epf4VmygA1iJujwdmYWCU1oGtu2-i9INvWKDj06uYOXpvIZlfnBKqfG3rYLSobOOhXA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_product\" : \"\",\r\n    \"image\" : \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/samsung/api/v1_0/productfavorite/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"samsung",
+								"api",
+								"v1_0",
+								"productfavorite",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Product Featureds",
+			"item": [
+				{
+					"name": "save",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ3YXNoaW5ndG9uQGNpcy5jb20uYnIiLCJleHAiOjE3MjAwMTA0MTB9.1m7ZLT_AjRyLHtWVPcJ8HwQWST4gqWeQmvx3246KpsBzadt_YmTp4nLg4c4qGQhIIPeHmREuDem2wnwDD8ARZQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_product\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/samsung/api/v1_0/productfeatured",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"samsung",
+								"api",
+								"v1_0",
+								"productfeatured"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAll",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ3YXNoaW5ndG9uQGNpcy5jb20uYnIiLCJleHAiOjE3MjAwMTA0MTB9.1m7ZLT_AjRyLHtWVPcJ8HwQWST4gqWeQmvx3246KpsBzadt_YmTp4nLg4c4qGQhIIPeHmREuDem2wnwDD8ARZQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/samsung/api/v1_0/productfeatured",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"samsung",
+								"api",
+								"v1_0",
+								"productfeatured"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getOne",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ3YXNoaW5ndG9uQGNpcy5jb20uYnIiLCJleHAiOjE3MjAwMTA0MTB9.1m7ZLT_AjRyLHtWVPcJ8HwQWST4gqWeQmvx3246KpsBzadt_YmTp4nLg4c4qGQhIIPeHmREuDem2wnwDD8ARZQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/samsung/api/v1_0/productfeatured/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"samsung",
+								"api",
+								"v1_0",
+								"productfeatured",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ3YXNoaW5ndG9uQGNpcy5jb20uYnIiLCJleHAiOjE3MjAwMTAwNDJ9.T9MbysR7VZdBJb5yjR2epf4VmygA1iJujwdmYWCU1oGtu2-i9INvWKDj06uYOXpvIZlfnBKqfG3rYLSobOOhXA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/samsung/api/v1_0/productfeatured/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"samsung",
+								"api",
+								"v1_0",
+								"productfeatured",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ3YXNoaW5ndG9uQGNpcy5jb20uYnIiLCJleHAiOjE3MjAwMTAwNDJ9.T9MbysR7VZdBJb5yjR2epf4VmygA1iJujwdmYWCU1oGtu2-i9INvWKDj06uYOXpvIZlfnBKqfG3rYLSobOOhXA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_product\" : \"\",\r\n    \"image\" : \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/samsung/api/v1_0/productfeatured/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"samsung",
+								"api",
+								"v1_0",
+								"productfeatured",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "Product Images",
 			"item": [
 				{
@@ -1423,11 +1795,21 @@
 				{
 					"name": "save",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ3YXNoaW5ndG9uQGNpcy5jb20uYnIiLCJleHAiOjE3MjAwMTA0MTB9.1m7ZLT_AjRyLHtWVPcJ8HwQWST4gqWeQmvx3246KpsBzadt_YmTp4nLg4c4qGQhIIPeHmREuDem2wnwDD8ARZQ",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id_user\": 1,\r\n    \"total\" : 0\r\n}",
+							"raw": "{\r\n    \"id_user\": 1,\r\n    \"id_ckeckout\" : 1,\r\n    \"total\": 100,\r\n    \"status\": \"close\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"

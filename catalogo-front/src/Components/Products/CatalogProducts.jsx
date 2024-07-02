@@ -22,10 +22,6 @@ const CatalogProducts = (props) => {
 
     const [receivedData, setReceivedData] = useState('');
 
-    const [productList, setProductList] = useState(
-        products.map(product => ({ ...product, iconColor: 'black' }))
-    );
-
     //const { token } = props;
 
     const user = localStorage.getItem('user');
@@ -181,14 +177,6 @@ const CatalogProducts = (props) => {
         console.log("Product Id");
         console.log(product_id);
 
-        setProductList(prevProductList =>
-            prevProductList.map(product =>
-                product.id === product_id
-                    ? { ...product, iconColor: product.iconColor === 'black' ? 'blue' : 'black' }
-                    : product
-            )
-        );
-
         /*
         const config = {
             headers: {
@@ -294,7 +282,7 @@ const CatalogProducts = (props) => {
                                         <div className="icons-container">
                                             <FaStar
                                                 size={20}
-                                                color={product.iconColor}
+                                                color="black"
                                                 style={{ marginTop: '20px', marginLeft: '10px', cursor: 'pointer' }}
                                                 onClick={ () => handleClickIcon(product.id) }
                                             />
