@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from "react"
 import { useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import { FaShoppingCart } from 'react-icons/fa';
+import { FaStar } from 'react-icons/fa';
 
 import Cart from '../Shopping/Cart';
 import './CatalogProducts.css'
@@ -18,6 +19,8 @@ const CatalogProducts = (props) => {
     const [quantity, setQuantity] = useState();
 
     const [filter, setFilter] = useState();
+
+    const [receivedData, setReceivedData] = useState('');
 
     //const { token } = props;
 
@@ -166,10 +169,51 @@ const CatalogProducts = (props) => {
         setSelectedCategory(event.target.value); // Atualiza o estado do option selecionado
     };
 
+    const handleDataUpdate = (data) => {
+        setReceivedData(data);
+    };
+
+    const handleClickIcon = (product_id) => {
+        console.log("Product Id");
+        console.log(product_id);
+
+        /*
+        const config = {
+            headers: {
+                Authorization: `Bearer ${token}`
+            },
+            params: {
+                id_user: user,
+                id_product: product_id,
+            }
+        };
+
+        const addFavorite = async () => {
+            try {
+                
+                console.log(BASE_URL  + '/favorites');
+                const response = await axios.post(BASE_URL  + '/favorites', config);
+
+                if (response.status === 200) {
+                    console.log('Favoritos.');
+                    console.log(response.data);
+                    setProducts(response.data);
+                } else {
+                    alert('Erro em criar Favoritos. Por favor, tente novamente.');
+                }
+            } catch (error) {
+                console.error('Erro ao buscar dados:', error);
+            }
+        };
+
+        addFavorite();
+        */
+        
+    };
+
     return (
 
         <>
-
             <div className="container">
                 <div className="row">
                     <div className="col-md-8">
@@ -212,7 +256,7 @@ const CatalogProducts = (props) => {
                         <h3 className="mt-4">Produtos</h3>  
                     </div>
                     <div className="col-md-4 d-flex justify-content-end">
-                        <Cart />
+                        <Cart onDataUpdate={handleDataUpdate}/>
                     </div>
                 </div>
 
@@ -230,15 +274,20 @@ const CatalogProducts = (props) => {
                                         <small className="text-muted">{ "Price (US$): " + product.price }</small>
                                         <small className="text-muted">{ "Category: " + product.category.description }</small>
                                     </div>
-                                    <div className="d-flex justify-content-between align-items-center">
-                                        <div className="icons-container">
-                                            {/* <i className="fa fa-star" title="Favorito"></i> */}
-                                        </div>
-                                    </div>
+
                                     <div className="d-flex justify-content-between align-items-right">
                                         <div className="btn-group">
                                             <button type="button" className="btn btn-primary" onClick={ () => handleClickDetails(product.id) } style={{ marginTop: '10px', marginBottom: '5px' }} >Details</button>
                                         </div>
+                                        <div className="icons-container">
+                                            <FaStar
+                                                size={20}
+                                                color="black"
+                                                style={{ marginTop: '20px', marginLeft: '10px', cursor: 'pointer' }}
+                                                onClick={ () => handleClickIcon(product.id) }
+                                            />
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>

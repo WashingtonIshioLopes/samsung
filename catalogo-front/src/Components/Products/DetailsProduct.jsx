@@ -12,6 +12,10 @@ const DetailsProduct = () => {
     const [product, setProduct] = useState(null);
     const [mainImage, setMainImage] = useState("");
 
+    const [receivedData, setReceivedData] = useState('');
+
+    const [refresh, setRefresh] = useState(false);
+
     const initialFetch = useRef(true);
 
     const { state } = useLocation();
@@ -19,7 +23,7 @@ const DetailsProduct = () => {
     const user = localStorage.getItem('user');
     const token = localStorage.getItem('token');
 
-    console.log();
+    const navigate = useNavigate();
 
     useEffect(() => {
 
@@ -77,33 +81,40 @@ const DetailsProduct = () => {
         const config = {
             headers: {
                 Authorization: `Bearer ${token}`
-            },
-            params: {
-                user_id: user,
-                total: 0,
-                status: "open"
             }
+        };
+
+        const dataBody = {
+            id_cart: receivedData,
+            id_product: product_id,
+            quantity: 1
         };
 
         const addProduct = async () => {
             try {
                 
-                const response = await axios.post(BASE_URL + `/carts`, config);
+                const response = await axios.post(BASE_URL + `/cartitens`, dataBody, config);
 
-                if (response.status === 200) {
-                    console.log('Cart');
+                if (response.status === 201) {
+                    console.log('Cart Item');
                     console.log(response.data);
 
+                    setRefresh(prevRefresh => !prevRefresh);
+
                 } else {
-                    alert('Erro em busca do Produto. Por favor, tente novamente.');
+                    alert('Erro ao Adicionar item no Carrinho. Por favor, tente novamente.');
                 }
             } catch (error) {
-                console.error('Erro ao buscar dados:', error);
+                console.error('Erro ao adicionar dados:', error);
             }
         };
 
         addProduct();
 
+    };
+
+    const handleDataUpdate = (data) => {
+        setReceivedData(data);
     };
 
     return (
@@ -117,7 +128,7 @@ const DetailsProduct = () => {
                             <h3 className="mt-4">{product.name}</h3>  
                         </div>
                         <div className="col-md-4 d-flex justify-content-end">
-                            <Cart />
+                            <Cart onDataUpdate={handleDataUpdate} onRefresh={refresh}/>
                         </div>
                     </div>
 

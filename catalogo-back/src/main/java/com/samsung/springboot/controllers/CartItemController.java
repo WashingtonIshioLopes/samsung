@@ -3,6 +3,7 @@ package com.samsung.springboot.controllers;
 import com.samsung.springboot.dtos.CartItemRecordDto;
 import com.samsung.springboot.exceptions.ResourceNotFoundException;
 import com.samsung.springboot.models.CartItemModel;
+import com.samsung.springboot.models.CartModel;
 import com.samsung.springboot.services.CartItemService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,13 +21,19 @@ public class CartItemController {
 	CartItemService cartItemService;
 	
 	@GetMapping("/cartitens")
-	public ResponseEntity<List<CartItemModel>> getAllUsers(){
+	public ResponseEntity<List<CartItemModel>> getAllCartItens(){
 		List<CartItemModel> cartitens = cartItemService.getAll();
 		return ResponseEntity.status(HttpStatus.OK).body(cartitens);
 	}
 
+	@GetMapping("/cartitens/search")
+	public List<CartItemModel> getCartItensByCartId(
+			@RequestParam(required = false) Long id_cart) {
+		return cartItemService.findByCartId(id_cart);
+	}
+
 	@GetMapping("/cartitens/{id}")
-	public ResponseEntity<Object> getOneUser(@PathVariable(value="id") Long id){
+	public ResponseEntity<Object> getOneCartItem(@PathVariable(value="id") Long id){
 		try {
 			return ResponseEntity.status(HttpStatus.OK).body(cartItemService.getOne(id));
 		} catch (ResourceNotFoundException e) {
@@ -35,13 +42,13 @@ public class CartItemController {
 	}
 
 	@PostMapping("/cartitens")
-	public ResponseEntity<CartItemModel> saveUser(@RequestBody @Valid CartItemRecordDto cartItemRecordDto) {
+	public ResponseEntity<CartItemModel> saveCartItem(@RequestBody @Valid CartItemRecordDto cartItemRecordDto) {
 		CartItemModel savedCartItem = cartItemService.save(cartItemRecordDto);
 		return ResponseEntity.status(HttpStatus.CREATED).body(savedCartItem);
 	}
 
 	@DeleteMapping("/cartitens/{id}")
-	public ResponseEntity<Object> deleteUser(@PathVariable(value="id") Long id) {
+	public ResponseEntity<Object> deleteCartItem(@PathVariable(value="id") Long id) {
 		try {
 			cartItemService.delete(id);
 			return ResponseEntity.status(HttpStatus.OK).body("Cart Item deleted successfully.");
@@ -51,7 +58,7 @@ public class CartItemController {
 	}
 	
 	@PutMapping("/cartitens/{id}")
-	public ResponseEntity<Object> updateUser(@PathVariable(value="id") Long id,
+	public ResponseEntity<Object> updateCartItem(@PathVariable(value="id") Long id,
 												@RequestBody @Valid CartItemRecordDto cartItemRecordDto) {
 		try {
 			CartItemModel updatedCartItem = cartItemService.update(id, cartItemRecordDto);

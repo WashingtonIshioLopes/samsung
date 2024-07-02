@@ -92,4 +92,8 @@ public class CartItemService {
 
         return cartItemRepository.save(cartItemModel);
     }
+
+    public List<CartItemModel> findByCartId(Long cartId) {
+        return cartItemRepository.findByCartId(cartId);
+    }
 }

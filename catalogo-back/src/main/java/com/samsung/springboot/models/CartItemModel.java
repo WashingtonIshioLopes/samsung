@@ -23,7 +23,7 @@ public class CartItemModel implements Serializable{
 	@JoinColumn(name = "id_cart")
 	private CartModel cart;
 
-	@ManyToOne
+	@OneToOne
 	@JoinColumn(name = "id_product")
 	private ProductModel product;
 
