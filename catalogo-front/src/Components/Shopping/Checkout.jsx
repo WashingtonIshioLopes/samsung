@@ -133,7 +133,7 @@ const Checkout = () => {
                                 console.log('Criando order');
                                 console.log(response.data);
                                 alert('Compra Realizada com Sucesso !');
-                                navigate('/order', { state: { id_checkout: response.data.id, total: totalPrice } });
+                                navigate('/order', { state: { id_checkout: response.data.id, total: totalPrice, code: codeNumber } });
                             } else {
                                 alert('Erro em criando Carrinho. Por favor, tente novamente.');
                             }

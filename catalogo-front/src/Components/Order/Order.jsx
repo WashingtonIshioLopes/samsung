@@ -1,7 +1,9 @@
 import React from 'react';
-import { useState } from "react"
-import { useNavigate } from 'react-router-dom';
+import { useState, useEffect, useRef } from "react"
+import { useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
+import { FaPrint } from 'react-icons/fa';
+import { FaShare } from 'react-icons/fa';
 
 import './Order.css'
 import BASE_URL from '../../config';
@@ -90,15 +92,15 @@ const Order = () => {
         <div className="container mt-5">
             <div className="card">
                 <div className="card-body">
-                    <h2 className="card-title">Pedido Concluído com Sucesso!</h2>
-                    <p>Número de Protocolo: <strong>{generateProtocolNumber()}</strong></p>
-                    <p>Data de Entrega: {logisticsInfo.deliveryDate}</p>
-                    <p>Endereço de Entrega: {logisticsInfo.deliveryAddress}</p>
-                    <p>Número da Nota Fiscal: {logisticsInfo.invoiceNumber}</p>
+                    <h2 className="card-title">Order Success!</h2>
+                    <p>Protocol Number: <strong>{state.code}</strong></p>
+                    <p>Delivered Date: {logisticsInfo.deliveryDate}</p>
+                    <p>Address: {logisticsInfo.deliveryAddress}</p>
+                    <p>Invoice: {logisticsInfo.invoiceNumber}</p>
                     <div className="d-grid gap-2 d-md-flex justify-content-md-end">
-                        <button className="btn btn-primary me-md-2 mb-2" onClick={handleBackToShopping}>Voltar às Compras</button>
-                        <button className="btn btn-secondary me-md-2 mb-2" onClick={handlePrintReceipt}><MdPrint className="me-1" /> Imprimir</button>
-                        <button className="btn btn-info mb-2" onClick={handleShareReceipt}><MdShare className="me-1" /> Compartilhar Comprovante</button>
+                        <button className="btn btn-primary me-md-2 mb-2" onClick={handleBackToShopping}>Go Back to Shopping</button>
+                        <button className="btn btn-secondary me-md-2 mb-2" onClick={handlePrintReceipt}><FaPrint className="me-1" /> Print</button>
+                        <button className="btn btn-info mb-2" onClick={handleShareReceipt}><FaShare className="me-1" /> Share</button>
                     </div>
                 </div>
             </div>
