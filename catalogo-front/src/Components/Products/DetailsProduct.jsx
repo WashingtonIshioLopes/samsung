@@ -151,14 +151,14 @@ const DetailsProduct = () => {
                         </div>
                     </div>
                     <div className="row">
-                        <div className="col-md-11">
+                        <div className="col-md-10">
                             <p><strong>Description:</strong> { product.description }</p>
                             <p><strong>Price US$:</strong> { product.price }</p>
                             <p><strong>Category:</strong> { product.category.description }</p>
                             <p><strong>Unit:</strong> { product.unit.description }</p>
                             <p><strong>Weight:</strong> { product.weight }</p>
                         </div>
-                        <div className="col-md-1">
+                        <div className="col-md-2">
                             <div className="btn-group">
                                 <button type="button" className="btn btn-primary" onClick={ () => handleAddCart( product.id ) } style={{ marginTop: '10px', marginBottom: '5px' }} >Add to Cart</button>
                             </div>

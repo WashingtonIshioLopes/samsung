@@ -114,7 +114,7 @@ const Checkout = () => {
                     console.log('Atualizando cart');
                     console.log(response.data);
 
-                    
+                    const codeNumber = generateProtocolNumber();
 
                     const dataBody = {
                         id_user: user,

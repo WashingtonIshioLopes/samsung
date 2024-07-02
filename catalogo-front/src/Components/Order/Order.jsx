@@ -28,11 +28,11 @@ const Order = () => {
                 }
             };
 
-            const impostos = (state.id_checkout * 0.2);
+            const impostos = (state.total * 0.2);
 
             const dataBody = {
                 id_user: user,
-                total: state.id_checkout + impostos,
+                total: state.total + impostos,
                 id_checkout: state.id_checkout
             };
     
@@ -59,11 +59,6 @@ const Order = () => {
         }
 
     }, []);
-
-    // Função para gerar um número de protocolo baseado em hash (exemplo simples)
-    const generateProtocolNumber = () => {
-        return '#' + Math.random().toString(36).substr(2, 9);
-    };
 
     // Dados fixos de logística e número da nota fiscal fictícia
     const logisticsInfo = {
