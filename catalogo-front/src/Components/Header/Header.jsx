@@ -10,7 +10,7 @@ const Header = () => {
               <div className="container">
                   <div className="row align-items-center">
                       <div className="col-md-12 text-center">
-                          <img src={samsungAd} className="img-fluid header-image" alt="Logo" />
+                          <img src={samsungAd} className="img-fluid-personal header-image" alt="Logo" />
                       </div>
                   </div>
               </div>

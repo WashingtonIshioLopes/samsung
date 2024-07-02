@@ -90,6 +90,8 @@ const Checkout = () => {
 
         console.log('Finalizando pagamento com método:', selectedPayment);
 
+        alert('Transacao com PIN Pad não operacional. Clique em OK para continuar...');
+
         const config = {
             headers: {
                 Authorization: `Bearer ${token}`
@@ -148,7 +150,7 @@ const Checkout = () => {
                     addCheckout();
 
                 } else {
-                    alert('Erro em criando Carrinho. Por favor, tente novamente.');
+                    alert('Erro em alterando Carrinho. Por favor, tente novamente.');
                 }
             } catch (error) {
                 console.error('Erro ao gravar dados:', error);
