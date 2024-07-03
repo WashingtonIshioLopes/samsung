@@ -80,7 +80,7 @@ const CarouselProducts = (props) => {
                                 </div>
                                 )}
 
-                                <Carousel.Caption>
+                                <Carousel.Caption className="carousel-caption-personal">
                                     <h3 style={{ color: 'black' }}>{product.product.name}</h3>
                                     <p style={{ color: 'black' }}>{product.product.description}</p>
                                 </Carousel.Caption>  

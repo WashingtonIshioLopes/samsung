@@ -5,7 +5,7 @@
 
 .carousel-img {
     width: 100%; /* Ocupa toda a largura disponível do carrossel */
-    height: 800px; /* Define uma altura fixa para a imagem */
+    height: 500px; /* Define uma altura fixa para a imagem */
     object-fit: contain; /* Mantém a proporção da imagem sem cortar */
 }
 
@@ -45,4 +45,11 @@
 /* Estilo para o ponto ativo */
 .carousel-indicators .active {
     background-color: black !important; /* Cor do ponto ativo */
+}
+
+.carousel-caption-personal{
+    position: static !important;
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    margin-bottom: 20px !important;
 }
