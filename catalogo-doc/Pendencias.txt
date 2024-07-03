@@ -4,18 +4,9 @@
 
 //************************************
 // Front
-//************************************
-Authentication
-
-Product
-	save   - Não esta voltando as imagens
-	getAll - OK
-	getOne - OK
-	delete - OK
-	update - Não esta voltando as imagens
-	search - OK
-
-	
+//************************************	
+Implementar funcionalidades dos Meu Favoritos
+Consistência de quando as Imagens forem vazias
 
 //************************************
 // Back
@@ -28,3 +19,9 @@ Product
 //************************************
 // Docker
 //************************************
+Estudar como fazer o front React + Vite subir automaticamenet
+
+//************************************
+// Postman
+//************************************
+Testar todos os metodos
