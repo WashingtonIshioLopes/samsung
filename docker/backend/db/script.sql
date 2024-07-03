@@ -32,14 +32,14 @@ CREATE TABLE IF NOT EXISTS `carts` (
   PRIMARY KEY (`id`),
   KEY `FKsikdv2229wjn14kyo3dfnnc3u` (`id_user`),
   CONSTRAINT `FKsikdv2229wjn14kyo3dfnnc3u` FOREIGN KEY (`id_user`) REFERENCES `person` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Copiando dados para a tabela db_samsung.carts: ~3 rows (aproximadamente)
+-- Copiando dados para a tabela db_samsung.carts: ~0 rows (aproximadamente)
 DELETE FROM `carts`;
 INSERT INTO `carts` (`id`, `created_at`, `status`, `total`, `updated_at`, `id_user`) VALUES
-	(1, '2024-07-02 15:40:00.412736', 'open', 0.00, NULL, 1),
-	(2, '2024-07-02 15:40:00.412736', 'open', 0.00, NULL, 1),
-	(3, '2024-07-02 15:40:00.412736', 'open', 0.00, NULL, 1);
+	(10, '2024-07-03 13:08:36.897718', 'close', 7999.00, '2024-07-03 13:08:52.020277', 1),
+	(11, '2024-07-03 13:08:36.897718', 'close', 7999.00, '2024-07-03 13:09:24.590574', 1),
+	(12, '2024-07-03 13:08:36.897718', 'open', 0.00, NULL, 1);
 
 -- Copiando estrutura para tabela db_samsung.cart_itens
 DROP TABLE IF EXISTS `cart_itens`;
@@ -52,14 +52,17 @@ CREATE TABLE IF NOT EXISTS `cart_itens` (
   `id_cart` bigint DEFAULT NULL,
   `id_product` bigint DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `UK_sagcfg5y99qwv8yv3klftpv66` (`id_product`),
   KEY `FKp24esl2ojj532cvu9wlodsdea` (`id_cart`),
+  KEY `FKpyox15fuwr8g7fjlt14xnq36b` (`id_product`),
   CONSTRAINT `FKp24esl2ojj532cvu9wlodsdea` FOREIGN KEY (`id_cart`) REFERENCES `carts` (`id`),
   CONSTRAINT `FKpyox15fuwr8g7fjlt14xnq36b` FOREIGN KEY (`id_product`) REFERENCES `products` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Copiando dados para a tabela db_samsung.cart_itens: ~0 rows (aproximadamente)
 DELETE FROM `cart_itens`;
+INSERT INTO `cart_itens` (`id`, `created_at`, `quantity`, `status`, `updated_at`, `id_cart`, `id_product`) VALUES
+	(1, '2024-07-03 13:08:45.679636', 1.00, NULL, NULL, 10, 1),
+	(2, '2024-07-03 13:09:05.670064', 1.00, NULL, NULL, 11, 1);
 
 -- Copiando estrutura para tabela db_samsung.categories
 DROP TABLE IF EXISTS `categories`;
@@ -73,7 +76,7 @@ CREATE TABLE IF NOT EXISTS `categories` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Copiando dados para a tabela db_samsung.categories: ~8 rows (aproximadamente)
+-- Copiando dados para a tabela db_samsung.categories: ~2 rows (aproximadamente)
 DELETE FROM `categories`;
 INSERT INTO `categories` (`id`, `code`, `created_at`, `description`, `status`, `updated_at`) VALUES
 	(1, 'Smartphone', '2024-06-30 17:53:55.000000', 'Smartphone', NULL, NULL),
@@ -96,10 +99,21 @@ CREATE TABLE IF NOT EXISTS `checkout` (
   `status` varchar(255) DEFAULT NULL,
   `updated_at` datetime(6) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Copiando dados para a tabela db_samsung.checkout: ~0 rows (aproximadamente)
 DELETE FROM `checkout`;
+INSERT INTO `checkout` (`id`, `code`, `created_at`, `id_cart`, `id_payment`, `status`, `updated_at`) VALUES
+	(1, '#fyfnz3m3p', '2024-07-03 08:47:41.565919', 1, 1, 'close', NULL),
+	(2, '#fy2j7gcnu', '2024-07-03 09:12:27.481470', 2, 2, 'close', NULL),
+	(3, '#d80tvtuf9', '2024-07-03 09:13:15.778873', 3, 2, 'close', NULL),
+	(4, '#zwyswrpj4', '2024-07-03 12:32:49.428141', 4, 1, 'close', NULL),
+	(5, '#szqlskwbc', '2024-07-03 12:33:15.918144', 5, 1, 'close', NULL),
+	(6, '#ee5gvc8he', '2024-07-03 12:33:32.752638', 5, 2, 'close', NULL),
+	(7, '#yopcp8bi8', '2024-07-03 12:54:24.701288', 6, 2, 'close', NULL),
+	(8, '#yesxh0qat', '2024-07-03 13:00:56.878554', 7, 1, 'close', NULL),
+	(9, '#szldi6kk3', '2024-07-03 13:08:52.065788', 10, 2, 'close', NULL),
+	(10, '#i84enos8h', '2024-07-03 13:09:24.612892', 11, 2, 'close', NULL);
 
 -- Copiando estrutura para tabela db_samsung.orders
 DROP TABLE IF EXISTS `orders`;
@@ -111,10 +125,22 @@ CREATE TABLE IF NOT EXISTS `orders` (
   `total` decimal(38,2) DEFAULT NULL,
   `updated_at` datetime(6) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Copiando dados para a tabela db_samsung.orders: ~0 rows (aproximadamente)
 DELETE FROM `orders`;
+INSERT INTO `orders` (`id`, `created_at`, `id_checkout`, `status`, `total`, `updated_at`) VALUES
+	(1, '2024-07-03 08:47:42.502516', 1, 'close', 7999.00, NULL),
+	(2, '2024-07-03 09:12:28.148588', 2, 'close', 4499.00, NULL),
+	(3, '2024-07-03 09:13:16.955348', 3, 'close', 3299.00, NULL),
+	(4, '2024-07-03 09:14:01.678587', 2, 'close', 4499.00, NULL),
+	(5, '2024-07-03 12:32:50.403924', 4, 'close', 9999.00, NULL),
+	(6, '2024-07-03 12:33:16.813603', 5, 'close', 9999.00, NULL),
+	(7, '2024-07-03 12:33:33.652454', 6, 'close', 9999.00, NULL),
+	(8, '2024-07-03 12:54:25.662644', 7, 'close', 2697.00, NULL),
+	(9, '2024-07-03 13:00:57.699177', 8, 'close', 5399.00, NULL),
+	(10, '2024-07-03 13:08:52.925635', 9, 'close', 7999.00, NULL),
+	(11, '2024-07-03 13:09:25.437831', 10, 'close', 7999.00, NULL);
 
 -- Copiando estrutura para tabela db_samsung.order_itens
 DROP TABLE IF EXISTS `order_itens`;
@@ -270,7 +296,7 @@ CREATE TABLE IF NOT EXISTS `product_featured` (
   CONSTRAINT `FKaoy06b2uc0xhnhtsgh3vkryqb` FOREIGN KEY (`id_product`) REFERENCES `products` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Copiando dados para a tabela db_samsung.product_featured: ~7 rows (aproximadamente)
+-- Copiando dados para a tabela db_samsung.product_featured: ~0 rows (aproximadamente)
 DELETE FROM `product_featured`;
 INSERT INTO `product_featured` (`id`, `created_at`, `status`, `updated_at`, `id_product`) VALUES
 	(1, NULL, NULL, NULL, 1),
@@ -295,7 +321,7 @@ CREATE TABLE IF NOT EXISTS `product_images` (
   CONSTRAINT `FKpbcjehp1361qtyyilvx87d26d` FOREIGN KEY (`id_product`) REFERENCES `products` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Copiando dados para a tabela db_samsung.product_images: ~24 rows (aproximadamente)
+-- Copiando dados para a tabela db_samsung.product_images: ~11 rows (aproximadamente)
 DELETE FROM `product_images`;
 INSERT INTO `product_images` (`id`, `created_at`, `image`, `status`, `updated_at`, `id_product`) VALUES
 	(1, NULL, 'https://images.samsung.com/is/image/samsung/p6pim/br/wd14bb944dgbaz/gallery/br-wd9400b-wd14bb944dgbaz-540261312?$2052_1641_PNG$', NULL, NULL, 1),
@@ -346,7 +372,7 @@ CREATE TABLE IF NOT EXISTS `units` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Copiando dados para a tabela db_samsung.units: ~1 rows (aproximadamente)
+-- Copiando dados para a tabela db_samsung.units: ~0 rows (aproximadamente)
 DELETE FROM `units`;
 INSERT INTO `units` (`id`, `code`, `created_at`, `description`, `status`, `updated_at`) VALUES
 	(1, 'Geral', '2024-06-30 17:54:46.000000', 'Geral', NULL, NULL);
