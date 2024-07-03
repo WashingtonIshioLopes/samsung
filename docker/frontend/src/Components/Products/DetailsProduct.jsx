@@ -46,7 +46,17 @@ const DetailsProduct = () => {
                         console.log('Produto: ....... ');
                         console.log(response.data);
                         setProduct(response.data);
-                        setMainImage(response.data.images[0].image);
+                        //setMainImage(response.data.images[0].image);
+
+                        if (response.data.images && response.data.images.length > 0 && response.data.images[0].image) {
+                            setMainImage(response.data.images[0].image);
+                        } else {
+                            // Opção 1: Não fazer nada ou definir uma imagem padrão
+                            // setMainImage('default-image-url.jpg');
+                            
+                            // Opção 2: Definir como null ou string vazia
+                            setMainImage(null); // ou '' dependendo de como você quer lidar com a ausência da imagem
+                        }
 
                     } else {
                         alert('Erro em busca do Produto. Por favor, tente novamente.');
@@ -132,9 +142,20 @@ const DetailsProduct = () => {
                         </div>
                     </div>
 
+                    {/*}
                     <div className="main-image card-img-top">
                         <img src={mainImage} alt="Imagem Principal" className="img-fluid img-detail-personal" />
                     </div>
+                    */}
+
+                    <div className="main-image card-img-top">
+                    {mainImage ? (
+                        <img src={mainImage} alt="Imagem Principal" className="img-fluid img-detail-personal" />
+                    ) : (
+                        <div className="img-placeholder">No image available</div>
+                    )}
+                    </div>
+
                     <div className="row">
                         <div className="col-md-8">
                             <div className="thumbnails">

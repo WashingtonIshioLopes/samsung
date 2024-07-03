@@ -60,12 +60,26 @@ const CarouselProducts = (props) => {
                 <Carousel>
                     {products.slice(0, 10).map(product => (
                         <Carousel.Item key={product.product.id}>
+                                {/*
                                 <img
                                     className="d-block carousel-img"
                                     src={product.product.images[0].image}
                                     alt={product.product.name}
                                 />       
-                                                    
+                                */}
+
+                                {product?.product?.images?.[0]?.image ? (
+                                <img
+                                    className="d-block carousel-img"
+                                    src={product.product.images[0].image}
+                                    alt={product?.product?.name || ''}
+                                />
+                                ) : (
+                                <div className="d-block carousel-img-placeholder">
+                                    {product?.product?.name || 'No image available'}
+                                </div>
+                                )}
+
                                 <Carousel.Caption>
                                     <h3 style={{ color: 'black' }}>{product.product.name}</h3>
                                     <p style={{ color: 'black' }}>{product.product.description}</p>

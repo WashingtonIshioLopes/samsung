@@ -266,7 +266,18 @@ const CatalogProducts = (props) => {
 
                         <div className="col-md-4" key={ product.id }>
                             <div className="card mb-4 shadow-sm">
-                                <img className="card-img-top" src={product.images[0].image} alt="Card image cap" />
+                                {/* <img className="card-img-top" src={product.images[0].image} alt="Card image cap" /> */ }
+                                {product?.images?.[0]?.image ? (
+                                <img
+                                    className="card-img-top"
+                                    src={product.images[0].image}
+                                    alt="Card image cap"
+                                />
+                                ) : (
+                                <div className="card-img-top-placeholder">
+                                    No image available
+                                </div>
+                                )}                                
                                 <div className="card-body">
                                     <h5 className="card-title">{product.name}</h5>
                                     <p className="card-text">{ product.description }</p>
