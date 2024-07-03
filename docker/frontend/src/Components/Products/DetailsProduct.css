@@ -25,7 +25,7 @@
 .img-detail-personal {
 
         width: 100%; /* Ocupa toda a largura disponível do carrossel */
-        height: 680px !important;/* Define uma altura fixa para a imagem */
+        height: 500px !important;/* Define uma altura fixa para a imagem */
         object-fit: contain; /* Mantém a proporção da imagem sem cortar */
 
 }
