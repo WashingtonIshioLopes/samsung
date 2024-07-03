@@ -1,0 +1,22 @@
+//#############################################
+// Execução via Docker
+//#############################################
+
+00-Docker
+	Instalar Docker Desktop
+	Iniciar Docker Desktop
+
+01-Backend
+	Caso MySQL esteja instalado na máquina, parar o serviço correspondente.
+	Executar docker-compose build
+	Executar docker-compose up
+	Aguardar Aplicação subir
+
+02-Frotend
+	Executar docker-compose up --build --no-recreate -d
+	Executar docker-compose up -d
+	Executar docker exec -it vite_docker sh
+	npm i && npm run dev
+	Aguardar Aplicação subir
+	Acessar http://localhost:4173/
+	Logar com Documento: 17832088800
